@@ -1,0 +1,74 @@
+version: 2.1
+
+description: Run tests with Kaocha and Clojure CLI tools
+
+executors:
+  openjdk8:
+    docker:
+      - image: lambdaisland/clojure:openjdk8
+  openjdk9:
+    docker:
+      - image: lambdaisland/clojure:openjdk9
+  openjdk11:
+    docker:
+      - image: lambdaisland/clojure:openjdk11
+
+commands:
+
+  with_cache:
+    description: |
+      Run a set of steps with Maven dependencies and Clojure classpath cache
+      files cached.
+
+      This command restores ~/.m2 and .cpcache if they were previously cached,
+      then runs the provided steps, and finally saves the cache.
+
+      The cache-key is generated based on the contents of `deps.edn` present in
+      the `working_directory`.
+    parameters:
+      steps:
+        type: steps
+      cache_version:
+        type: string
+        description: "Change this value to force a cache update"
+        default: "1"
+    steps:
+      - run:
+          name: Generate Cache Checksum
+          command: cat deps.edn | shasum | awk '{print $1}' > /tmp/clojure_cache_seed
+      - restore_cache:
+          key: clojure-<< parameters.cache_version >>-{{ checksum "/tmp/clojure_cache_seed" }}
+      - steps: << parameters.steps >>
+      - save_cache:
+          paths:
+            - ~/.m2
+            - .cpcache
+          key: clojure-{{ checksum "/tmp/clojure_cache_seed" }}
+
+  execute:
+    description: |
+      Run Kaocha with Clojure CLI
+    parameters:
+      args:
+        description: Extra command line arguments
+        type: string
+        default: ""
+      aliases:
+        description: |
+          deps.edn aliases to use. Proceed each alias with a ":", don't add
+          spaces, e.g. ":test:dev:"
+        type: string
+        default: ":test"
+    steps:
+      - run: mkdir -p test-results/kaocha
+      - run: |
+          clojure -A<< parameters.aliases >> \
+            -Sdeps '{:deps {lambdaisland/kaocha-junit-xml {:mvn/version "RELEASE"}}}' \
+            -m kaocha.runner \
+            --plugin profiling \
+            --plugin capture-output \
+            --plugin junit-xml \
+            --junit-xml-file test-results/kaocha/results.xml \
+            << parameters.args >>
+      - store_test_results:
+          path: test-results
