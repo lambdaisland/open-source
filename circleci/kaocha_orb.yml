@@ -2,49 +2,7 @@ version: 2.1
 
 description: Run tests with Kaocha and Clojure CLI tools
 
-executors:
-  openjdk8:
-    docker:
-      - image: lambdaisland/clojure:openjdk8
-  openjdk9:
-    docker:
-      - image: lambdaisland/clojure:openjdk9
-  openjdk11:
-    docker:
-      - image: lambdaisland/clojure:openjdk11
-
 commands:
-
-  with_cache:
-    description: |
-      Run a set of steps with Maven dependencies and Clojure classpath cache
-      files cached.
-
-      This command restores ~/.m2 and .cpcache if they were previously cached,
-      then runs the provided steps, and finally saves the cache.
-
-      The cache-key is generated based on the contents of `deps.edn` present in
-      the `working_directory`.
-    parameters:
-      steps:
-        type: steps
-      cache_version:
-        type: string
-        description: "Change this value to force a cache update"
-        default: "1"
-    steps:
-      - run:
-          name: Generate Cache Checksum
-          command: cat deps.edn | shasum | awk '{print $1}' > /tmp/clojure_cache_seed
-      - restore_cache:
-          key: clojure-<< parameters.cache_version >>-{{ checksum "/tmp/clojure_cache_seed" }}
-      - steps: << parameters.steps >>
-      - save_cache:
-          paths:
-            - ~/.m2
-            - .cpcache
-          key: clojure-{{ checksum "/tmp/clojure_cache_seed" }}
-
   execute:
     description: |
       Run Kaocha with Clojure CLI
@@ -56,19 +14,80 @@ commands:
       aliases:
         description: |
           deps.edn aliases to use. Proceed each alias with a ":", don't add
-          spaces, e.g. ":test:dev:"
+          spaces, e.g. ":test:dev"
         type: string
         default: ":test"
+      clojure_version:
+        description: Clojure version to use (full Maven version)
+        type: string
+        default: 1.9.0
+
     steps:
       - run: mkdir -p test-results/kaocha
       - run: |
           clojure -A<< parameters.aliases >> \
-            -Sdeps '{:deps {lambdaisland/kaocha-junit-xml {:mvn/version "RELEASE"}}}' \
+            -Sdeps '{:deps {org.clojure/clojure {:mvn/version "<< parameters.clojure_version >>"}
+                            lambdaisland/kaocha-junit-xml {:mvn/version "RELEASE"}
+                            lambdaisland/kaocha-cloverage {:mvn/version "RELEASE"}}}' \
             -m kaocha.runner \
             --plugin profiling \
             --plugin capture-output \
             --plugin junit-xml \
-            --junit-xml-file test-results/kaocha/results.xml \
+            --plugin kaocha.plugin.alpha/info \
+            --print-env \
+            --junit-xml-file test-results/kaocha/$(date +"%s").xml \
             << parameters.args >>
+      - store_artifacts:
+          path: test-results
       - store_test_results:
           path: test-results
+
+  upload_codecov:
+    description: |
+      Upload coverage results to Codecov.io.
+
+      Make sure you run Kaocha with --plugin cloverage --codecov. For non-free
+      repos make sure to set your CODECOV_TOKEN.
+    parameters:
+      conf:
+        description: Used to specify the location of the .codecov.yml config file
+        type: string
+        default: ""
+      file:
+        description: Path to the code coverage data file to upload.
+        type: string
+        default: "target/coverage/codecov.json"
+      flags:
+        description: Flag the upload to group coverage metrics (e.g. unittests | integration | ui,chrome)
+        type: string
+        default: ""
+      token:
+        description: Set the private repository token (defaults to environment variable $CODECOV_TOKEN)
+        type: string
+        default: ""
+      upload_name:
+        description: Custom defined name of the upload. Visible in Codecov UI
+        type: string
+        default: ${CIRCLE_BUILD_NUM}
+    steps:
+      - run:
+          name: Upload Coverage Results to Codecov.io
+          command: |
+            for COVERAGE_FILE in `ls << parameters.file >>`; do
+            echo Uploading $COVERAGE_FILE to Codecov.io
+            {
+              if [[ ! -z "<< parameters.flags >>" ]]; then
+                echo -F << parameters.flags >>
+              fi
+
+              if [[ ! -z "<< parameters.conf >>" ]]; then
+                echo -y << parameters.token >>
+              elif [[ ! -z "${CODECOV_TOKEN}" ]]; then
+                echo -y ${CODECOV_TOKEN}
+              fi
+
+              if [[ ! -z "<< parameters.token >>" ]]; then
+                echo -t << parameters.token >>
+              fi
+            } | xargs bash <(curl -s https://codecov.io/bash) -n << parameters.upload_name >> -f $COVERAGE_FILE
+            done
