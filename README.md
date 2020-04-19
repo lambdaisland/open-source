@@ -68,6 +68,12 @@ _still in alpha_
 
 An idiomatic, promises-based wrapped for JavaScript's `fetch`.
 
+### Specmonstah-Malli
+
+_still in alpha_
+
+Generated complex graphs of entities with Specmonstah and Malli.
+
 ### Trikl
 
 _still in alpha_
