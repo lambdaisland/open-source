@@ -62,6 +62,11 @@ _still in alpha_
 
 Read/write newline-separated EDN files.
 
+### lambdaisland/fetch
+
+_still in alpha_
+
+An idiomatic, promises-based wrapped for JavaScript's `fetch`.
 
 ### Trikl
 
