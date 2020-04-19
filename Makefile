@@ -38,6 +38,7 @@ ${LICENSE_JOBS}: %-license:
 	fi
 	git -C $* diff README.md
 
+update-licenses: ${LICENSE_JOBS}
 update-badges: ${BADGE_JOBS}
 
 ${DEPS_JOBS}: %-deps:
