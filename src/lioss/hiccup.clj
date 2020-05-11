@@ -3,16 +3,20 @@
 
 (defn split-tag [tag]
   (let [tag (name tag)
-        parts (str/split tag #"\.")]
-    [(first parts)
-     (rest parts)]))
+        [tag & classes] (str/split tag #"\.")
+        [tag id] (if (str/includes? tag "#")
+                   (str/split tag #"#")
+                   [tag nil])]
+    [tag id classes]))
 
 (defn split-el [[tag & tail]]
-  (let [[tag kls] (split-tag tag)]
+  (let [[tag id kls] (split-tag tag)]
     [tag
      (cond-> (if (map? (first tail))
                (first tail)
                {})
+       id
+       (assoc :id id)
        (seq kls)
        (update :class str (str/join " " kls)))
      (filter
