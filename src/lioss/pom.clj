@@ -1,24 +1,14 @@
-(ns lioss.release-management
-  (:require [clojure.java.io :as io]
-            [clojure.java.shell :as sh]
-            [clojure.string :as str]
-            [lioss.hiccup :as hiccup]))
-
-(defn version-string []
-  (str
-   (if (.exists (io/file ".VERSION_PREFIX"))
-     (str/trim (slurp ".VERSION_PREFIX"))
-     "0.0")
-   "."
-   (str/trim (:out (sh/sh "git" "rev-list" "--count" "HEAD")))))
-
-(defn project-name []
-  (let [url (:out (sh/sh "git" "remote" "get-url" "origin"))]
-    (second (re-find #"lambdaisland/([\.a-z0-9-]+)\.git" url))))
+(ns lioss.pom
+  (:require [clojure.string :as str]
+            [lioss.hiccup :as hiccup]
+            [lioss.util :as util]
+            [lioss.subshell :as subshell]))
 
 (defn gen-pom [opts]
-  (let [proj-name (:name opts (project-name))
-        gh-project (:gh-project opts (str "lambdaisland/" proj-name))
+  (assert (:name opts))
+  (assert (:version opts))
+  (let [proj-name (:name opts)
+        gh-project (:gh-project opts )
         url (:url opts (str "https://github.com/" gh-project))]
     (str
      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
@@ -28,16 +18,16 @@
                  :xsi:schemalocation
                  "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"}
        [:modelVersion "4.0.0"]
-       [:groupId (:group-id opts "lambdaisland")]
+       [:groupId (:group-id opts)]
        [:artifactId proj-name]
-       [:version (:version opts (version-string))]
+       [:version (:version opts)]
        [:name proj-name]
        [:description (:description opts)]
        [:url url]
        [:inceptionYear (:inception-year opts)]
        [:organization
-        [:name "Lambda Island"]
-        [:url "https://lambdaisland.com"]]
+        [:name (:org-name opts)]
+        [:url (:org-url opts)]]
        [:licenses
         (case (:license opts)
           :epl
@@ -53,21 +43,32 @@
         [:connection (str "scm:git:git://github.com/" gh-project ".git")]
         [:developerConnection (str "scm:git:git://github.com/" gh-project ".git")]
         [:tag (:sha opts)]]
-       [:dependencies]
-       `[:build
-         [:sourceDirectory "src"] ;; fine to hard code this, clj -Spom will change it if necessary
-         [:resources
-          ~@(for [dir (:resource-directories opts ["src" "resources"])]
+       `[:dependencies
+         ~@(for [[artifact coords] (:deps opts)]
+             (do
+               (assert (:mvn/version coords))
+               [:dependency
+                [:groupId (if (qualified-symbol? artifact)
+                            (namespace artifact)
+                            (str artifact))]
+                [:artifactId (if (qualified-symbol? artifact)
+                               (name artifact)
+                               (str artifact))]
+                [:version (:mvn/version coords)]]))]
+       [:build
+        [:sourceDirectory (first (:paths opts))]
+        `[:resources
+          ~@(for [dir (:paths opts)]
               [:sourceDirectory dir])]
-         [:plugins
-          [:plugin
-           [:groupId "org.apache.maven.plugins"]
-           [:artifactId "maven-jar-plugin"]
-           [:version "2.4"]
-           [:configuration
-            [:archive
-             [:manifestEntries
-              [:git-revision (:sha opts)]]]]]]]
+        [:plugins
+         [:plugin
+          [:groupId "org.apache.maven.plugins"]
+          [:artifactId "maven-jar-plugin"]
+          [:version "2.4"]
+          [:configuration
+           [:archive
+            [:manifestEntries
+             [:git-revision (:sha opts)]]]]]]]
        [:repositories
         [:repository
          [:id "clojars"]
@@ -77,3 +78,10 @@
          [:id "clojars"]
          [:name "Clojars repository"]
          [:url "https://clojars.org/repo"]]]]))))
+
+(defn spit-pom [opts]
+  (util/spit-cwd "pom.xml" (gen-pom opts)))
+
+(defn spit-poms [opts]
+  (spit-pom opts)
+  (util/do-modules opts spit-pom))

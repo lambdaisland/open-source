@@ -1,4 +1,5 @@
 (ns lioss.hiccup
+  "Babashka-compatible hiccup"
   (:require [clojure.string :as str]))
 
 (defn split-tag [tag]
@@ -57,7 +58,7 @@
     (let [[tag attrs children] (split-el hiccup)]
       (if (or (empty? children)
               (and (= 1 (count children))
-                   (string? (first children))))
+                   (not (coll? (first children)))))
         (format (str "\n%s"
                      "<%s%s>"
                      "%s"
