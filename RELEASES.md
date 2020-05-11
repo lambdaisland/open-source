@@ -1,3 +1,16 @@
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.629 (2020-05-02 / 6275298)
+
+-  An Orchestra plugin `:kaocha.plugin/orchestra` for instrumenting
+  functions specs with [Orchestra](https://github.com/jeaye/orchestra)
+-  A Preloads plugin `:kaocha.plugin/preloads` for requiring namespaces
+  before Kaocha loads test suites. This is useful for requiring spec
+  namespaces or other side-effecting namespaces that are not required
+  by test code.
+-  Fixed an issue where plugin names where not correctly normalized before
+  deduplication, leading to potentially having a plugin twice in the stack
+-  Added `:kaocha.report/printed-expression` to the `debug` reporter, for
+  debugging reporting issues with kaocha-cljs
+
 # [Uri](https://github.com/lambadisland/uri) 1.3.45 (2020-05-01 / a04368b)
 
 -  Added function for dealing with query strings as maps: `query-string->map`,
@@ -9,7 +22,7 @@
 
 # [Deep-diff2](https://github.com/lambadisland/deep-diff2) 2.0.0-93 (2020-04-20 / 6ff9209)
 
--  Fix unsupported cljs lookbehind regex in code inherited from Puget
+-  Fix unsupported cljs lookbehind regex in code inherited from Puget (Thanks [@JarrodCTaylor](https://github.com/JarrodCTaylor)!)
 
 # [Glogi](https://github.com/lambadisland/glogi) 1.0-60 (2020-04-15 / 71bea10)
 
