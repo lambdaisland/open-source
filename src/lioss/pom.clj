@@ -56,10 +56,13 @@
                                (str artifact))]
                 [:version (:mvn/version coords)]]))]
        [:build
-        [:sourceDirectory (first (:paths opts))]
-        `[:resources
-          ~@(for [dir (:paths opts)]
-              [:sourceDirectory dir])]
+        (when (seq (:paths opts))
+          [:sourceDirectory (first (:paths opts))])
+        (when (seq (:paths opts))
+          `[:resources
+            ~@(for [dir (:paths opts)]
+                [:resource
+                 [:directory dir]])])
         [:plugins
          [:plugin
           [:groupId "org.apache.maven.plugins"]

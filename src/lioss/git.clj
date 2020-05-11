@@ -1,11 +1,17 @@
 (ns lioss.git
   (:require [clojure.java.shell :as sh]
             [clojure.string :as str]
+            [lioss.subshell :as subshell]
             [lioss.util :as util]
             [clojure.java.io :as io]))
 
 (defn git [& args]
   (str/trim (:out (apply sh/sh "git" args))))
+
+(defn git!
+  "Use this if the user should see what's happening"
+  [& args]
+  (apply subshell/spawn "git" args))
 
 (defn commit-count []
   (git "rev-list" "--count" "HEAD"))
