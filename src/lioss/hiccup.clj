@@ -1,8 +1,14 @@
 (ns lioss.hiccup
-  "Babashka-compatible hiccup"
+  "Babashka-compatible hiccup
+
+  - supports #id and .class shorthands
+  - escape attributes and text elements
+  - outputs indented/pretty-printed HTML/XML
+  - prevent escaping by using a [:raw-html \"...\"] element
+  "
   (:require [clojure.string :as str]))
 
-(defn split-tag [tag]
+(defn- split-tag [tag]
   (let [tag (name tag)
         [tag & classes] (str/split tag #"\.")
         [tag id] (if (str/includes? tag "#")
@@ -10,7 +16,7 @@
                    [tag nil])]
     [tag id classes]))
 
-(defn split-el [[tag & tail]]
+(defn- split-el [[tag & tail]]
   (let [[tag id kls] (split-tag tag)]
     [tag
      (cond-> (if (map? (first tail))
@@ -26,13 +32,21 @@
         (next tail)
         tail))]))
 
-(defn escape-attr [a]
+(defn- escape-attr [a]
   (-> a
       (str/replace #"&" "&amp;")
       (str/replace #"'" "&#x27;")
       (str/replace #"\"" "&quot;")))
 
-(defn render-attrs [m]
+(defn- escape-text [t]
+  (-> t
+      (str/replace #"&" "&amp;")
+      (str/replace #"'" "&#x27;")
+      (str/replace #"\"" "&quot;")
+      (str/replace #"<" "&lt;")
+      (str/replace #">" "&gt;")))
+
+(defn- render-attrs [m]
   (->> m
        (map (fn [[k v]]
               (format " %s=\"%s\"" (name k) (escape-attr v))))
@@ -42,7 +56,7 @@
 
 (declare h)
 
-(defn h* [hiccup]
+(defn- h* [hiccup]
   (binding [*nesting* (inc *nesting*)]
     (let [els (h hiccup)]
       (if (seq? els)
@@ -52,13 +66,17 @@
 (defn h [hiccup]
   (cond
     (string? hiccup)
-    hiccup
+    (escape-text hiccup)
 
     (vector? hiccup)
     (let [[tag attrs children] (split-el hiccup)]
-      (if (or (empty? children)
-              (and (= 1 (count children))
-                   (not (coll? (first children)))))
+      (cond
+        (= "raw-html" tag)
+        (apply str children)
+
+        (or (empty? children)
+            (and (= 1 (count children))
+                 (not (coll? (first children)))))
         (format (str "\n%s"
                      "<%s%s>"
                      "%s"
@@ -67,6 +85,8 @@
                 tag (render-attrs attrs)
                 (apply str (mapcat h* children))
                 tag)
+
+        :else
         (format (str "\n%s"
                      "<%s%s>"
                      "%s"
