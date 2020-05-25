@@ -14,6 +14,12 @@
   (doseq [[cmd {:keys [description]}] (partition 2 commands)]
     (println (format "  %-15s%s" cmd description))))
 
+(declare commands)
+
+(defn do-help [opts]
+  (print-help "bin/proj"
+              (concat (:commands opts) commands)))
+
 (def commands
   ["release"
    {:description "Release a new version to clojars"
@@ -25,7 +31,7 @@
 
    "help"
    {:description "Show this help information"
-    :command (fn [_] (print-help "bin/proj" commands))}])
+    :command do-help}])
 
 (def defaults
   {:name       (git/project-name)
@@ -37,20 +43,41 @@
    :org-url    "https://lambdaisland.com"
    :date       (str (java.time.LocalDate/now))})
 
+(defn module-versions [{:keys [name group-id version modules]}]
+  (into {(symbol group-id name) version}
+        (map (fn [{:keys [name group-id version]}]
+               [(symbol group-id name) version]))
+        modules))
+
+(defn override-versions [opts versions]
+  (update
+   opts
+   :deps
+   (fn [deps]
+     (reduce
+      (fn [deps [artifact version]]
+        (if (contains? deps artifact)
+          (assoc deps artifact {:mvn/version version})
+          deps))
+      deps
+      versions))))
+
 (defn main [opts]
-  (let [opts (update (merge defaults (util/read-deps) opts)
-                     :modules
-                     (fn [mods]
-                       (into {}
-                             (map (fn [[mod mod-opts]]
-                                    (util/with-cwd (str "modules/" (name mod))
-                                      [mod (merge defaults
-                                                  (util/read-deps)
-                                                  opts
-                                                  {:name (name mod)}
-                                                  mod-opts)])))
-                             mods)))]
-    (if-let [{:keys [command]} (get (apply hash-map commands) (first *command-line-args*))]
-      (command opts #_(next *command-line-args*))
-      ((-> (last commands)
-           :command) nil))))
+  (let [commands (concat (:commands opts) commands)
+        opts     (-> (merge defaults (util/read-deps) opts)
+                     (update :modules #(for [{:keys [name] :as mod-opts} %]
+                                         (util/with-cwd (str "modules/" name)
+                                           (merge defaults (util/read-deps) opts mod-opts)))))
+        mod-vers (module-versions opts)
+        opts     (-> opts
+                     (assoc :module-versions mod-vers)
+                     (override-versions mod-vers)
+                     (update :modules
+                             (fn [mods]
+                               (map #(override-versions % mod-vers)
+                                    mods))))]
+
+    (if-let [{:keys [command]} (get (apply hash-map commands)
+                                    (first *command-line-args*))]
+      (command (assoc opts :argv (next *command-line-args*)))
+      (do-help opts))))

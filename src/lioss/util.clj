@@ -23,10 +23,10 @@
   (read-string (slurp-cwd "deps.edn")))
 
 (defn do-modules [opts f]
-  (doseq [[mod mod-opts] (:modules opts)
+  (doseq [mod-opts (:modules opts)
           :when (not (false? (:release mod-opts)))]
-    (with-cwd (str "modules/" (name mod))
-      (f (merge (assoc opts :name (name mod)) mod-opts)))))
+    (with-cwd (str "modules/" (:name mod-opts))
+      (f (merge opts mod-opts)))))
 
 (defn fatal [& msg]
   (apply println "[\033[0;31mERROR\033[0m]" msg)

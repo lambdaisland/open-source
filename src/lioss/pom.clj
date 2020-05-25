@@ -9,7 +9,9 @@
   (assert (:version opts))
   (let [proj-name (:name opts)
         gh-project (:gh-project opts )
-        url (:url opts (str "https://github.com/" gh-project))]
+        url (:url opts (str "https://github.com/" gh-project))
+        paths (concat (get-in opts [:aliases :lioss/release :extra-paths])
+                      (:paths opts))]
     (str
      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
      (hiccup/h
@@ -41,12 +43,13 @@
        [:scm
         [:url url]
         [:connection (str "scm:git:git://github.com/" gh-project ".git")]
-        [:developerConnection (str "scm:git:git://github.com/" gh-project ".git")]
+        [:developerConnection (str "scm:git:ssh://git@github.com/" gh-project ".git")]
         [:tag (:sha opts)]]
        `[:dependencies
          ~@(for [[artifact coords] (:deps opts)]
              (do
-               (assert (:mvn/version coords))
+               (when-not (:mvn/version coords)
+                 (println "WARN: can't add to pom.xml" artifact coords))
                [:dependency
                 [:groupId (if (qualified-symbol? artifact)
                             (namespace artifact)
@@ -58,9 +61,9 @@
        [:build
         (when (seq (:paths opts))
           [:sourceDirectory (first (:paths opts))])
-        (when (seq (:paths opts))
+        (when (seq paths)
           `[:resources
-            ~@(for [dir (:paths opts)]
+            ~@(for [dir paths]
                 [:resource
                  [:directory dir]])])
         [:plugins
@@ -71,7 +74,16 @@
           [:configuration
            [:archive
             [:manifestEntries
-             [:git-revision (:sha opts)]]]]]]]
+             [:git-revision (:sha opts)]]]]]
+         [:plugin
+          [:groupId "org.apache.maven.plugins"]
+          [:artifactId "maven-gpg-plugin"]
+          [:version "1.5"]
+          [:executions
+           [:execution
+            [:id "sign-artifacts"]
+            [:phase "verify"]
+            [:goals [:goal "sign"]]]]]]]
        [:repositories
         [:repository
          [:id "clojars"]

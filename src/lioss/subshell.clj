@@ -5,9 +5,7 @@
 
 (defn process-builder [args]
   (doto (ProcessBuilder. args)
-    (.redirectInput java.lang.ProcessBuilder$Redirect/INHERIT)
-    (.redirectError java.lang.ProcessBuilder$Redirect/INHERIT)
-    (.redirectOutput java.lang.ProcessBuilder$Redirect/INHERIT)))
+    (.inheritIO)))
 
 (defn spawn
   "Like [[clojure.java.shell/sh]], but inherit IO stream from the parent process,
@@ -18,8 +16,10 @@
                       [{} args])
         dir (:dir opts util/*cwd*)]
     (println "=>" (str/join " " args) (if dir (str "(in " dir ")") ""))
-    (-> (process-builder args)
-        (cond-> dir
-          (.directory (io/file dir)))
-        .start
-        .waitFor)))
+    (let [res (-> (process-builder args)
+                  (cond-> dir
+                    (.directory (io/file dir)))
+                  .start
+                  .waitFor)]
+      (when (and (not= 0 res) (not (:continue-on-error? opts)))
+        (util/fatal (:fail-message opts "command failed") res)))))

@@ -7,24 +7,6 @@
             [lioss.util :as util]
             [clojure.string :as str]))
 
-(defn module-versions [{:keys [name group-id version modules]}]
-  (into {(symbol group-id name) version}
-        (map (fn [[_ {:keys [name group-id version]}]]
-               [(symbol group-id name) version]))
-        modules))
-
-(defn override-versions [opts versions]
-  (update
-   opts
-   :deps
-   (fn [deps]
-     (reduce
-      (fn [deps [artifact version]]
-        (if (contains? deps artifact)
-          (assoc deps artifact {:mvn/version version})
-          deps))
-      deps
-      versions))))
 
 (defn update-versions-in [file versions]
   (let [blob (slurp file)]
@@ -88,24 +70,24 @@
          "# Unreleased\n\n## Added\n\n## Fixed\n\n## Changed\n\n"
          (slurp "CHANGELOG.md"))))
 
+(defn trigger-cljdoc-build [opts]
+  (subshell/spawn
+   "curl" "-v" "-XPOST" "https://cljdoc.org/api/request-build2"
+   "-d" (str "project=" (:gh-project opts))
+   "-d" (str "version=" (:version opts))))
+
 (defn do-release [opts]
-  (let [mod-vers (module-versions opts)
-        opts (update (override-versions opts mod-vers)
-                     :modules
-                     (fn [mods]
-                       (into {}
-                             (map (juxt key (comp #(override-versions % mod-vers) val)))
-                             mods)))]
+  (git/assert-branch "master")
+  (git/assert-repo-clean)
+  (when (.exists (io/file "tests.edn"))
+    (subshell/spawn "bin/kaocha" {:fail-message "Tests failed, aborting release."}))
 
-    (git/assert-branch "master")
-    (git/assert-repo-clean)
-    (when (.exists (io/file "tests.edn"))
-      (let [res (subshell/spawn "bin/kaocha")]
-        (when (not= 0 res)
-          (util/fatal "Tests failed, aborting release."))))
+  (git/clean!)
 
-    (git/clean!)
-    (update-versions-in "README.md" mod-vers)
+  (let [opts (if-let [hook (:pre-release-hook opts)]
+               (hook opts)
+               opts)]
+    (update-versions-in "README.md" (:module-versions opts))
     (bump-changelog opts)
     (git/git! "add" "-A")
     (git/git! "commit" "-m" (changelog-stanza))
@@ -115,13 +97,15 @@
           opts (update (assoc opts :sha sha)
                        :modules
                        (fn [mods]
-                         (into {}
-                               (map (juxt key (comp #(assoc % :sha sha) val)))
-                               mods)))]
+                         (map #(assoc % :sha sha) mods)))]
       (pom/spit-poms opts)
       (util/do-modules opts mvn-deploy)
       (mvn-deploy opts)
       (prepend-changelog-placeholders)
       (git/git! "add" "CHANGELOG.md")
       (git/git! "commit" "-m" "Add CHANGELOG.md placeholders")
-      (git/git! "push" "--tags" "master"))))
+      (git/git! "push" "--tags")
+      (git/git! "push")
+
+      (trigger-cljdoc-build opts)
+      (util/do-modules opts trigger-cljdoc-build))))
