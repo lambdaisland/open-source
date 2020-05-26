@@ -9,23 +9,6 @@
       (str/replace #"\r" "%0D")))
 
 (defn changelog-stanza []
-  ;; All fair and well but flexmark doesn't work on babashka...
-  #_(-> (with-out-str
-          (let [{:keys [added fixed changed]}
-                (first (remove (comp #{"Unreleased"} :version-id)
-                               (janus/parse (slurp "CHANGELOG.md"))))]
-            (when (seq added)
-              (println (str "### Added"))
-              (run! #(print "- " %) added))
-            (when (seq fixed)
-              (println (str "### Fixed"))
-              (run! #(print "- " %) fixed))
-            (when (seq changed)
-              (println (str "### Changed"))
-              (run! #(print "- " %) changed))
-            (println)))
-        )
-
   (-> "CHANGELOG.md"
       slurp
       (str/split #"\n")
@@ -37,5 +20,4 @@
       multiline-escape))
 
 (defn set-changelog-output [opts]
-  (println 'OOO)
   (println (str "::set-output name=changelog::" (changelog-stanza))))
