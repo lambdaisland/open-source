@@ -7,7 +7,6 @@
             [lioss.util :as util]
             [clojure.string :as str]))
 
-
 (defn update-versions-in [file versions]
   (let [blob (slurp file)]
     (spit file
@@ -53,13 +52,16 @@
                      (str "# " version " (" date " / " (subs sha 0 7) ")")
                      (next lines))))))
 
-(defn changelog-stanza []
-  (let [blob (slurp "CHANGELOG.md")
-        lines (str/split blob #"\R")]
-    (str/join "\n"
-              (cons
-               (first lines)
-               (take-while #(not (re-find #"^# " %)) (next lines))))))
+(defn changelog-stanza
+  ([]
+   (changelog-stanza "CHANGELOG.md"))
+  ([file]
+   (let [blob (slurp file)
+         lines (str/split blob #"\R")]
+     (str/join "\n"
+               (cons
+                (first lines)
+                (take-while #(not (re-find #"^# " %)) (next lines)))))))
 
 (defn mvn-deploy [_]
   (subshell/spawn "mvn" "deploy"))

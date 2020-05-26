@@ -6,7 +6,8 @@
             [lioss.git :as git]
             [lioss.release :as release]
             [lioss.pom :as pom]
-            [lioss.util :as util]))
+            [lioss.util :as util]
+            [lioss.gh-actions :as gh-actions]))
 
 (defn print-help [prefix commands]
   (println "Usage:" prefix "[COMMAND] [COMMAND_ARGS...]")
@@ -28,6 +29,10 @@
    "pom"
    {:description "Generate pom files"
     :command pom/spit-poms}
+
+   "gh_actions_changelog_output"
+   {:description "Print the last stanza of the changelog in a format that GH actions understands"
+    :command gh-actions/set-changelog-output}
 
    "help"
    {:description "Show this help information"
