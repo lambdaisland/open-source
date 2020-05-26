@@ -5,10 +5,12 @@
 # project.
 
 name=babashka
-version="0.0.94"
+version="0.0.98"
 install_dir="$(pwd)/.store/$name-$version"
 
 system_bb="$(which bb)"
+
+set -e
 
 # https://stackoverflow.com/questions/4023830/how-to-compare-two-strings-in-dot-separated-version-format-in-bash
 vercomp () {
@@ -63,6 +65,7 @@ else
     bb_path="$install_dir/bb"
 fi
 
+set +e
 actual_version="$($bb_path --version | sed 's/babashka v//')"
 
 vercomp $actual_version $version
@@ -71,6 +74,15 @@ case $? in
      1) ;;  # >
      2) echo "WARNING: babashka version is $actual_version, expected $version" ;;  # <
 esac
+set -e
+
+try_exec_rlwrap() {
+    if [ -x "$(command -v rlwrap)" ]; then
+        exec "rlwrap" "$@"
+    else
+        exec "$@"
+    fi
+}
 
 if [[ -f bb_deps.edn ]]; then
     deps="$(cat bb_deps.edn)"
@@ -78,7 +90,7 @@ if [[ -f bb_deps.edn ]]; then
     cp="$(clojure -Srepro -Sdeps "${deps}" -Spath)"
     mv deps.edn.bak deps.edn
 
-    exec "rlwrap" "$bb_path" "-cp" "${cp}" "$@"
+    try_exec_rlwrap "$bb_path" "-cp" "${cp}" "$@"
 else
-    exec "rlwrap" "$bb_path" "$@"
+    try_exec_rlwrap "$bb_path" "$@"
 fi

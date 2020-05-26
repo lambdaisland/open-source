@@ -26,7 +26,7 @@
             (println)))
         )
 
-  (-> "../kaocha/CHANGELOG.md"
+  (-> "CHANGELOG.md"
       slurp
       (str/split #"\n")
       (->> (drop-while #(not (re-find #"^# \d" %)))
