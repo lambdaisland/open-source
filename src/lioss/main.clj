@@ -1,3 +1,5 @@
+(println 'AAA)
+
 (ns lioss.main
   (:require [clojure.java.io :as io]
             [clojure.java.shell :as sh]
@@ -8,6 +10,8 @@
             [lioss.pom :as pom]
             [lioss.util :as util]
             [lioss.gh-actions :as gh-actions]))
+
+(println 'BBB)
 
 (defn print-help [prefix commands]
   (println "Usage:" prefix "[COMMAND] [COMMAND_ARGS...]")
@@ -68,6 +72,7 @@
       versions))))
 
 (defn main [opts]
+  (println 'XXX)
   (let [commands (concat (:commands opts) commands)
         opts     (-> (merge defaults (util/read-deps) opts)
                      (update :modules #(for [{:keys [name] :as mod-opts} %]
@@ -81,8 +86,11 @@
                              (fn [mods]
                                (map #(override-versions % mod-vers)
                                     mods))))]
+    (println 'YYY)
 
     (if-let [{:keys [command]} (get (apply hash-map commands)
                                     (first *command-line-args*))]
       (command (assoc opts :argv (next *command-line-args*)))
       (do-help opts))))
+
+(println 'DDD)

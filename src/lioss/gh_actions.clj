@@ -37,4 +37,5 @@
       multiline-escape))
 
 (defn set-changelog-output [opts]
+  (println 'OOO)
   (println (str "::set-output name=changelog::" (changelog-stanza))))
