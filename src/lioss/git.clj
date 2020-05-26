@@ -37,9 +37,10 @@
    (commit-count)))
 
 (defn project-name []
-  (let [url (or (System/getenv "GITHUB_REPOSITORY")
-                (git "remote" "get-url" "origin"))]
-    (second (re-find #"lambdaisland/([\.a-z0-9-]+)\.git" url))))
+  (if-let [repo (System/getenv "GITHUB_REPOSITORY")]
+    (second (str/split repo #"/"))
+    (let [url (git "remote" "get-url" "origin")]
+      (second (re-find #"lambdaisland/([\.a-z0-9-]+?)(\.git)?$" url)))))
 
 (defn assert-branch [branch]
   (let [b (current-branch)]
