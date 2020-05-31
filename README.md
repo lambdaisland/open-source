@@ -16,7 +16,7 @@ in features, extensible, and built with tooling in mind.
 Kaocha is actually a collection of projects, which includes kaocha-cljs,
 kaocha-junit-xml, kaocha-cloverage, kaocha-cucumber, and kaocha-boot.
 
-[project site](https://github.com/lambdaisland/kaocha) [releases](https://github.com/lambdaisland/kaocha/releases)
+[project site](https://github.com/lambdaisland/kaocha) | [releases](https://github.com/lambdaisland/kaocha/releases)
 
 ### deep-diff2
 
@@ -24,7 +24,7 @@ Deep-diff is our most downloaded project, it compares Clojure data structures
 and gives an easy to scan visual overview of the differences. This is a spin-off
 from Kaocha, where it is used to provide clearer error messages when tests fail.
 
-[project site](https://github.com/lambdaisland/deep-diff2) [releases](https://github.com/lambdaisland/deep-diff2/releases)
+[project site](https://github.com/lambdaisland/deep-diff2) | [releases](https://github.com/lambdaisland/deep-diff2/releases)
 
 ### Regal
 
@@ -36,14 +36,14 @@ cross-platform code. With its support for string generation it pairs wonderfully
 with generative testing, and its parser can be used to manipulate regular
 expressions as data, and to convert between Java and JavaScript regexes.
 
-[project site](https://github.com/lambdaisland/regal) [releases](https://github.com/lambdaisland/regal/releases)
+[project site](https://github.com/lambdaisland/regal) | [releases](https://github.com/lambdaisland/regal/releases)
 
 ### lambdaisland/uri
 
 A idiomatic and cross-platform URI library. RFC-compliant to the dot, it also
 contains helpers for normalization, and for manipulating query strings.
 
-[project site](https://github.com/lambdaisland/uri) [releases](https://github.com/lambdaisland/uri/releases)
+[project site](https://github.com/lambdaisland/uri) | [releases](https://github.com/lambdaisland/uri/releases)
 
 ### Glogi
 
@@ -51,7 +51,7 @@ A ClojureScript logging library based on `goog.log`, inspired by `pedestal.log`.
 It does syntax highlighting, plays well with cljs-devtools, and allows tweaking
 the log level per namespace.
 
-[project site](https://github.com/lambdaisland/glogi) [releases](https://github.com/lambdaisland/glogi/releases)
+[project site](https://github.com/lambdaisland/glogi) | [releases](https://github.com/lambdaisland/glogi/releases)
 
 ### ANSI
 
@@ -59,7 +59,7 @@ Convert ANSI escape codes (the ones used to provide color in terminal
 applications), and convert to Hiccup. Valuable if you're putting anything
 Terminal-based onto the web.
 
-[project site](https://github.com/lambdaisland/ansi) [releases](https://github.com/lambdaisland/ansi/releases)
+[project site](https://github.com/lambdaisland/ansi) | [releases](https://github.com/lambdaisland/ansi/releases)
 
 ### Chui
 
@@ -68,7 +68,7 @@ _still in alpha_
 A browser-based ClojureScript test runner with a delightful UI, built with
 auto-reload workflows in mind.
 
-[project site](https://github.com/lambdaisland/chui) [releases](https://github.com/lambdaisland/chui/releases)
+[project site](https://github.com/lambdaisland/chui) | [releases](https://github.com/lambdaisland/chui/releases)
 
 ### Funnel
 
@@ -77,7 +77,7 @@ clients, and then acts as a go-between, funneling messages between them, with
 flexible mechanisms for setting up message routing. It also provides
 discoverability, so clients can find out who is there to talk to.
 
-[project site](https://github.com/lambdaisland/funnel) [releases](https://github.com/lambdaisland/funnel/releases)
+[project site](https://github.com/lambdaisland/funnel) | [releases](https://github.com/lambdaisland/funnel/releases)
 
 ### edn-lines
 
@@ -85,7 +85,7 @@ _still in alpha_
 
 Read/write newline-separated EDN files.
 
-[project site](https://github.com/lambdaisland/edn-lines) [releases](https://github.com/lambdaisland/edn-lines/releases)
+[project site](https://github.com/lambdaisland/edn-lines) | [releases](https://github.com/lambdaisland/edn-lines/releases)
 
 ### lambdaisland/fetch
 
@@ -93,7 +93,7 @@ _still in alpha_
 
 An idiomatic, promises-based wrapped for JavaScript's `fetch`.
 
-[project site](https://github.com/lambdaisland/fetch) [releases](https://github.com/lambdaisland/fetch/releases)
+[project site](https://github.com/lambdaisland/fetch) | [releases](https://github.com/lambdaisland/fetch/releases)
 
 ### Specmonstah-Malli
 
@@ -101,7 +101,7 @@ _still in alpha_
 
 Generated complex graphs of entities with Specmonstah and Malli.
 
-[project site](https://github.com/lambdaisland/specmonstah-malli) [releases](https://github.com/lambdaisland/specmonstah-malli/releases)
+[project site](https://github.com/lambdaisland/specmonstah-malli) | [releases](https://github.com/lambdaisland/specmonstah-malli/releases)
 
 ### Trikl
 
@@ -109,7 +109,7 @@ _still in alpha_
 
 Build rich terminal applications with Hiccup. An ongoing research project.
 
-[project site](https://github.com/lambdaisland/trikl) [releases](https://github.com/lambdaisland/trikl/releases)
+[project site](https://github.com/lambdaisland/trikl) | [releases](https://github.com/lambdaisland/trikl/releases)
 
 ### zipper-viz
 
@@ -117,7 +117,7 @@ _still in alpha_
 
 Visualize Clojure.zip zippers with graphviz.
 
-[project site](https://github.com/lambdaisland/zipper-viz) [releases](https://github.com/lambdaisland/zipper-viz/releases)
+[project site](https://github.com/lambdaisland/zipper-viz) | [releases](https://github.com/lambdaisland/zipper-viz/releases)
 
 ## Style Guide and Project Setup
 
