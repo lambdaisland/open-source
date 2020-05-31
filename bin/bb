@@ -2,7 +2,13 @@
 
 # Wrapper script for babashka to be dropped into projects, will run `bb` from
 # the PATH if it exists, or otherwise download it and store it inside the
-# project.
+# project. When using the system `bb` it will do a version check and warn if the
+# version is older than what is requested.
+#
+# Will look for a `bb_deps.edn` and run that through `clojure` to compute a
+# classpath.
+#
+# Will use rlwrap if it is available.
 
 name=babashka
 version="0.0.98"
