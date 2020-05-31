@@ -1,0 +1,3 @@
+# Jekyll config
+plugins:
+  - jekyll-readme-index
