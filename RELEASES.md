@@ -1,3 +1,60 @@
+# [Funnel](https://github.com/lambadisland/funnel) 0.1.16 (2020-05-26 / 81b2e61)
+
+-  First prerelease version, implements `:funnel/whoami`, `:funnel/subscribe`,
+  `:funnel/unsubscribe`, `:funnel/broadcast`, `:funnel/query`.
+-  Selectors: `true`, vector, map.
+# [Chui](https://github.com/lambadisland/chui) 0.0.117 (2020-05-19 / 039e492)
+
+-  Work around an issue that cropped up due to Shadow's monkey patching of
+  cljs.test.
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.103 (2020-05-13 / 70c2df1)
+
+-  Don't wait on next tick in between interceptor steps, so as not to unduly slow
+  things down
+-  UI improvements
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.106 (2020-05-13 / cafb56e)
+
+-  chui-ui: include compiled styles.clj in jar, not garden-based styles.clj
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.111 (2020-05-13 / 7ce25e2)
+
+-  Added a warning when synchronous fixtures are used, these are not supported
+-  Make the whole namespace name and surrounding block a click target for toggle
+-  Show original form in failing assertion
+-  Change select behaviour in column 3 to be more intuitive
+-  Sort namespaces by name and vars by line number
+-  Don't delegate to the original cljs.test/report, no need for all that noise in
+  the console
+-  Only show expected/actual sections when the assertion contains the relevant
+  keys
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.632 (2020-05-13 / 149d913)
+
+-  Added a `:kaocha.testable/skip-add-classpath?` flag on the test suite to
+  prevent Kaocha from modifying the classpath
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.91 (2020-05-12 / 0a80a97)
+
+-  Improve release process
+-  Colorize progress bar / top bar based on run result
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.94 (2020-05-12 / e9fc96b)
+
+-  Don't call capture-test-data at the top level, this may fix issues when our
+  code is included in a doo project
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.73 (2020-05-11 / a151fae)
+
+
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.63 (2020-05-05 / bcafca0)
+
+-  the Closure constant `lambdaisland.glogi.console.colorize` can now take four
+  possible values, `"true"` (use `console.log` CSS formatting), `"false"` (log
+  plain text), `"raw"`, log objects directly (good for cljs-devtools), or
+  `"auto"` (detect most suitable option)
+
 # [Kaocha](https://github.com/lambadisland/kaocha) 1.0.629 (2020-05-02 / 6275298)
 
 -  An Orchestra plugin `:kaocha.plugin/orchestra` for instrumenting
@@ -184,6 +241,13 @@
 -  Added support for matcher-combinators
 -  When using the nodejs repl type, automatically set the CLJS compile target to :nodejs
 
+# [Kaocha](https://github.com/lambadisland/kaocha) 0.0-541 (2019-09-11 / c97a2cb)
+
+-  The `kaocha.report.progress/progress` progress bar reporter now allows the
+  appropriate exception to be reported when there is a syntax error in Clojure
+  source code. Was formerly throwing NullPointerException.
+-  Consolidate `kaocha.hierarchy`, so it can be used for kaocha-cljs
+
 # [Kaocha-cljs](https://github.com/lambadisland/kaocha-cljs) 0.0-51 (2019-09-11 / 4b6a751)
 
 -  Added compatibility with Figwheel REPL
@@ -191,13 +255,6 @@
 -  Use the same compiler env for the load and run stages
 -  isomorphic-ws is no longer needed on Node (ws still is)
 -  rework the websocket connection to be more reliable
-
-# [Kaocha](https://github.com/lambadisland/kaocha) 0.0-541 (2019-09-11 / c97a2cb)
-
--  The `kaocha.report.progress/progress` progress bar reporter now allows the
-  appropriate exception to be reported when there is a syntax error in Clojure
-  source code. Was formerly throwing NullPointerException.
--  Consolidate `kaocha.hierarchy`, so it can be used for kaocha-cljs
 
 # [Kaocha](https://github.com/lambadisland/kaocha) 0.0-529 (2019-07-04 / 975bbc6)
 
@@ -282,13 +339,13 @@
 
 -  Added type hints to prevent reflective calls
 
-# [Kaocha](https://github.com/lambadisland/kaocha) 0.0-413 (2019-03-30 / 9477eaf)
-
--  Added a check to make sure org.clojure/tools.cli is up to date.
-
 # [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-70 (2019-03-30 / 0377e39)
 
 -  `<` and `>` are now escaped in XML attributes
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 0.0-413 (2019-03-30 / 9477eaf)
+
+-  Added a check to make sure org.clojure/tools.cli is up to date.
 
 # [Deep-diff2](https://github.com/lambadisland/deep-diff2) 0.0-29 (2019-03-19 / 3fb9abc)
 
@@ -384,26 +441,14 @@
 # [Kaocha-boot](https://github.com/lambadisland/kaocha-boot) 0.0-5 (2018-12-31 / 3962fb0)
 
 
-# [Kaocha-cljs](https://github.com/lambadisland/kaocha-cljs) 0.0-16 (2018-12-31 / 214b14e)
-
--  Capture exception type and message so it can be reported
-
 # [Kaocha](https://github.com/lambadisland/kaocha) 0.0-343 (2018-12-31 / c38d94f)
 
 -  [internal] Extracted `kaocha.runner/run`, to be used by alternative command
   line runners like boot.
 
-# [Kaocha](https://github.com/lambadisland/kaocha) 0.0-333 (2018-12-28 / 89b4c13)
+# [Kaocha-cljs](https://github.com/lambadisland/kaocha-cljs) 0.0-16 (2018-12-31 / 214b14e)
 
--  Added a TAP reporter (`kaocha.report/tap`)
--  Added a new `--print-env` flag to the `:kaocha.plugin.alpha/info` plugin,
-  which outputs the Clojure and Java version before each run.
--  Filter out `jdk.internal.reflect` stack frames when detecting source file (Java 9+)
--  Prefer a stackframe-based file/line detection over taking the file/line of the
-  test definition, this way the reported location is that of the assertion,
-  rather than that of the test.
--  The `print-invocations` plugin no longer prints out the `--config-file` flag
-  when it hasn't changed from its default value (`tests.edn`)
+-  Capture exception type and message so it can be reported
 
 # [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-50 (2018-12-28 / d44f155)
 
@@ -420,9 +465,17 @@
   cases like ClojureScript where the error is originating and captured outside
   the JVM.
 
-# [Kaocha-cljs](https://github.com/lambadisland/kaocha-cljs) 0.0-11 (2018-12-12 / 53fe73a)
+# [Kaocha](https://github.com/lambadisland/kaocha) 0.0-333 (2018-12-28 / 89b4c13)
 
--  Initial implementation
+-  Added a TAP reporter (`kaocha.report/tap`)
+-  Added a new `--print-env` flag to the `:kaocha.plugin.alpha/info` plugin,
+  which outputs the Clojure and Java version before each run.
+-  Filter out `jdk.internal.reflect` stack frames when detecting source file (Java 9+)
+-  Prefer a stackframe-based file/line detection over taking the file/line of the
+  test definition, this way the reported location is that of the assertion,
+  rather than that of the test.
+-  The `print-invocations` plugin no longer prints out the `--config-file` flag
+  when it hasn't changed from its default value (`tests.edn`)
 
 # [Kaocha](https://github.com/lambadisland/kaocha) 0.0-319 (2018-12-12 / 012b4ef)
 
@@ -433,20 +486,9 @@
   suite.
 -  Removed debug prn calls
 
-# [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-36 (2018-12-10 / ddb341a)
+# [Kaocha-cljs](https://github.com/lambadisland/kaocha-cljs) 0.0-11 (2018-12-12 / 53fe73a)
 
--  Ignore dangling symlinks for features (similar to fix in 0.0-25, but that one was for glue).
--  Prevent glue files from being reloaded for every single scenario, providing a good speedup.
--  Report file/line of pending scenarios because of missing snippets
--  Honor tags on features as metadata
--  Auto-require transformer namespace of custom types
--  Don't emit a `:pass` event after every scenario, it inflates the assertion count
--  Make sure the test result contains result counts, for things like junit-xml
--  In case of failure the output now contains the file name, line, scenario, and
-  step that was currently executing.
--  No longer add the scenario as a `*testing-contexts*`, to prevent the docs
-  formatter from printing it twice.
--  Give tests nicer ids, based on the filename and scenario description
+-  Initial implementation
 
 # [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 0.0-22 (2018-12-10 / ee13a86)
 
@@ -463,6 +505,26 @@
   from the defaults. This also means all test suites get the default
   `:kaocha.filter/skip-meta [:kaocha/skip]`.
 
+# [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-36 (2018-12-10 / ddb341a)
+
+-  Ignore dangling symlinks for features (similar to fix in 0.0-25, but that one was for glue).
+-  Prevent glue files from being reloaded for every single scenario, providing a good speedup.
+-  Report file/line of pending scenarios because of missing snippets
+-  Honor tags on features as metadata
+-  Auto-require transformer namespace of custom types
+-  Don't emit a `:pass` event after every scenario, it inflates the assertion count
+-  Make sure the test result contains result counts, for things like junit-xml
+-  In case of failure the output now contains the file name, line, scenario, and
+  step that was currently executing.
+-  No longer add the scenario as a `*testing-contexts*`, to prevent the docs
+  formatter from printing it twice.
+-  Give tests nicer ids, based on the filename and scenario description
+
+# [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-47 (2018-12-07 / db418fa)
+
+-  Detect "leaf" test types through Kaocha's hierarchy functions, this fixes
+  compatibility with `kaocha-cucumber`
+
 # [Kaocha](https://github.com/lambadisland/kaocha) 0.0-305 (2018-12-07 / 8b51576)
 
 -  Consider `(is (= ))` assertions with only a single argument as failures, as
@@ -476,26 +538,9 @@
 -  [lambdaisland/kaocha-cloverage](https://github.com/lambdaisland/kaocha-cloverage)
   is now its own project, make sure to include it in your deps/project files.
 
-# [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-47 (2018-12-07 / db418fa)
-
--  Detect "leaf" test types through Kaocha's hierarchy functions, this fixes
-  compatibility with `kaocha-cucumber`
-
-# [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-25 (2018-12-05 / dc68f6e)
-
--  Don't try to load dangling symlinks, this prevents issues with emacs tmp files
-
-# [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-28 (2018-12-05 / 39c6c82)
-
--  Add Kaocha as a dependency, so that cljdoc can analyze kaocha-cucumber
-
 # [Tools.namespace](https://github.com/lambadisland/tools.namespace) 0.0-234 (2018-12-05 / 039c9b8)
 
 -  Bumped dependencies of java.classpath and tools.reader
-
-# [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 0.0-18 (2018-12-05 / 9c8c629)
-
--  Allow configuring ns-regex and ns-exclude-regex from tests.edn ([#2](https://github.com/lambdaisland/kaocha-cloverage/pull/2))
 
 # [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-39 (2018-12-05 / 1507bab)
 
@@ -505,6 +550,18 @@
 # [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-43 (2018-12-05 / 311587e)
 
 -  Address cljdoc analysis error preventing the docs to build
+
+# [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 0.0-18 (2018-12-05 / 9c8c629)
+
+-  Allow configuring ns-regex and ns-exclude-regex from tests.edn ([#2](https://github.com/lambdaisland/kaocha-cloverage/pull/2))
+
+# [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-25 (2018-12-05 / dc68f6e)
+
+-  Don't try to load dangling symlinks, this prevents issues with emacs tmp files
+
+# [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-28 (2018-12-05 / 39c6c82)
+
+-  Add Kaocha as a dependency, so that cljdoc can analyze kaocha-cucumber
 
 # [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-20 (2018-11-23 / bf77871)
 
@@ -562,13 +619,16 @@
 -  error elements now contain the full stack trace as a child element, and only
   the short message as a message attribute
 
+# [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-13 (2018-11-01 / a22889b)
+
+-  Make target file configurable in tests.edn
+
 # [Kaocha](https://github.com/lambadisland/kaocha) 0.0-248 (2018-11-01 / d6edc4f)
 
 -  De-dupe plugins, for cases where a plugin is added to `tests.edn` and on the CLI
 
-# [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-13 (2018-11-01 / a22889b)
+# [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-7 (2018-10-31 / 163d219)
 
--  Make target file configurable in tests.edn
 
 # [Deep-diff2](https://github.com/lambadisland/deep-diff2) 0.0-15 (2018-10-31 / 63d30b5)
 
@@ -587,9 +647,6 @@
 # [Kaocha](https://github.com/lambadisland/kaocha) 0.0-243 (2018-10-31 / 55bb5c1)
 
 -  Fix matcher-combinator support
-
-# [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0-7 (2018-10-31 / 163d219)
-
 
 # [Deep-diff2](https://github.com/lambadisland/deep-diff2) 0.0-4 (2018-10-30 / 3d82596)
 
