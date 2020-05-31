@@ -1,3 +1,5 @@
+![](artwork/lambda_island_banner.png)
+
 # Lambda Island Open Source
 
 Lambda Island Open Source is a collection of Clojure/ClojureScript libraries and
