@@ -11,11 +11,11 @@
 # Will use rlwrap if it is available.
 
 name=babashka
-version="0.0.98"
-install_dir="$(pwd)/.store/$name-$version"
+babashka_version="0.0.98"
+store_dir="$(pwd)/.store"
+install_dir="${store_dir}/$name-$babashka_version"
 
 system_bb="$(which bb)"
-
 set -e
 
 # https://stackoverflow.com/questions/4023830/how-to-compare-two-strings-in-dot-separated-version-format-in-bash
@@ -60,8 +60,8 @@ else
         Darwin*)    platform=macos;;
     esac
 
-    echo "$name $version not found, installing to $install_dir..."
-    download_url="https://github.com/borkdude/babashka/releases/download/v$version/babashka-$version-$platform-amd64.zip"
+    echo "$name $babashka_version not found, installing to $install_dir..."
+    download_url="https://github.com/borkdude/babashka/releases/download/v$babashka_version/babashka-$babashka_version-$platform-amd64.zip"
 
     mkdir -p $install_dir
     echo -e "Downloading $download_url."
@@ -74,11 +74,11 @@ fi
 set +e
 actual_version="$($bb_path --version | sed 's/babashka v//')"
 
-vercomp $actual_version $version
+vercomp $actual_version $babashka_version
 case $? in
      0) ;;  # =
      1) ;;  # >
-     2) echo "WARNING: babashka version is $actual_version, expected $version" ;;  # <
+     2) echo "WARNING: babashka version is $actual_version, expected $babashka_version" ;;  # <
 esac
 set -e
 
@@ -90,12 +90,19 @@ try_exec_rlwrap() {
     fi
 }
 
-if [[ -f bb_deps.edn ]]; then
-    deps="$(cat bb_deps.edn)"
-    mv deps.edn deps.edn.bak
-    cp="$(clojure -Srepro -Sdeps "${deps}" -Spath)"
-    mv deps.edn.bak deps.edn
+deps_clj="$(pwd)/.store/deps.clj"
 
+ensure_deps_clj() {
+    if [[ ! -f "${deps_clj}" ]]; then
+        mkdir -p "${store_dir}"
+        curl -sL https://raw.githubusercontent.com/borkdude/deps.clj/master/deps.clj -o "${deps_clj}"
+    fi
+}
+
+if [[ -f bb_deps.edn ]]; then
+    ensure_deps_clj
+    # Note this will install clojure-tools in ~/.deps.clj/ClojureTools
+    cp="$($bb_path $deps_clj -Srepro -Sdeps-file bb_deps.edn -Spath)"
     try_exec_rlwrap "$bb_path" "-cp" "${cp}" "$@"
 else
     try_exec_rlwrap "$bb_path" "$@"
