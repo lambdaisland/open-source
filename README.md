@@ -12,6 +12,8 @@ Look at the [RELEASES file](RELEASES.md) to see what we've been up to.
 
 ### Kaocha
 
+<img align="left" width="100" height="100" src="/artwork/kaocha@32x32@5x.png">
+
 Kaocha is our flagship project, a test runner for the future. Easy to use, rich
 in features, extensible, and built with tooling in mind.
 
@@ -29,6 +31,8 @@ from Kaocha, where it is used to provide clearer error messages when tests fail.
 [project site](https://github.com/lambdaisland/deep-diff2) | [releases](https://github.com/lambdaisland/deep-diff2/releases)
 
 ### Regal
+
+<img align="left" width="100" height="100" src="/artwork/regal@32x32@5x.png">
 
 _still in alpha_
 
