@@ -39,3 +39,15 @@
               #_(println (str "## Changed"))
               (run! #(print "- " %) changed))
             (println)))))
+
+(comment
+
+  (for [logfile (logfiles)
+        section (janus/parse (slurp logfile))
+        :when (#{"Unreleased"} (:version-id section))
+        :let [project (-> logfile str (str/replace "../" "") (str/replace #"/.*" ""))
+              {:keys [version-id sha date added fixed changed]} section]
+        :when (seq (concat added fixed changed))]
+    [project added fixed changed])
+
+  )
