@@ -1,3 +1,22 @@
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.641 (2020-07-09 / ec75d9c)
+
+-  The hooks plugin now understands two new hooks at the test suite level,
+  `:kaocha.hooks/before` and `:kaocha.hooks/after`
+-  Make the Hawk filesystem watcher configurable with `:kaocha.watch/hawk-opts`
+
+# [Uri](https://github.com/lambadisland/uri) 1.4.54 (2020-06-16 / 05a8a19)
+
+-  Make query decoding handle `+` as space, so the conversion between maps and
+  query strings correctly round trips.
+-  Handle percent encoding of control characters (codepoints < 16)
+-  make `lambdaisland.uri.platform/string->byte-seq` return unsigned bytes on
+  both plaforms (clj/cljs)
+
+# [Uri](https://github.com/lambadisland/uri) 1.4.49 (2020-06-11 / ee48e58)
+
+-  Make `assoc-query` / `query-encode` encode spaces as "+" rather than "%20",
+  which brings it in line to how most languages/libraries do it.
+
 # [Funnel](https://github.com/lambadisland/funnel) 0.1.16 (2020-05-26 / 81b2e61)
 
 -  First prerelease version, implements `:funnel/whoami`, `:funnel/subscribe`,
@@ -828,4 +847,3 @@ namespace.
 # [Uri](https://github.com/lambadisland/uri) 1.0.0 (2017-02-23)
 
 -  Initial release, public vars: `uri`, `join`, `coerce`, `parse`, `edn-readers`
-
