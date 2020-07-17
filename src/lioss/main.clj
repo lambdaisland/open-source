@@ -1,19 +1,20 @@
 (ns lioss.main
   (:require [clojure.java.io :as io]
             [clojure.java.shell :as sh]
+            [clojure.pprint :as pprint]
             [clojure.string :as str]
-            [lioss.hiccup :as hiccup]
+            [lioss.gh-actions :as gh-actions]
             [lioss.git :as git]
-            [lioss.release :as release]
+            [lioss.hiccup :as hiccup]
             [lioss.pom :as pom]
-            [lioss.util :as util]
-            [lioss.gh-actions :as gh-actions]))
+            [lioss.release :as release]
+            [lioss.util :as util]))
 
 (defn print-help [prefix commands]
   (println "Usage:" prefix "[COMMAND] [COMMAND_ARGS...]")
   (println)
   (doseq [[cmd {:keys [description]}] (partition 2 commands)]
-    (println (format "  %-15s%s" cmd description))))
+    (println (format "  %-35s%s" cmd description))))
 
 (declare commands)
 
@@ -36,7 +37,11 @@
 
    "help"
    {:description "Show this help information"
-    :command do-help}])
+    :command do-help}
+
+   "inspect"
+   {:description "Show expanded opts and exit"
+    :command clojure.pprint/pprint}])
 
 (def defaults
   {:name       (git/project-name)

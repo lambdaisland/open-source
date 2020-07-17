@@ -1,0 +1,2369 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.1-dev (c3426e545d, 2020-05-25)"
+   sodipodi:docname="kaocha@32x32.svg"
+   id="svg10769"
+   width="1280px"
+   version="1.1"
+   height="1280px">
+  <sodipodi:namedview
+     inkscape:current-layer="svg10769"
+     inkscape:window-maximized="1"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="640"
+     inkscape:cx="640"
+     inkscape:zoom="0.6984375"
+     showgrid="false"
+     id="namedview10771"
+     inkscape:window-height="2138"
+     inkscape:window-width="1920"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs10101" />
+  <g
+     id="g11106">
+    <rect
+       fill="rgb(104,76,60)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="240px"
+       id="rect10103" />
+    <rect
+       fill="rgb(171,92,28)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="240px"
+       id="rect10105" />
+    <rect
+       fill="rgb(104,76,60)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="280px"
+       id="rect10107" />
+    <rect
+       fill="rgb(171,92,28)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="280px"
+       id="rect10109" />
+    <rect
+       fill="rgb(104,76,60)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="280px"
+       id="rect10111" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="320px"
+       id="rect10113" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="320px"
+       id="rect10115" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="320px"
+       id="rect10117" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="320px"
+       id="rect10119" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="320px"
+       id="rect10121" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="320px"
+       id="rect10123" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="320px"
+       id="rect10125" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="320px"
+       id="rect10127" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="320px"
+       id="rect10129" />
+    <rect
+       fill="rgb(104,76,60)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="320px"
+       id="rect10131" />
+    <rect
+       fill="rgb(171,92,28)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="320px"
+       id="rect10133" />
+    <rect
+       fill="rgb(104,76,60)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="320px"
+       id="rect10135" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="320px"
+       id="rect10137" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="320px"
+       id="rect10139" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="320px"
+       id="rect10141" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="320px"
+       id="rect10143" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="320px"
+       id="rect10145" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1080px"
+       y="320px"
+       id="rect10147" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1120px"
+       y="320px"
+       id="rect10149" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1160px"
+       y="320px"
+       id="rect10151" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="360px"
+       id="rect10153" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="360px"
+       id="rect10155" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="360px"
+       id="rect10157" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="360px"
+       id="rect10159" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="360px"
+       id="rect10161" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="360px"
+       id="rect10163" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="360px"
+       id="rect10165" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="360px"
+       id="rect10167" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="360px"
+       id="rect10169" />
+    <rect
+       fill="rgb(104,76,60)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="360px"
+       id="rect10171" />
+    <rect
+       fill="rgb(171,92,28)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="360px"
+       id="rect10173" />
+    <rect
+       fill="rgb(104,76,60)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="360px"
+       id="rect10175" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="360px"
+       id="rect10177" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="360px"
+       id="rect10179" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="360px"
+       id="rect10181" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="360px"
+       id="rect10183" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="360px"
+       id="rect10185" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="360px"
+       id="rect10187" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1080px"
+       y="360px"
+       id="rect10189" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1120px"
+       y="360px"
+       id="rect10191" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="1160px"
+       y="360px"
+       id="rect10193" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="80px"
+       y="400px"
+       id="rect10195" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="120px"
+       y="400px"
+       id="rect10197" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="160px"
+       y="400px"
+       id="rect10199" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="200px"
+       y="400px"
+       id="rect10201" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="240px"
+       y="400px"
+       id="rect10203" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="280px"
+       y="400px"
+       id="rect10205" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="320px"
+       y="400px"
+       id="rect10207" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="400px"
+       id="rect10209" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="400px"
+       id="rect10211" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="400px"
+       id="rect10213" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="400px"
+       id="rect10215" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="400px"
+       id="rect10217" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="400px"
+       id="rect10219" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="400px"
+       id="rect10221" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="400px"
+       id="rect10223" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="400px"
+       id="rect10225" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="400px"
+       id="rect10227" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="400px"
+       id="rect10229" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="400px"
+       id="rect10231" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="400px"
+       id="rect10233" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="400px"
+       id="rect10235" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="400px"
+       id="rect10237" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="400px"
+       id="rect10239" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="400px"
+       id="rect10241" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="400px"
+       id="rect10243" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="1080px"
+       y="400px"
+       id="rect10245" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="1120px"
+       y="400px"
+       id="rect10247" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="40px"
+       y="440px"
+       id="rect10249" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="80px"
+       y="440px"
+       id="rect10251" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="120px"
+       y="440px"
+       id="rect10253" />
+    <rect
+       fill="rgb(136,145,175)"
+       height="40px"
+       width="40px"
+       x="160px"
+       y="440px"
+       id="rect10255" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="200px"
+       y="440px"
+       id="rect10257" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="240px"
+       y="440px"
+       id="rect10259" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="280px"
+       y="440px"
+       id="rect10261" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="320px"
+       y="440px"
+       id="rect10263" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="440px"
+       id="rect10265" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="440px"
+       id="rect10267" />
+    <rect
+       fill="rgb(136,145,175)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="440px"
+       id="rect10269" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="440px"
+       id="rect10271" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="440px"
+       id="rect10273" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="440px"
+       id="rect10275" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="440px"
+       id="rect10277" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="440px"
+       id="rect10279" />
+    <rect
+       fill="rgb(54,23,12)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="440px"
+       id="rect10281" />
+    <rect
+       fill="rgb(54,23,12)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="440px"
+       id="rect10283" />
+    <rect
+       fill="rgb(54,23,12)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="440px"
+       id="rect10285" />
+    <rect
+       fill="rgb(54,23,12)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="440px"
+       id="rect10287" />
+    <rect
+       fill="rgb(54,23,12)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="440px"
+       id="rect10289" />
+    <rect
+       fill="rgb(57,42,28)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="440px"
+       id="rect10291" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="440px"
+       id="rect10293" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="440px"
+       id="rect10295" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="440px"
+       id="rect10297" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="440px"
+       id="rect10299" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1080px"
+       y="440px"
+       id="rect10301" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="80px"
+       y="480px"
+       id="rect10303" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="120px"
+       y="480px"
+       id="rect10305" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="160px"
+       y="480px"
+       id="rect10307" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="200px"
+       y="480px"
+       id="rect10309" />
+    <rect
+       fill="rgb(136,145,175)"
+       height="40px"
+       width="40px"
+       x="240px"
+       y="480px"
+       id="rect10311" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="280px"
+       y="480px"
+       id="rect10313" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="320px"
+       y="480px"
+       id="rect10315" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="480px"
+       id="rect10317" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="480px"
+       id="rect10319" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="480px"
+       id="rect10321" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="480px"
+       id="rect10323" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="480px"
+       id="rect10325" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="480px"
+       id="rect10327" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="480px"
+       id="rect10329" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="480px"
+       id="rect10331" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="480px"
+       id="rect10333" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="480px"
+       id="rect10335" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="480px"
+       id="rect10337" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="480px"
+       id="rect10339" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="480px"
+       id="rect10341" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="480px"
+       id="rect10343" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="480px"
+       id="rect10345" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="480px"
+       id="rect10347" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="480px"
+       id="rect10349" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="480px"
+       id="rect10351" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="200px"
+       y="520px"
+       id="rect10353" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="240px"
+       y="520px"
+       id="rect10355" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="280px"
+       y="520px"
+       id="rect10357" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="320px"
+       y="520px"
+       id="rect10359" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="520px"
+       id="rect10361" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="520px"
+       id="rect10363" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="520px"
+       id="rect10365" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="520px"
+       id="rect10367" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="520px"
+       id="rect10369" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="520px"
+       id="rect10371" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="520px"
+       id="rect10373" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="520px"
+       id="rect10375" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="520px"
+       id="rect10377" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="520px"
+       id="rect10379" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="520px"
+       id="rect10381" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="520px"
+       id="rect10383" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="520px"
+       id="rect10385" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="520px"
+       id="rect10387" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="520px"
+       id="rect10389" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="520px"
+       id="rect10391" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="280px"
+       y="560px"
+       id="rect10393" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="320px"
+       y="560px"
+       id="rect10395" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="560px"
+       id="rect10397" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="560px"
+       id="rect10399" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="560px"
+       id="rect10401" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="560px"
+       id="rect10403" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="560px"
+       id="rect10405" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="560px"
+       id="rect10407" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="560px"
+       id="rect10409" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="560px"
+       id="rect10411" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="560px"
+       id="rect10413" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="560px"
+       id="rect10415" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="560px"
+       id="rect10417" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="560px"
+       id="rect10419" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="560px"
+       id="rect10421" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="560px"
+       id="rect10423" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="560px"
+       id="rect10425" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="600px"
+       id="rect10427" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="600px"
+       id="rect10429" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="600px"
+       id="rect10431" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="600px"
+       id="rect10433" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="600px"
+       id="rect10435" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="600px"
+       id="rect10437" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="600px"
+       id="rect10439" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="600px"
+       id="rect10441" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="600px"
+       id="rect10443" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="600px"
+       id="rect10445" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="600px"
+       id="rect10447" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="600px"
+       id="rect10449" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="600px"
+       id="rect10451" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="600px"
+       id="rect10453" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="640px"
+       id="rect10455" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="640px"
+       id="rect10457" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="640px"
+       id="rect10459" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="640px"
+       id="rect10461" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="640px"
+       id="rect10463" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="640px"
+       id="rect10465" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="640px"
+       id="rect10467" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="640px"
+       id="rect10469" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="640px"
+       id="rect10471" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="640px"
+       id="rect10473" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="640px"
+       id="rect10475" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="640px"
+       id="rect10477" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="640px"
+       id="rect10479" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="680px"
+       id="rect10481" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="680px"
+       id="rect10483" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="680px"
+       id="rect10485" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="680px"
+       id="rect10487" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="680px"
+       id="rect10489" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="680px"
+       id="rect10491" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="680px"
+       id="rect10493" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="680px"
+       id="rect10495" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="680px"
+       id="rect10497" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="680px"
+       id="rect10499" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="680px"
+       id="rect10501" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="680px"
+       id="rect10503" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="680px"
+       id="rect10505" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="680px"
+       id="rect10507" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="680px"
+       id="rect10509" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="720px"
+       id="rect10511" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="720px"
+       id="rect10513" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="720px"
+       id="rect10515" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="720px"
+       id="rect10517" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="720px"
+       id="rect10519" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="720px"
+       id="rect10521" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="720px"
+       id="rect10523" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="720px"
+       id="rect10525" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="720px"
+       id="rect10527" />
+    <rect
+       fill="rgb(136,145,175)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="720px"
+       id="rect10529" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="720px"
+       id="rect10531" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="720px"
+       id="rect10533" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="720px"
+       id="rect10535" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="720px"
+       id="rect10537" />
+    <rect
+       fill="rgb(136,145,175)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="720px"
+       id="rect10539" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="720px"
+       id="rect10541" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="720px"
+       id="rect10543" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="280px"
+       y="760px"
+       id="rect10545" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="320px"
+       y="760px"
+       id="rect10547" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="760px"
+       id="rect10549" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="760px"
+       id="rect10551" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="760px"
+       id="rect10553" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="760px"
+       id="rect10555" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="760px"
+       id="rect10557" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="760px"
+       id="rect10559" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="760px"
+       id="rect10561" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="760px"
+       id="rect10563" />
+    <rect
+       fill="rgb(136,145,175)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="760px"
+       id="rect10565" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="760px"
+       id="rect10567" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="760px"
+       id="rect10569" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="760px"
+       id="rect10571" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="760px"
+       id="rect10573" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="760px"
+       id="rect10575" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="760px"
+       id="rect10577" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="760px"
+       id="rect10579" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="760px"
+       id="rect10581" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="760px"
+       id="rect10583" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="200px"
+       y="800px"
+       id="rect10585" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="240px"
+       y="800px"
+       id="rect10587" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="280px"
+       y="800px"
+       id="rect10589" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="320px"
+       y="800px"
+       id="rect10591" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="800px"
+       id="rect10593" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="800px"
+       id="rect10595" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="800px"
+       id="rect10597" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="800px"
+       id="rect10599" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="800px"
+       id="rect10601" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="800px"
+       id="rect10603" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="800px"
+       id="rect10605" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="800px"
+       id="rect10607" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="800px"
+       id="rect10609" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="800px"
+       id="rect10611" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="800px"
+       id="rect10613" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="800px"
+       id="rect10615" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="800px"
+       id="rect10617" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="800px"
+       id="rect10619" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="800px"
+       id="rect10621" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="800px"
+       id="rect10623" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="800px"
+       id="rect10625" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="800px"
+       id="rect10627" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1080px"
+       y="800px"
+       id="rect10629" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="200px"
+       y="840px"
+       id="rect10631" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="240px"
+       y="840px"
+       id="rect10633" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="280px"
+       y="840px"
+       id="rect10635" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="320px"
+       y="840px"
+       id="rect10637" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="840px"
+       id="rect10639" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="840px"
+       id="rect10641" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="840px"
+       id="rect10643" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="840px"
+       id="rect10645" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="840px"
+       id="rect10647" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="840px"
+       id="rect10649" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="840px"
+       id="rect10651" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="840px"
+       id="rect10653" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="840px"
+       id="rect10655" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="840px"
+       id="rect10657" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="840px"
+       id="rect10659" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="800px"
+       y="840px"
+       id="rect10661" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="840px"
+       y="840px"
+       id="rect10663" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="880px"
+       y="840px"
+       id="rect10665" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="920px"
+       y="840px"
+       id="rect10667" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="840px"
+       id="rect10669" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="840px"
+       id="rect10671" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="840px"
+       id="rect10673" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1080px"
+       y="840px"
+       id="rect10675" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1120px"
+       y="840px"
+       id="rect10677" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="360px"
+       y="880px"
+       id="rect10679" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="880px"
+       id="rect10681" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="880px"
+       id="rect10683" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="880px"
+       id="rect10685" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="880px"
+       id="rect10687" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="880px"
+       id="rect10689" />
+    <rect
+       fill="rgb(178,184,211)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="880px"
+       id="rect10691" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="880px"
+       id="rect10693" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="880px"
+       id="rect10695" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="720px"
+       y="880px"
+       id="rect10697" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="760px"
+       y="880px"
+       id="rect10699" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="960px"
+       y="880px"
+       id="rect10701" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="880px"
+       id="rect10703" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="880px"
+       id="rect10705" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1080px"
+       y="880px"
+       id="rect10707" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1120px"
+       y="880px"
+       id="rect10709" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1160px"
+       y="880px"
+       id="rect10711" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="400px"
+       y="920px"
+       id="rect10713" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="920px"
+       id="rect10715" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="920px"
+       id="rect10717" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="920px"
+       id="rect10719" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="920px"
+       id="rect10721" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="920px"
+       id="rect10723" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="920px"
+       id="rect10725" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="680px"
+       y="920px"
+       id="rect10727" />
+    <rect
+       fill="rgb(33,42,52)"
+       height="40px"
+       width="40px"
+       x="1000px"
+       y="920px"
+       id="rect10729" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1040px"
+       y="920px"
+       id="rect10731" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1080px"
+       y="920px"
+       id="rect10733" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1120px"
+       y="920px"
+       id="rect10735" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="1160px"
+       y="920px"
+       id="rect10737" />
+    <rect
+       fill="rgb(28,33,47)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="960px"
+       id="rect10739" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="960px"
+       id="rect10741" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="960px"
+       id="rect10743" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="960px"
+       id="rect10745" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="960px"
+       id="rect10747" />
+    <rect
+       fill="rgb(50,57,66)"
+       height="40px"
+       width="40px"
+       x="640px"
+       y="960px"
+       id="rect10749" />
+    <rect
+       fill="rgb(108,117,143)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="1000px"
+       id="rect10751" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="1000px"
+       id="rect10753" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="1000px"
+       id="rect10755" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="1000px"
+       id="rect10757" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="600px"
+       y="1000px"
+       id="rect10759" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="440px"
+       y="1040px"
+       id="rect10761" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="480px"
+       y="1040px"
+       id="rect10763" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="520px"
+       y="1040px"
+       id="rect10765" />
+    <rect
+       fill="rgb(72,84,100)"
+       height="40px"
+       width="40px"
+       x="560px"
+       y="1040px"
+       id="rect10767" />
+  </g>
+</svg>

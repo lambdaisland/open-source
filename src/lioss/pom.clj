@@ -4,6 +4,26 @@
             [lioss.util :as util]
             [lioss.subshell :as subshell]))
 
+(defn pom-deps [deps]
+  (for [[artifact coords] deps]
+    (do
+      (when-not (:mvn/version coords)
+        (println "WARN: can't add to pom.xml" artifact coords))
+      [:dependency
+       [:groupId (if (qualified-symbol? artifact)
+                   (namespace artifact)
+                   (str artifact))]
+       [:artifactId (if (qualified-symbol? artifact)
+                      (name artifact)
+                      (str artifact))]
+       [:version (:mvn/version coords)]])))
+
+(defn pom-alias-deps [opts]
+  (when-let [aliases (:aliases-as-scope-provided opts)]
+    (for [alias aliases
+          dep (pom-deps (get-in opts [:aliases alias :extra-deps]))]
+      (conj dep [:scope "provided"]))))
+
 (defn gen-pom [opts]
   (assert (:name opts))
   (assert (:version opts))
@@ -45,19 +65,9 @@
         [:connection (str "scm:git:git://github.com/" gh-project ".git")]
         [:developerConnection (str "scm:git:ssh://git@github.com/" gh-project ".git")]
         [:tag (:sha opts)]]
-       `[:dependencies
-         ~@(for [[artifact coords] (:deps opts)]
-             (do
-               (when-not (:mvn/version coords)
-                 (println "WARN: can't add to pom.xml" artifact coords))
-               [:dependency
-                [:groupId (if (qualified-symbol? artifact)
-                            (namespace artifact)
-                            (str artifact))]
-                [:artifactId (if (qualified-symbol? artifact)
-                               (name artifact)
-                               (str artifact))]
-                [:version (:mvn/version coords)]]))]
+       `[:dependencies ~@(concat
+                          (pom-deps (:deps opts))
+                          (pom-alias-deps opts))]
        [:build
         (when (seq (:paths opts))
           [:sourceDirectory (first (:paths opts))])
