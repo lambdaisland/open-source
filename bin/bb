@@ -11,7 +11,7 @@
 # Will use rlwrap if it is available.
 
 name=babashka
-babashka_version="0.0.98"
+babashka_version="0.1.3"
 store_dir="$(pwd)/.store"
 install_dir="${store_dir}/$name-$babashka_version"
 
