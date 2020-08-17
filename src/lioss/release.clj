@@ -79,9 +79,9 @@
    "-d" (str "version=" (:version opts))))
 
 (defn do-release [opts]
-  (git/assert-branch "master")
+  (git/assert-branch #{"master" "main"})
   (git/assert-repo-clean)
-  (when (.exists (io/file "tests.edn"))
+  (when (and (.exists (io/file "tests.edn")) (not (System/getenv "SKIP_TESTS")))
     (subshell/spawn "bin/kaocha" {:fail-message "Tests failed, aborting release."}))
 
   (git/clean!)
@@ -104,8 +104,9 @@
       (util/do-modules opts mvn-deploy)
       (mvn-deploy opts)
       (prepend-changelog-placeholders)
+      (git/git! "add" "pom.xml")
       (git/git! "add" "CHANGELOG.md")
-      (git/git! "commit" "-m" "Add CHANGELOG.md placeholders")
+      (git/git! "commit" "-m" "Update pom.xml and add CHANGELOG.md placeholders")
       (git/git! "push" "--tags")
       (git/git! "push")
 

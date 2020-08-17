@@ -44,7 +44,9 @@
 
 (defn assert-branch [branch]
   (let [b (current-branch)]
-    (when-not (= b branch)
+    (when-not (if (coll? branch)
+                (some #{b} branch)
+                (= b branch))
       (util/fatal "On branch" b ", must be on" branch))))
 
 (defn assert-repo-clean []

@@ -7,6 +7,7 @@
             [lioss.git :as git]
             [lioss.hiccup :as hiccup]
             [lioss.pom :as pom]
+            [lioss.readme :as readme]
             [lioss.release :as release]
             [lioss.util :as util]))
 
@@ -41,7 +42,15 @@
 
    "inspect"
    {:description "Show expanded opts and exit"
-    :command clojure.pprint/pprint}])
+    :command clojure.pprint/pprint}
+
+   "gen-readme"
+   {:description "Generate README based on a template and fill in project variables"
+    :command readme/do-gen}
+
+   "update-readme"
+   {:description "Update sections in README.md"
+    :command readme/do-update}])
 
 (def defaults
   {:name       (git/project-name)
