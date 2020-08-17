@@ -43,6 +43,12 @@
         :else
         (recur nil sections lines)))))
 
+(defn fill-params [s params]
+  (reduce-kv (fn [sec k v]
+               (str/replace sec (str "{{" (name k) "}}") (str v)))
+             s
+             params))
+
 (defn update-sections [blob section-map params]
   (let [lines (lines blob)]
     (loop [result []
@@ -53,41 +59,53 @@
 
         (section-start? line)
         (let [section (section-start? line)
-              replacement (reduce-kv (fn [sec k v]
-                                       (str/replace sec (str "{{" (name k) "}}") (str v)))
-                                     (get section-map (keyword section))
-                                     params)]
-          (recur (conj result
-                       (section-start section)
-                       replacement
-                       (section-end section))
-                 (next (drop-while #(not (section-end? % section)) lines))))
+              template (get section-map (keyword section) "")
+              replacement (fill-params template params)]
+          (if (seq template)
+            (recur (conj result
+                         (section-start section)
+                         replacement
+                         (section-end section))
+                   (next (drop-while #(not (section-end? % section)) lines)))
+            (recur (conj result line) lines)))
 
         :else
         (recur (conj result line) lines)))))
 
-(defn do-readme [params]
-  (let [sections (section-map (slurp (io/resource "README_template.md")))
+(defn extra-params [params]
+  (let [this-year (+ 1900 (.getYear (java.util.Date.)))
+        inception-year (:inception-year params)
+        year-range (if (= this-year inception-year)
+                     this-year
+                     (str inception-year "-" this-year))]
+    (assoc params
+           :project (:name params)
+           :year-range year-range
+           :license-name (case (:license params)
+                           :mpl
+                           "MPL 2.0"
+                           :epl
+                           "EPL 1.0"))))
+
+(defn do-update [params]
+  (let [sections (section-map (slurp (io/resource "README_sections.md")))
         sections (assoc sections :license (case (:license params)
                                             :mpl
                                             (:license-mpl sections)
                                             :epl
                                             (:license-epl sections)))
-        this-year (+ 1900 (.getYear (java.util.Date.)))
-        inception-year (:inception-year params)
-        year-range (if (= this-year inception-year)
-                     this-year
-                     (str inception-year "-" this-year))
-        params (assoc params
-                      :project (:name params)
-                      :year-range year-range
-                      :license-name (case (:license params)
-                                      :mpl
-                                      "MPL 2.0"
-                                      :epl
-                                      "EPL 1.0"))]
+        params (extra-params params)]
     (spit "README.md"
           (update-sections
            (slurp "README.md")
            sections
            params))))
+
+(defn do-gen [params]
+  (when (.exists (io/file "README.md"))
+    (println "README.md exists, overwrite? [y/n]")
+    (when (not= "y" (doto (read-line) prn))
+      (println "abort")
+      (System/exit 1)))
+  (spit "README.md" (fill-params (slurp (io/resource "README_template.md")) (extra-params params)))
+  (do-update params))
