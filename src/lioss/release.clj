@@ -105,6 +105,7 @@
       (mvn-deploy opts)
       (prepend-changelog-placeholders)
       (git/git! "add" "pom.xml")
+      (util/do-modules opts (fn [_] (git/git! "add" "pom.xml")))
       (git/git! "add" "CHANGELOG.md")
       (git/git! "commit" "-m" "Update pom.xml and add CHANGELOG.md placeholders")
       (git/git! "push" "--tags")
