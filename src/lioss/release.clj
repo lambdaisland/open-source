@@ -63,8 +63,8 @@
                 (first lines)
                 (take-while #(not (re-find #"^# " %)) (next lines)))))))
 
-(defn mvn-deploy [_]
-  (subshell/spawn "mvn" "deploy"))
+(defn mvn [& args]
+  (apply subshell/spawn "mvn" args))
 
 (defn prepend-changelog-placeholders []
   (spit "CHANGELOG.md"
@@ -105,8 +105,8 @@
                        (fn [mods]
                          (map #(assoc % :sha sha) mods)))]
       (pom/spit-poms opts)
-      (util/do-modules opts mvn-deploy)
-      (mvn-deploy opts)
+      (util/do-modules opts (fn [_] (mvn "deploy")))
+      (mvn "deploy")
       (prepend-changelog-placeholders)
       (git/git! "add" "pom.xml")
       (util/do-modules opts (fn [_] (git/git! "add" "pom.xml")))
@@ -117,3 +117,21 @@
 
       (trigger-cljdoc-build opts)
       (util/do-modules opts trigger-cljdoc-build))))
+
+(defn do-install [opts]
+  (let [opts (if-let [hook (:pre-release-hook opts)]
+               (let [opts (hook opts)]
+                 (when (nil? opts)
+                   (println ":pre-release-hook returned nil!")
+                   (System/exit 1))
+                 opts)
+               opts)]
+
+    (let [sha (git/current-sha)
+          opts (update (assoc opts :sha sha)
+                       :modules
+                       (fn [mods]
+                         (map #(assoc % :sha sha) mods)))]
+      (pom/spit-poms opts)
+      (util/do-modules opts (fn [_] (mvn "install")))
+      (mvn "install"))))

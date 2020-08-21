@@ -32,6 +32,10 @@
    {:description "Generate pom files"
     :command pom/spit-poms}
 
+   "install"
+   {:description "Build and install jar(s) locally"
+    :command release/do-install}
+
    "gh_actions_changelog_output"
    {:description "Print the last stanza of the changelog in a format that GH actions understands"
     :command gh-actions/set-changelog-output}
