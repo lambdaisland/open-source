@@ -44,7 +44,6 @@
            versions))))
 
 (defn bump-changelog [{:keys [version date sha] :as opts}]
-  (prn opts)
   (let [blob (slurp "CHANGELOG.md")
         lines (str/split blob #"\R")]
     (spit "CHANGELOG.md"
