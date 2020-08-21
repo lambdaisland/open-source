@@ -43,7 +43,8 @@
            blob
            versions))))
 
-(defn bump-changelog [{:keys [version date sha]}]
+(defn bump-changelog [{:keys [version date sha] :as opts}]
+  (prn opts)
   (let [blob (slurp "CHANGELOG.md")
         lines (str/split blob #"\R")]
     (spit "CHANGELOG.md"
@@ -87,7 +88,11 @@
   (git/clean!)
 
   (let [opts (if-let [hook (:pre-release-hook opts)]
-               (hook opts)
+               (let [opts (hook opts)]
+                 (when (nil? opts)
+                   (println ":pre-release-hook returned nil!")
+                   (System/exit 1))
+                 opts)
                opts)]
     (update-versions-in "README.md" (:module-versions opts))
     (bump-changelog opts)
