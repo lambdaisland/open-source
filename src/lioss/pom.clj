@@ -79,8 +79,12 @@
         [:plugins
          [:plugin
           [:groupId "org.apache.maven.plugins"]
+          [:artifactId "maven-compiler-plugin"]
+          [:version "3.8.1"]]
+         [:plugin
+          [:groupId "org.apache.maven.plugins"]
           [:artifactId "maven-jar-plugin"]
-          [:version "2.4"]
+          [:version "3.2.0"]
           [:configuration
            [:archive
             [:manifestEntries
@@ -88,7 +92,7 @@
          [:plugin
           [:groupId "org.apache.maven.plugins"]
           [:artifactId "maven-gpg-plugin"]
-          [:version "1.5"]
+          [:version "1.6"]
           [:executions
            [:execution
             [:id "sign-artifacts"]

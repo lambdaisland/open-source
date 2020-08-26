@@ -116,7 +116,10 @@
       (git/git! "push")
 
       (trigger-cljdoc-build opts)
-      (util/do-modules opts trigger-cljdoc-build))))
+      (util/do-modules opts trigger-cljdoc-build)
+
+      (when-let [hook (:post-release-hook opts)]
+        (hook opts)))))
 
 (defn do-install [opts]
   (let [opts (if-let [hook (:pre-release-hook opts)]
