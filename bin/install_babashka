@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -xe
+
+# https://gist.github.com/lukechilds/a83e1d7127b78fef38c2914c4ececc3c
+gh_latest_release() {
+  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+    grep '"tag_name":' |                                            # Get tag line
+    sed -E 's/.*"v([^"]+)".*/\1/'                                   # Pluck JSON value
+}
+
+current_platform() {
+    case "$(uname -s)" in
+        Linux*)  echo linux;;
+        Darwin*) echo macos;;
+    esac
+}
+
+BABASHKA_VERSION=$(gh_latest_release borkdude/babashka)
+PLATFORM=$(current_platform)
+DOWNLOAD_URL="https://github.com/borkdude/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-${PLATFORM}-amd64.zip"
+INSTALL_DIR="$HOME/bin"
+
+mkdir -p "${INSTALL_DIR}"
+curl -o "/tmp/bb.zip" -sL "${DOWNLOAD_URL}"
+unzip -qqo "/tmp/bb.zip" -d "${INSTALL_DIR}"
+rm "/tmp/bb.zip"
