@@ -1,3 +1,229 @@
+# [Fetch](https://github.com/lambadisland/fetch) 0.0.16 (2020-12-01 / d5f92bd)
+
+-  * Replaced `kitchen-async` dependency with `mhuebert/kitchen-async`, which is the same lib with a fixed version on Clojars
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.732 (2020-11-26 / b418350)
+
+-  Fixed an issue with the optional `clojure.test.check` dependency (follow-up)
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.726 (2020-11-24 / faa6ef6)
+
+-  `kaocha.type.spec.test.check` now correctly builds fdef testables with
+  configuration options from their enclosing test suites.
+-  `kaocha.plugin.alpha.spec-test-check` now honors command line arguments based
+  upon all of the configured STC suites rather than the static
+  `:generative-fdef-checks` selector.
+-  Fix an issue where `clojure.test.check` would be required for Kaocha to work,
+  rather than being an optional dependency
+-  Breaking! Test configuration (`tests.edn`) is now validated with spec, meaning
+  existing configs may fail. In most cases you should be able to update your
+  config so it is valid, but please do report any issues.
+-  `kaocha.plugin.alpha.spec-test-check` now respects a priority of supplied
+  configuration. CLI options always take precedence, followed by options
+  specified in individual test suites, followed by global options.
+-  Improved spec definitions and generative fdef coverage
+
+# [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 1.0.72 (2020-11-20 / 20ea1aa)
+
+-  handle correctly test-ns-regex, converting strings into regexes and
+  adding cli support for the option as `--cov-test-ns-regex`
+
+# [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 1.0.75 (2020-11-20 / 4c85364)
+
+-  Fix cljdoc build
+
+# [Garden-watcher](https://github.com/lambadisland/garden-watcher) 1.0.27 (2020-10-30 / 634bccc)
+
+-  Make classpath detection more robust
+
+# [Kaocha-cljs2](https://github.com/lambadisland/kaocha-cljs2) 0.0.35 (2020-10-02 / 3a506bd)
+
+-  Fix fixtures :once :after hook
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.700 (2020-09-18 / 552b977)
+
+-  Fix documentation table of contents
+-  Make Ctrl-C (SIGINT) handling more reliable, so you can always short-circuit
+  Kaocha to see your failing tests.
+-  Make spec-test-check plugin honor commond line arguments, so you can run only
+  the generated test suite.
+-  Don't run group tests (e.g. namespace) when there are no tests inside it that
+  would run (empty or all tests skipped)
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.690 (2020-09-14 / 8a12b69)
+
+-  fdef/spec based tests via plugin: honor `:clojure.spec.test.check/instrument?`
+  and `:clojure.spec.test.check/check-asserts?` from `tests.edn`
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.681 (2020-09-10 / 5031360)
+
+-  Added `:kaocha.plugin/debug` for easy introspection of Kaocha's machinery
+-  Added docstrings and markdown docs for the Orchestra and Preloads plugins
+-  In the filter plugin's pre-load early filtering of test suites, check flags
+  provided directly in the config, instead of only checking command line
+  arguments. This fixes kaocha.repl invocations like
+  `(kaocha.repl/run {:kaocha.filter/skip [:unit]})`
+
+# [Edn-lines](https://github.com/lambadisland/edn-lines) 1.0.10 (2020-08-27 / 73502c2)
+
+-  Honor tagged reader functions from `clojure.core/*data-readers*`
+
+# [Kaocha-cljs2](https://github.com/lambadisland/kaocha-cljs2) 0.0.28 (2020-08-27 / 9ed88aa)
+
+-  Make the timeout configurable with `:kaocha.cljs2/timeout` in miliseconds. If
+  no Funnel message has been received for this amount of time then we assume the
+  client has gotten stuck or gone away and we time out
+-  Upgrade Chui, this fixes handling of `:once` fixtures
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.156 (2020-08-26 / 460519c)
+
+-  Fix :once fixtures when running via chui-remote
+
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.74 (2020-08-26 / acf8c48)
+
+-  Export lambdaisland.glogi.set-levels so you can use it from the browser
+  console (pass in an array of two-element arrays of strings)
+
+# [Funnel](https://github.com/lambadisland/funnel) 0.1.42 (2020-08-26 / 4c14cec)
+
+-  Added a `--daemonize` flag so Funnel can background itself (experimental)
+-  Added a `--logfile FILE` option to redirect output
+-  Added a `--ws-port PORT` options
+-  Added a `--wss-port PORT` option
+-  Added a `--version` flag
+-  Correctly format log messages that contain parameters (like jdk.event.security)
+-  No longer include a default certificate
+-  Only start WSS server when a certificate is provided
+-  Changed the default `--keystore-password` from `"funnel"` to `"password"`
+  (same as [bhauman/certifiable](https://github.com/bhauman/certifiable))
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.672 (2020-08-26 / ff68cf5)
+
+-  Prevent loading of test suites that are excluded from the run
+
+# [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 1.0.63 (2020-08-21 / 83f3706)
+
+-  Bump Cloverage to 1.2.0
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.141 (2020-08-19 / 7d1865b)
+
+-  Source mapped stack trace in UI and remote
+-  Make sure terminate callback is always called, this prevents Shadow's
+  reloading from hanging indefinitely
+-  Better exception reporting
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.146 (2020-08-19 / 6e324e2)
+
+-  Upgrade dependencies, glogi, funnel-client, deep-diff2
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.149 (2020-08-19 / adf2c24)
+
+-  Fail more gracefully when a test definition happens to be not available at
+  runtime due to a load error
+
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.70 (2020-08-19 / df34f1a)
+
+-  We no longer pull in a specific Clojure/ClojureScript version, assuming that
+  client consumers will already have specific versions declared for their project.
+
+# [Deep-diff2](https://github.com/lambadisland/deep-diff2) 2.0.108 (2020-08-19 / e006fc5)
+
+-  Switch to using lambdaisland/clj-diff, a fork of an upstream fork
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.669 (2020-08-19 / 13abc37)
+
+-  Added internal diagnostics
+
+# [Kaocha-cljs2](https://github.com/lambadisland/kaocha-cljs2) 0.0.15 (2020-08-19 / d6f3fd1)
+
+
+# [Kaocha-cljs2](https://github.com/lambadisland/kaocha-cljs2) 0.0.18 (2020-08-19 / 239b9b8)
+
+-  Add chui-ui dependency
+
+# [Kaocha-cljs2](https://github.com/lambadisland/kaocha-cljs2) 0.0.21 (2020-08-19 / d4de44c)
+
+-  Remove debug call
+-  Version bumps
+
+# [Funnel-client](https://github.com/lambadisland/funnel-client) 0.0.13 (2020-08-19 / 0eb52ad)
+
+-  Bump lambdaisland.glogi to 1.0.70
+
+# [Chui](https://github.com/lambadisland/chui) 0.0.133 (2020-08-17 / af3a0d3)
+
+-  First release of chui-remote, based on Funnel-client
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.658 (2020-08-17 / 22ef88c)
+
+-  Add two new hooks, `:kaocha.hooks/pre-load-test`,
+  `:kaocha.hooks/post-load-test`
+-  Extend the hooks plugin to allow for `:kaocha.hooks/pre-load-test`,
+  `:kaocha.hooks/pre-test` / `:kaocha.hooks/post-test` and
+  `:kaocha.hooks/post-load-test` hooks to be defined on the testable (i.e. on
+  the test suite)
+-  The `:post-summary` hook can now be used through the hooks plugin (before it
+  was only available to plugins)
+-  Allow test type implementations to add `:kaocha.testable/aliases` to
+  testables, these can be used when focusing/skipping
+-  `:kaocha.hooks/before` / `:kaocha.hooks/after` now get converted to
+  `:kaocha.hooks/pre-test` / `:kaocha.hooks/post-test` hooks. The former are
+  considered deprecated but will continue to work.
+-  the `post-summary` hook will also be called when invoked via `kaocha.repl`
+-  `kaocha.testable/test-seq` only returns actual testables, not a top level
+  config/test-plan map
+-  Bumped Orchestra and Expound, this pulled in a breaking change in Orchestra
+  where it no longer includes the explained spec error in the exception message.
+  To accomodate for this the Orchestra plugin has been updated so the
+  explanation appears in the reported output.
+-  Only instrument lambdaisland/kaocha namespaces with Orchestra. For
+  instrumentation of your own code or third party libraries use the `:orchestra`
+  plugin.
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.663 (2020-08-17 / 2a815a3)
+
+-  Fix `post-summary` when used from  hooks plugin
+
+# [Funnel-client](https://github.com/lambadisland/funnel-client) 0.0.9 (2020-08-17 / 445658b)
+
+
+# [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 1.0.56 (2020-08-13 / 304162e)
+
+-  Switch back to vanilla Cloverage, and bump it to 1.1.3. This version no longer
+  contains an aot-compiled tools.reader.
+
+# [Kaocha-junit-xml](https://github.com/lambadisland/kaocha-junit-xml) 0.0.76 (2020-07-21 / 397a3c1)
+
+-  Added a flag to omit `system-out` from the generated junit.xml file, (thanks @ondrs)
+
+# [Regal](https://github.com/lambadisland/regal) 0.0.89 (2020-07-20 / f46699b)
+
+-  Java flavor: parse `\s` and `\S` to to semantically equivalent forms, instead
+  of incorrectly parsing to `:whitespace` / `:non-whitespace`
+-  All flavors: parse unkown escape codes to their respective characters
+-  Use the Malli error protocol so we get error messages automatically (thanks @ikitommi)
+-  Generators: `:any` should not generate newlines (now also for cljs)
+
+# [Regal](https://github.com/lambadisland/regal) 0.0.80 (2020-07-17 / 3976988)
+
+-  `[:char ...]` for code point literal
+-  `[:ctrl ...]` for control character literals
+-  `:line-break`, `:alert`, `:escape`, `:vertical-whitespace`, `:vertical-tab`
+-  `[:(negative-)lookahead ... ]` positve/negative lookahead
+-  `[:(negative-)lookbehind ...]` positive/negative lookbehind
+-  `[:atomic ...]` atomic groups (prevent backtracking)
+-  Parsing of `\w \W \d \D \s \S`
+-  Parsing of suffixed expressions `+ * ? {1,2}`
+-  `lambdaisland.regal.normalize` for getting a canonicalized version of a regal form
+-  Make `:whitespace` behave consistently across platforms
+-  Drop the use of `java.runtime.version` (GraalVM compat)
+-  Make instaparse grammar work on ClojureScript
+-  Generator fixes
+-  Correctly parse a single `&` inside a bracketed character class
+-  Drop `[:range from to]`, instead use `[:class [from to]]`
+-  Using `:whitespace` inside `[:class ...]` or `[:not ...]` will throw an
+  AssertionError, since we can't support it across platforms
+-  The parser returns canonical forms, meaning single-character strings instead of characters
+
 # [Kaocha](https://github.com/lambadisland/kaocha) 1.0.641 (2020-07-09 / ec75d9c)
 
 -  The hooks plugin now understands two new hooks at the test suite level,
@@ -112,7 +338,6 @@
 # [Edn-lines](https://github.com/lambadisland/edn-lines) 0.0-5 (2020-04-03 / b4300af)
 
 -  First public API: `slurp`, `spit`, `reader-seq`, `append`, `with-append`
-
 # [Glogi](https://github.com/lambadisland/glogi) 1.0-44 (2020-04-02 / 5a377e7)
 
 -  Added colored printing of objects and arrays
@@ -186,6 +411,9 @@
 
 -  Added support in the reporter for the `=?` macro as used in Expectations
   (thanks [@dharrigan](https://github.com/dharrigan) 🎉)
+
+# [Regal](https://github.com/lambadisland/regal) 0.0.0 (2020-02-28 / 9a40397ba)
+
 
 # [Kaocha-cljs](https://github.com/lambadisland/kaocha-cljs) 0.0-71 (2020-02-24 / 773860f)
 
@@ -602,7 +830,6 @@
 # [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 0.0-3 (2018-11-15 / 80c323a)
 
 -  Initial release
-
 # [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 0.0-6 (2018-11-15 / 8308b88)
 
 -  Correctly specify Cloverage as a dependency
@@ -670,7 +897,6 @@
 # [Deep-diff2](https://github.com/lambadisland/deep-diff2) 0.0-4 (2018-10-30 / 3d82596)
 
 -  Extracted from Kaocha, and added a top-level namespace.
-
 # [Deep-diff2](https://github.com/lambadisland/deep-diff2) 0.0-8 (2018-10-30 / 6bd7918)
 
 -  `lambdaisland.deep-diff.printer/print-*` are now public, as they can be used
