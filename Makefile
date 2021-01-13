@@ -56,4 +56,4 @@ promote-orb-kaocha:
 	circleci orb publish promote lambdaisland/kaocha@dev:first patch
 
 promote-orb-clojure:
-  circleci orb publish promote lambdaisland/clojure@dev:first patch
+	circleci orb publish promote lambdaisland/clojure@dev:first patch
