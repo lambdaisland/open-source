@@ -12,6 +12,9 @@ executors:
   openjdk11:
     docker:
       - image: lambdaisland/clojure:openjdk11
+  openjdk15:
+    docker:
+      - image: docker.nextjournal.com/environment@sha256:3cf693dd52db9898f844c5b6c64a124d9c0612708e95dc1b1064408381be14d9
 
 commands:
   with_cache:
