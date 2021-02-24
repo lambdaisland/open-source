@@ -19,10 +19,15 @@
        [:version (:mvn/version coords)]])))
 
 (defn pom-alias-deps [opts]
-  (when-let [aliases (:aliases-as-scope-provided opts)]
-    (for [alias aliases
-          dep (pom-deps (get-in opts [:aliases alias :extra-deps]))]
-      (conj dep [:scope "provided"]))))
+  (concat
+   (when-let [aliases (:aliases-as-scope-provided opts)]
+     (for [alias aliases
+           dep (pom-deps (get-in opts [:aliases alias :extra-deps]))]
+       (conj dep [:scope "provided"])))
+   (when-let [aliases (:aliases-as-optional-deps opts)]
+     (for [alias aliases
+           dep (pom-deps (get-in opts [:aliases alias :extra-deps]))]
+       (conj dep [:optional "true"])))))
 
 (defn gen-pom [opts]
   (assert (:name opts))
