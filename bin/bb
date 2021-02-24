@@ -11,7 +11,7 @@
 # Will use rlwrap if it is available.
 
 name=babashka
-babashka_version="0.1.3"
+babashka_version="0.2.10"
 store_dir="$(pwd)/.store"
 install_dir="${store_dir}/$name-$babashka_version"
 
@@ -58,6 +58,7 @@ else
     case "$(uname -s)" in
         Linux*)     platform=linux;;
         Darwin*)    platform=macos;;
+        MINGW64*)   platform=windows;;
     esac
 
     echo "$name $babashka_version not found, installing to $install_dir..."
