@@ -5,9 +5,6 @@
 
 {{description}}
 
-<!-- opencollective -->
-<!-- /opencollective -->
-
 ## Features
 
 <!-- installation -->
@@ -16,6 +13,9 @@
 ## Rationale
 
 ## Usage
+
+<!-- opencollective -->
+<!-- /opencollective -->
 
 <!-- contributing -->
 <!-- /contributing -->

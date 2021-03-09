@@ -1,6 +1,7 @@
 (ns lioss.readme
   (:require [clojure.string :as str]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+            [lioss.badges :as badges]))
 
 (defn section-start? [line]
   (second (re-find #"<!--\s*([-\d\w]+)\s*-->" line)))
@@ -78,28 +79,30 @@
         year-range (if (= this-year inception-year)
                      this-year
                      (str inception-year "-" this-year))]
-    (assoc params
-           :project (:name params)
-           :year-range year-range
-           :license-name (case (:license params)
-                           :mpl
-                           "MPL 2.0"
-                           :epl
-                           "EPL 1.0"))))
+    (-> params
+        (update :badges #(merge badges/defaults %))
+        (assoc :project (:name params)
+               :year-range year-range
+               :license-name (case (:license params)
+                               :mpl
+                               "MPL 2.0"
+                               :epl
+                               "EPL 1.0")))))
 
 (defn do-update [params]
-  (let [sections (section-map (slurp (io/resource "README_sections.md")))
-        sections (assoc sections :license (case (:license params)
-                                            :mpl
-                                            (:license-mpl sections)
-                                            :epl
-                                            (:license-epl sections)))
-        params (extra-params params)]
+  (let [params   (extra-params params)
+        sections (section-map (slurp (io/resource "README_sections.md")))
+        sections (assoc sections
+                        :license (case (:license params)
+                                   :mpl
+                                   (:license-mpl sections)
+                                   :epl
+                                   (:license-epl sections))
+                        :badges (badges/template (:badges params)))]
     (spit "README.md"
-          (update-sections
-           (slurp "README.md")
-           sections
-           params))))
+          (update-sections (slurp "README.md")
+                           sections
+                           params))))
 
 (defn do-gen [params]
   (when (.exists (io/file "README.md"))

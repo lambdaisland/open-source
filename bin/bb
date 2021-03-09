@@ -64,10 +64,10 @@ else
     echo "$name $babashka_version not found, installing to $install_dir..."
     download_url="https://github.com/borkdude/babashka/releases/download/v$babashka_version/babashka-$babashka_version-$platform-amd64.zip"
 
-    mkdir -p $install_dir
+    mkdir -p "$install_dir"
     echo -e "Downloading $download_url."
     curl -o bb.zip -sL "$download_url"
-    unzip -qqo "bb.zip" -d $install_dir
+    unzip -qqo "bb.zip" -d "$install_dir"
     rm "bb.zip"
     bb_path="$install_dir/bb"
 fi

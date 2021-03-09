@@ -1,12 +1,4 @@
-<!-- badges -->
-[![CircleCI](https://circleci.com/gh/lambdaisland/{{project}}.svg?style=svg)](https://circleci.com/gh/lambdaisland/{{project}}) [![cljdoc badge](https://cljdoc.org/badge/lambdaisland/{{project}})](https://cljdoc.org/d/lambdaisland/{{project}}) [![Clojars Project](https://img.shields.io/clojars/v/lambdaisland/{{project}}.svg)](https://clojars.org/lambdaisland/{{project}})
-<!-- /badges -->
-
-
-
 <!-- opencollective -->
-
-&nbsp;
 
 <img align="left" src="https://github.com/lambdaisland/open-source/raw/master/artwork/lighthouse_readme.png">
 
@@ -14,15 +6,10 @@
 
 ## Support Lambda Island Open Source
 
-{{project}} is part of a growing collection of quality Clojure libraries and
-tools released on the Lambda Island label. If you are using this project
-commercially then you are expected to pay it forward by
-[becoming a backer on Open Collective](http://opencollective.com/lambda-island#section-contribute),
+{{project}} is part of a growing collection of quality Clojure libraries created
+by the fine folks at [Gaiwan](https://gaiwan.co). Find the full list at [lambdaisland/open-source](https://github.com/lambdaisland/open-source). 
+You can pay it forward by [becoming a backer on our Open Collective](http://opencollective.com/lambda-island#section-contribute), 
 so that we may continue to enjoy a thriving Clojure ecosystem.
-
-&nbsp;
-
-&nbsp;
 
 <!-- /opencollective -->
 
