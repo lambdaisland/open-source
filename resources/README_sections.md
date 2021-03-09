@@ -6,7 +6,7 @@
 
 ## Support Lambda Island Open Source
 
-{{project}} is part of a growing collection of quality Clojure libraries created
+{{project}} is part of a growing collection of quality Clojure libraries created and maintained
 by the fine folks at [Gaiwan](https://gaiwan.co). Find the full list at [lambdaisland/open-source](https://github.com/lambdaisland/open-source). 
 You can pay it forward by [becoming a backer on our Open Collective](http://opencollective.com/lambda-island#section-contribute), 
 so that we may continue to enjoy a thriving Clojure ecosystem.
@@ -17,13 +17,14 @@ so that we may continue to enjoy a thriving Clojure ecosystem.
 
 <!-- installation -->
 ## Installation
-deps.edn
+
+To use the latest release, add the following to your `deps.edn` ([Clojure CLI](https://clojure.org/guides/deps_and_cli))
 
 ```
 {{group-id}}/{{project}} {:mvn/version "0.0.0"}
 ```
 
-project.clj
+or add the following to your `project.clj` ([Leiningen](https://leiningen.org/))
 
 ```
 [{{group-id}}/{{project}} "0.0.0"]
