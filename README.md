@@ -87,19 +87,35 @@ discoverability, so clients can find out who is there to talk to.
 
 ### edn-lines
 
-_still in alpha_
-
 Read/write newline-separated EDN files.
 
 [project site](https://github.com/lambdaisland/edn-lines) | [releases](https://github.com/lambdaisland/edn-lines/releases)
 
 ### lambdaisland/fetch
 
-_still in alpha_
-
 An idiomatic, promises-based wrapped for JavaScript's `fetch`.
 
 [project site](https://github.com/lambdaisland/fetch) | [releases](https://github.com/lambdaisland/fetch/releases)
+
+### lambdaisland/data-printers
+
+Define print handlers for custom or third party types easily. Cross platform and with support for multiple printing backends.
+
+[project site](https://github.com/lambdaisland/data-printers) | [releases](https://github.com/lambdaisland/data-printers/releases)
+
+### lambdaisland/daedalus
+
+2D pathfinding for ClojureScript, primarily for use in games. A wrapper around hxDaedalus-js.
+
+[project site](https://github.com/lambdaisland/daedalus) | [releases](https://github.com/lambdaisland/daedalus/releases)
+
+### lambdaisland/cljbox2d
+
+_still in alpha_
+
+2D physics engine API, Uses jBox2D on Clojure, and Planck.js on ClojureScript.
+
+[project site](https://github.com/lambdaisland/cljbox2d) | [releases](https://github.com/lambdaisland/cljbox2d/releases)
 
 ### Specmonstah-Malli
 
