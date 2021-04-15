@@ -33,15 +33,20 @@
   [root-name]
   (file (str root-name "/")))
 
-(defn- get-cwd-file
+(defn get-cwd-file
   []
   (io/file util/*cwd*))
 
-(defn- filter-dir
-  "Filters dir for files with names matching pattern re"
-  [^File dir re]
-  (filter #(re-matches re (.getName ^File %))
-          (.listFiles dir)))
+(defn dir-files [dir]
+  (.listFiles ^File dir))
+
+(defn parent-file [dir]
+  (.getParentFile ^File dir))
+
+(defn filter-files
+  "Filter list of files for names matching pattern re"
+  [files re]
+  (filter #(re-find re (.getName ^File %)) files))
 
 (defn glob
   "Returns a seq of java.io.File instances that match the given glob pattern.
@@ -57,10 +62,16 @@
         abs? (or (empty? root) ;unix
                  (= \: (second root))) ;windows
         start-dir (if abs? (get-root-file root) (get-cwd-file))
-        patterns (map glob->regex (if abs? (rest parts) parts))]
+        patterns (if abs? (rest parts) parts)]
     (reduce
-     (fn [files re]
-       (mapcat #(filter-dir % re) files))
+     (fn [files pattern]
+       (cond
+         (= "." pattern)
+         (mapcat dir-files files)
+         (= ".." pattern)
+         (map parent-file files)
+         :else
+         (mapcat #(filter-files (dir-files %) (glob->regex pattern)) files)))
      [start-dir]
      patterns)))
 
