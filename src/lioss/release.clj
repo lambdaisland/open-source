@@ -78,6 +78,12 @@
    "-d" (str "project=" (:gh-project opts))
    "-d" (str "version=" (:version opts))))
 
+(defn print-versions [opts]
+  (binding [*print-namespace-maps* false]
+    (let [project (symbol (:group-id opts) (:name opts))]
+      (prn `[~project ~(:version opts)])
+      (prn `{~project {:mvn/version ~(:version opts)}}))))
+
 (defn do-release [opts]
   (git/assert-branch #{"master" "main"})
   (git/assert-repo-clean)
@@ -117,6 +123,8 @@
 
       (trigger-cljdoc-build opts)
       (util/do-modules opts trigger-cljdoc-build)
+
+      (print-versions opts)
 
       (when-let [hook (:post-release-hook opts)]
         (hook opts)))))

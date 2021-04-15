@@ -36,6 +36,10 @@
    {:description "Build and install jar(s) locally"
     :command release/do-install}
 
+   "print-versions"
+   {:description "Print deps.edn / lein coordinates"
+    :command release/print-versions}
+
    "gh_actions_changelog_output"
    {:description "Print the last stanza of the changelog in a format that GH actions understands"
     :command gh-actions/set-changelog-output}
