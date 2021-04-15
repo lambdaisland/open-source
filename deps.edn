@@ -1,7 +1,9 @@
 {:paths ["src" "resources"]
  :deps
  {lambdaisland/regal {:git/url "https://github.com/lambdaisland/regal"
-                      :sha "718dbd74b9a7aee95e49d3fe0420c0e64efa61ed"}}
+                      :sha "718dbd74b9a7aee95e49d3fe0420c0e64efa61ed"}
+  rewrite-clj/rewrite-clj {:mvn/version "1.0.605-alpha"}}
+
  :aliases
  {:build-releases
   {:extra-deps {lambdaisland/janus {:git/url "https://github.com/lambdaisland/janus"
