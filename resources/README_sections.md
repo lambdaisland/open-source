@@ -5,7 +5,7 @@
 
 &nbsp;
 
-glogi is part of a growing collection of quality Clojure libraries created and maintained
+{{project}} is part of a growing collection of quality Clojure libraries created and maintained
 by the fine folks at [Gaiwan](https://gaiwan.co).
 
 Pay it forward by [becoming a backer on our Open Collective](http://opencollective.com/lambda-island),
