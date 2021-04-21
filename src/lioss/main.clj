@@ -64,7 +64,7 @@
   {:name       (git/project-name)
    :version    (git/version-string)
    :sha        (git/current-sha)
-   :group-id   "lambdaisland"
+   :group-id   "com.lambdaisland"
    :gh-project (str "lambdaisland/" (git/project-name))
    :org-name   "Lambda Island"
    :org-url    "https://lambdaisland.com"
