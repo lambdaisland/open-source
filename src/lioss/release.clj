@@ -75,7 +75,7 @@
 (defn trigger-cljdoc-build [opts]
   (subshell/spawn
    "curl" "-v" "-XPOST" "https://cljdoc.org/api/request-build2"
-   "-d" (str "project=" (:gh-project opts))
+   "-d" (str "project=" (symbol (:group-id opts) "/" (:name opts)))
    "-d" (str "version=" (:version opts))))
 
 (defn print-versions [opts]

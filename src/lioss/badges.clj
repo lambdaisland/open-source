@@ -14,9 +14,9 @@
 
 (def templates
   (array-map
-   :circle-ci "[![CircleCI](https://circleci.com/gh/lambdaisland/{{project}}.svg?style=svg)](https://circleci.com/gh/lambdaisland/{{project}})"
-   :cljdoc    "[![cljdoc badge](https://cljdoc.org/badge/lambdaisland/{{project}})](https://cljdoc.org/d/lambdaisland/{{project}})"
-   :clojars   "[![Clojars Project](https://img.shields.io/clojars/v/lambdaisland/{{project}}.svg)](https://clojars.org/lambdaisland/{{project}})"))
+   :circle-ci "[![CircleCI](https://circleci.com/gh/{{group-id}}/{{project}}.svg?style=svg)](https://circleci.com/gh/{{group-id}}/{{project}})"
+   :cljdoc    "[![cljdoc badge](https://cljdoc.org/badge/{{group-id}}/{{project}})](https://cljdoc.org/d/{{group-id}}/{{project}})"
+   :clojars   "[![Clojars Project](https://img.shields.io/clojars/v/{{group-id}}/{{project}}.svg)](https://clojars.org/{{group-id}}/{{project}})"))
 
 (def defaults
   {:circle-ci (and (seq (filter #(re-find #"_test.clj(s|c)?" (str %))
