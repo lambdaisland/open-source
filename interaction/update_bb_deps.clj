@@ -35,23 +35,17 @@
                  :sha
                  (git/current-sha))
 
-(update-artifact (shellutil/glob "../**/deps.edn")
-                 'lambdaisland/glogi
-                 :mvn/version
-                 "1.0.106")
-
-(rename-artifact (shellutil/glob "../**/deps.edn")
-                 'lambdaisland/glogi
-                 'com.lambdaisland/glogi)
-
 (def renames
   '{lambdaisland/glogi com.lambdaisland/glogi
-    lambdaisland/funnel-client com.lambdaisland/funnel-client})
+    lambdaisland/funnel-client com.lambdaisland/funnel-client
+    lambdaisland/kaocha-cljs com.lambdaisland/kaocha-cljs})
 
 (def versions
-  '{com.lambdaisland/glogi ""})
+  '{com.lambdaisland/glogi "1.0.112"
+    com.lambdaisland/kaocha-cljs "1.0.93"})
 
 (doseq [[from to] renames]
   (rename-artifact (shellutil/glob "../**/deps.edn") from to))
+
 (doseq [[from to] versions]
-  (update-rename-artifact (shellutil/glob "../**/deps.edn") from :mvn/version to))
+  (update-artifact (shellutil/glob "../**/deps.edn") from :mvn/version to))
