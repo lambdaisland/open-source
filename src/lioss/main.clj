@@ -61,14 +61,15 @@
     :command readme/do-update}])
 
 (def defaults
-  {:name       (git/project-name)
-   :version    (git/version-string)
-   :sha        (git/current-sha)
-   :group-id   "com.lambdaisland"
-   :gh-project (str "lambdaisland/" (git/project-name))
-   :org-name   "Lambda Island"
-   :org-url    "https://lambdaisland.com"
-   :date       (str (java.time.LocalDate/now))})
+  {:name           (git/project-name)
+   :version        (git/version-string)
+   :sha            (git/current-sha)
+   :group-id       "com.lambdaisland"
+   :gh-project     (str "lambdaisland/" (git/project-name))
+   :org-name       "Lambda Island"
+   :org-url        "https://lambdaisland.com"
+   :date           (str (java.time.LocalDate/now))
+   :latest-version (or (git/last-released-version) "0.0.0")})
 
 (defn module-versions [{:keys [name group-id version modules]}]
   (into {(symbol group-id name) version}

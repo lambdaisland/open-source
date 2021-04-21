@@ -26,13 +26,13 @@ You can find an overview of our projects at [lambdaisland/open-source](https://g
 To use the latest release, add the following to your `deps.edn` ([Clojure CLI](https://clojure.org/guides/deps_and_cli))
 
 ```
-{{group-id}}/{{project}} {:mvn/version "0.0.0"}
+{{group-id}}/{{project}} {:mvn/version "{{latest-version}}"}
 ```
 
 or add the following to your `project.clj` ([Leiningen](https://leiningen.org/))
 
 ```
-[{{group-id}}/{{project}} "0.0.0"]
+[{{group-id}}/{{project}} "{{latest-version}}"]
 ```
 <!-- /installation -->
 

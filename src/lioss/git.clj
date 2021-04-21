@@ -52,3 +52,31 @@
 (defn assert-repo-clean []
   (when-not (repo-clean?)
     (util/fatal "Repo not clean." (git "status" "--short"))))
+
+(defn version-vector [v]
+  (let [v (first (str/split v #"\+"))]
+    ;; if the segment starts with digits then parse those and compare them
+    ;; numerically, else keep the segment and compare it as a string.
+    (mapv #(if-let [num (re-find #"^\d+" %)]
+             (Integer/parseInt num)
+             %)
+          (clojure.string/split v #"\."))))
+
+(defn compare-versions [v1 v2]
+  (let [v1 (version-vector v1)
+        v2 (version-vector v2)
+        significance (min (count v1) (count v2))]
+    (compare (vec (take significance v1))
+             (vec (take significance v2)))))
+
+(defn version>=? [v1 v2]
+  (if (and v1 v2)
+    (>= (compare-versions v1 v2) 0)
+    true))
+
+(defn last-released-version []
+  (->> (str/split (git "tag") #"\n")
+       (filter #(#{\v} (first %)))
+       (map #(subs % 1))
+       (sort #(compare-versions %1 %2))
+       last))
