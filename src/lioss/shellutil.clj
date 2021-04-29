@@ -4,7 +4,10 @@
   (:import [java.io File]))
 
 (defn file [path]
-  (io/file util/*cwd* path))
+  (let [f (io/file path)]
+    (if (.isAbsolute f)
+      f
+      (io/file util/*cwd* path))))
 
 (defn- glob->regex
   "Takes a glob-format string and returns a regex."

@@ -30,22 +30,29 @@
                 rzip/root-string
                 (->> (spit path)))))))
 
-(update-artifact (shellutil/glob "../*/bb_deps.edn")
-                 'lambdaisland/open-source
-                 :sha
-                 (git/current-sha))
+(comment
+  (update-artifact (shellutil/glob "../*/bb_deps.edn")
+                   'lambdaisland/open-source
+                   :sha
+                   (git/current-sha)))
 
 (def renames
   '{lambdaisland/glogi com.lambdaisland/glogi
     lambdaisland/funnel-client com.lambdaisland/funnel-client
-    lambdaisland/kaocha-cljs com.lambdaisland/kaocha-cljs})
+    lambdaisland/kaocha-cljs com.lambdaisland/kaocha-cljs
+    lambdaisland/daedalus com.lambdaisland/daedalus})
 
 (def versions
-  '{com.lambdaisland/glogi "1.0.112"
-    com.lambdaisland/kaocha-cljs "1.0.93"})
+  '{com.lambdaisland/glogi "1.0.116"
+    com.lambdaisland/kaocha-cljs "1.0.93"
+    com.lambdaisland/daedalus "0.0.35"})
 
-(doseq [[from to] renames]
-  (rename-artifact (shellutil/glob "../**/deps.edn") from to))
+(comment
+  (let [deps-edn-files (mapcat shellutil/glob ["/home/arne/ITRevolution/does/**/deps.edn" "../**/deps.edn"])]
+    (println "renaming")
+    (doseq [[from to] renames]
+      (rename-artifact deps-edn-files from to))
 
-(doseq [[from to] versions]
-  (update-artifact (shellutil/glob "../**/deps.edn") from :mvn/version to))
+    (println "updating")
+    (doseq [[from to] versions]
+      (update-artifact deps-edn-files from :mvn/version to))))
