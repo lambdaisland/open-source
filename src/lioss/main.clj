@@ -32,6 +32,10 @@
    {:description "Generate pom files"
     :command pom/spit-poms}
 
+   "relocation-pom"
+   {:description "Generate pom files to relocate artifacts to a new groupId"
+    :command pom/spit-relocation-poms}
+
    "install"
    {:description "Build and install jar(s) locally"
     :command release/do-install}
@@ -92,10 +96,11 @@
 
 (defn main [opts]
   (let [commands (concat (:commands opts) commands)
-        opts     (-> (merge defaults (util/read-deps) opts)
+        opts     (merge defaults (util/read-deps) opts)
+        opts     (-> opts
                      (update :modules #(for [{:keys [name] :as mod-opts} %]
                                          (util/with-cwd (str "modules/" name)
-                                           (merge defaults (util/read-deps) opts mod-opts)))))
+                                           (merge opts mod-opts)))))
         mod-vers (module-versions opts)
         opts     (-> opts
                      (assoc :module-versions mod-vers)

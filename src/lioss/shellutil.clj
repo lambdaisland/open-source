@@ -17,7 +17,7 @@
          curly-depth 0]
     (let [[c j] stream]
       (cond
-        (nil? c) (re-pattern (str "^" (if (= \. (first s)) "" "(?=[^\\.])") re))
+        (nil? c) (re-pattern (str "^" (if (= \. (first s)) "" "(?=[^\\.])") re "$"))
         (= c \\) (recur (nnext stream) (str re c c) curly-depth)
         (= c \/) (recur (next stream) (str re (if (= \. j) c "/(?=[^\\.])"))
                         curly-depth)
@@ -64,8 +64,12 @@
   (let [[root & _ :as parts] (.split #"[\\/]" pattern)
         abs? (or (empty? root) ;unix
                  (= \: (second root))) ;windows
-        start-dir (if abs? (get-root-file root) (get-cwd-file))
-        patterns (if abs? (rest parts) parts)]
+        home? (= "~" (first parts))
+        start-dir (cond
+                    abs? (get-root-file root)
+                    home? (io/file (System/getProperty "user.home"))
+                    :else (get-cwd-file))
+        patterns (if (or abs? home?) (rest parts) parts)]
     (reduce
      (fn [files pattern]
        (cond
@@ -73,6 +77,9 @@
          (mapcat dir-files files)
          (= ".." pattern)
          (map parent-file files)
+         (= "**" pattern)
+         (filter #(.isDirectory %)
+                 (mapcat file-seq files))
          :else
          (mapcat #(filter-files (dir-files %) (glob->regex pattern)) files)))
      [start-dir]

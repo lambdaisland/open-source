@@ -48,7 +48,11 @@
     com.lambdaisland/daedalus "0.0.35"})
 
 (comment
-  (let [deps-edn-files (mapcat shellutil/glob ["/home/arne/ITRevolution/does/**/deps.edn" "../**/deps.edn"])]
+  (let [deps-edn-files (mapcat shellutil/glob ["/home/arne/ITRevolution/does/**/deps.edn"
+                                               "/home/arne/Eleven/**/deps.edn"
+                                               "/home/arne/ARS/**/deps.edn"
+                                               "/home/arne/LambdaIsland/**/deps.edn"
+                                               "../**/deps.edn"])]
     (println "renaming")
     (doseq [[from to] renames]
       (rename-artifact deps-edn-files from to))

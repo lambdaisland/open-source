@@ -1,7 +1,8 @@
 {:paths ["src" "resources"]
  :deps
  {lambdaisland/regal {:mvn/version "0.0.97"}
-  rewrite-clj/rewrite-clj {:mvn/version "1.0.605-alpha"}}
+  rewrite-clj/rewrite-clj {:mvn/version "1.0.605-alpha"}
+  olical/depot {:mvn/version "2.2.0"}}
 
  :aliases
  {:build-releases

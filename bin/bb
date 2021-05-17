@@ -11,7 +11,7 @@
 # Will use rlwrap if it is available.
 
 name=babashka
-babashka_version="0.2.10"
+babashka_version="0.3.8"
 store_dir="$(pwd)/.store"
 install_dir="${store_dir}/$name-$babashka_version"
 
@@ -56,19 +56,34 @@ elif [[ -f "$install_dir/bb" ]]; then
     bb_path="$install_dir/bb"
 else
     case "$(uname -s)" in
-        Linux*)     platform=linux;;
-        Darwin*)    platform=macos;;
-        MINGW64*)   platform=windows;;
+        Linux*)
+            ext=tar.gz
+            unpack_bb() {
+                tar -xzf "bb.$ext" -C "$install_dir"
+            }
+            platform=linux;;
+        Darwin*)
+            ext=tar.gz
+            unpack_bb() {
+                tar -xzf "bb.$ext" -C "$install_dir"
+            }
+            platform=macos;;
+        MINGW64*)
+            ext=zip
+            unpack_bb() {
+                unzip -qqo "bb.$ext" -d "$install_dir"
+            }
+            platform=windows;;
     esac
 
     echo "$name $babashka_version not found, installing to $install_dir..."
-    download_url="https://github.com/borkdude/babashka/releases/download/v$babashka_version/babashka-$babashka_version-$platform-amd64.zip"
+    download_url="https://github.com/borkdude/babashka/releases/download/v$babashka_version/babashka-$babashka_version-$platform-amd64.$ext"
 
     mkdir -p "$install_dir"
     echo -e "Downloading $download_url."
-    curl -o bb.zip -sL "$download_url"
-    unzip -qqo "bb.zip" -d "$install_dir"
-    rm "bb.zip"
+    curl -o "bb.$ext" -sL "$download_url"
+    unpack_bb
+    rm "bb.$ext"
     bb_path="$install_dir/bb"
 fi
 
