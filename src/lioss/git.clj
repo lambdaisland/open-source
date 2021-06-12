@@ -28,6 +28,12 @@
 (defn clean! []
   (git "clean" "-xfd"))
 
+(defn clone-with-cwd! [url cwd]
+  (git! "clone" url :dir cwd))
+
+(defn clone! [url]
+  (git! "clone" url))
+
 (defn version-string []
   (str
    (if (.exists (io/file ".VERSION_PREFIX"))
