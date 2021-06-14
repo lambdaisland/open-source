@@ -3,9 +3,9 @@
   (:require [org.httpkit.client :as http]
             [cheshire.core :as json]
             [lioss.git :as git]
-            [clojure.string :as string])
-  (:import [java.time LocalDateTime Instant ]
-           [java.time.temporal ChronoUnit])
+            [clojure.java.shell  :as shell]
+            [clojure.string :as string]) (:import [java.time LocalDateTime Instant ]
+           [java.time.temporal ChronoField])
   )
 
 
@@ -54,11 +54,47 @@
 (defn get-recent-lioss-repositories
   "Gets Lambda Island Open Source repositories modified after a specific date.
   
-  If no date is specified, assumes a year ago."
+  If no date is specified, assumes 365 days ago."
   ([]
    (let [year-ago (.minus (Instant/now) 365 ChronoUnit/DAYS) ]))
   ([start-date]
    (filter 
      #(= -1 (compare start-date (Instant/parse (get % "updated_at")) ))
      (get-all-lioss-repositories)))) 
+
+(defn decode-base64 [s]
+  (:out (shell/sh "base64" "-d" :in s))
+  )
+
+(defn get-file
+  "Gets a file from the respository"
+  [repository path request-opts]
+  (-> (get  repository "contents_url")
+      (string/replace "{+path}" path)
+       (http/get request-opts)
+      deref
+      :body
+      json/decode
+      (get "content")
+      decode-base64))
+
+(def get-token 
+  (memoize (fn []
+             (println "GitHub token needed for this operation.")
+             (println "You can create a token by visiting https://github.com/settings/tokens.")
+             (print "Token: ")
+             (read-line))))
+
+(defn get-clojars-lioss-repositories
+  "Gets Lambda Island Open Source repositories with a Clojars badge.
+  
+  This is a pretty accurate way of finding actual libraries or applications,
+  rather than repositories that are merely for demonstration purposes.
+  
+  Because it does a signficant number of requests, it requires authorization."
+  []
+  (let [headers {"Authorization" (str "token " (get-token))} l ]
+    (filter #(string/includes? (get-file %  "README.md" {:headers headers}) 
+                               "img.shields.io/clojars")
+            l)))
 
