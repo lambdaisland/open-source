@@ -29,7 +29,7 @@
   (git "clean" "-xfd"))
 
 (defn clone-with-cwd! [url cwd]
-  (git! "clone" url :dir cwd))
+  (git! "clone" url {:dir cwd :continue-on-error? true}))
 
 (defn clone! [url]
   (git! "clone" url))

@@ -93,8 +93,18 @@
   
   Because it does a signficant number of requests, it requires authorization."
   []
-  (let [headers {"Authorization" (str "token " (get-token))} l ]
+  (let [headers {"Authorization" (str "token " (get-token))} ]
     (filter #(string/includes? (get-file %  "README.md" {:headers headers}) 
                                "img.shields.io/clojars")
-            l)))
+            (get-all-lioss-repositories))))
+
+
+
+(defn clone-repositories [respositories dir] 
+  (doseq
+    [url  (map #(get % "clone_url") repositories)]
+    (try 
+      (git/clone-with-cwd! url dir )
+      (catch Exception _e
+        (println _e)))))
 
