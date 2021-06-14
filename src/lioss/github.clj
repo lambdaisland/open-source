@@ -9,7 +9,9 @@
   )
 
 
-(def highlighted #{"kaocha" "deep-diff2" "regal" "uri" "glogi" "ansi" "chui"
+(def highlighted 
+ "Repositories that we have highlighted in the README of this repository." 
+  #{"kaocha" "deep-diff2" "regal" "uri" "glogi" "ansi" "chui"
                    "funnel" "edn-lines" "fetch" "data-printers" "daedalus"
                    "cljbox2d" "spec-monstah-malli" "trikl" "zipper-viz"})
 
@@ -22,20 +24,24 @@
           :when (string/includes? rel "next")]
     string)))
 
-(defn get-all-lioss-repos []
+(defn get-all-lioss-repositories
+  "Fetch every Lambda Island Open Source repository."
+  []
   (loop [url "https://api.github.com/orgs/lambdaisland/repos"
-         repos []]
+         repositories []]
     (let [response @(http/get url)
           body (json/decode (:body response))
-          new-repos (into repos body)]
+          new-repositories (into repositories body)]
       (if-let [next-url  (get-next-url (get-in response [:headers :link]))]
-        (recur next-url new-repos)
-        new-repos))))
+        (recur next-url new-repositories)
+        new-repositories))))
 
 
-(defn get-top-lioss-repos []
+(defn get-top-lioss-repositories 
+  "Fetches only the Lambda Island Open Source repositories featured in our README."
+  []
   (filter  #(contains? highlighted  (get %  "name" ))
-    (get-all-lioss-repos)))
+    (get-all-lioss-repositories)))
 (
 
   
@@ -45,13 +51,14 @@
   )
 
 
-(defn get-recent-lioss-repos []
-  (let [year-ago (.minus (Instant/now) 365 ChronoUnit/DAYS) ]
-    (filter 
-      #(= -1 (compare year-ago (Instant/parse (get % "updated_at")) ))
-            (get-all-lioss-repos) )))
-
-
-
-
+(defn get-recent-lioss-repositories
+  "Gets Lambda Island Open Source repositories modified after a specific date.
+  
+  If no date is specified, assumes a year ago."
+  ([]
+   (let [year-ago (.minus (Instant/now) 365 ChronoUnit/DAYS) ]))
+  ([start-date]
+   (filter 
+     #(= -1 (compare start-date (Instant/parse (get % "updated_at")) ))
+     (get-all-lioss-repositories)))) 
 
