@@ -94,4 +94,4 @@
       (catch Exception _e
         (println _e)))))
 
-(clone-repositories (get-clojars-lioss-repositories) "..")
+(comment (clone-repositories (get-clojars-lioss-repositories) ".."))
