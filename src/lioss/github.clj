@@ -4,8 +4,9 @@
             [cheshire.core :as json]
             [lioss.git :as git]
             [clojure.java.shell  :as shell]
-            [clojure.string :as string]) (:import [java.time LocalDateTime Instant ]
-                                                  [java.time.temporal ChronoUnit ChronoField]))
+            [clojure.string :as string]) 
+  (:import [java.time LocalDateTime Instant]
+           [java.time.temporal ChronoUnit ChronoField]))
 
 (def highlighted
   "Repositories that we have highlighted in the README of this repository."
@@ -96,13 +97,11 @@
 
 (defn get-repository-issues [repository]
   (let [url (format "https://api.github.com/repos/lambdaisland/%s/issues" repository)]
-
     (-> (format "https://api.github.com/repos/lambdaisland/%s/issues" repository)
-    (http/get )
-    deref
-    :body
-    json/decode
-    ) ))
+        (http/get )
+        deref
+        :body
+        json/decode)))
 
 (defn get-all-repository-issues
   "Fetch all issues in a Lambda Island Open Source repository."
@@ -117,23 +116,21 @@
         (recur next-url new-issues)
         new-issues))))
 
-(count (get-repository-issues "kaocha"))
+(comment (count (get-repository-issues "kaocha")))
 
-(count (get-all-repository-issues "kaocha"))
+(comment (count (get-all-repository-issues "kaocha")))
 
-(-> (format "https://api.github.com/repos/lambdaisland/%s/issues" "kaocha")
-    (http/get )
-    deref
-    :headers
-    :link
-    get-next-url
-    )
+(comment (-> (format "https://api.github.com/repos/lambdaisland/%s/issues" "kaocha")
+             (http/get)
+             deref
+             :headers
+             :link
+             get-next-url))
 
-(->> (get-all-repository-issues "kaocha")
-    (sort-by #(get % "updated_at"))
-    reverse
-    ;; (map #(get % "title"))
-    (map (fn [{:strs [title updated_at] }] [title updated_at] ))
-    )
+(comment (->> (get-all-repository-issues "kaocha")
+              (sort-by #(get % "updated_at"))
+              reverse
+              ;; (map #(get % "title"))
+              (map (fn [{:strs [title updated_at] }] [title updated_at] ))))
 
 (comment (clone-repositories (get-clojars-lioss-repositories) ".."))
