@@ -94,4 +94,46 @@
       (catch Exception _e
         (println _e)))))
 
+(defn get-repository-issues [repository]
+  (let [url (format "https://api.github.com/repos/lambdaisland/%s/issues" repository)]
+
+    (-> (format "https://api.github.com/repos/lambdaisland/%s/issues" repository)
+    (http/get )
+    deref
+    :body
+    json/decode
+    ) ))
+
+(defn get-all-repository-issues
+  "Fetch all issues in a Lambda Island Open Source repository."
+  [repository ]
+  (loop [url (format "https://api.github.com/repos/lambdaisland/%s/issues" "kaocha")
+         issues []]
+    (let [headers {"Authorization" (str "token " (get-token))}
+          response @(http/get url {:headers headers})
+          body (json/decode (:body response))
+          new-issues (into issues body)]
+      (if-let [next-url  (get-next-url (get-in response [:headers :link]))]
+        (recur next-url new-issues)
+        new-issues))))
+
+(count (get-repository-issues "kaocha"))
+
+(count (get-all-repository-issues "kaocha"))
+
+(-> (format "https://api.github.com/repos/lambdaisland/%s/issues" "kaocha")
+    (http/get )
+    deref
+    :headers
+    :link
+    get-next-url
+    )
+
+(->> (get-all-repository-issues "kaocha")
+    (sort-by #(get % "updated_at"))
+    reverse
+    ;; (map #(get % "title"))
+    (map (fn [{:strs [title updated_at] }] [title updated_at] ))
+    )
+
 (comment (clone-repositories (get-clojars-lioss-repositories) ".."))
