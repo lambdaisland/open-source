@@ -55,16 +55,17 @@
      [:organization
       [:name (:org-name opts)]
       [:url (:org-url opts)]]
-     [:licenses
-      (case (:license opts)
-        :epl
-        [:license
-         [:name "Eclipse Public License 1.0"]
-         [:url "https://www.eclipse.org/legal/epl-v10.html"]]
-        :mpl
-        [:license
-         [:name "MPL-2.0"]
-         [:url "https://www.mozilla.org/media/MPL/2.0/index.txt"]])]
+     (when (:license opts)
+       [:licenses
+        (case (:license opts)
+          :epl
+          [:license
+           [:name "Eclipse Public License 1.0"]
+           [:url "https://www.eclipse.org/legal/epl-v10.html"]]
+          :mpl
+          [:license
+           [:name "MPL-2.0"]
+           [:url "https://www.mozilla.org/media/MPL/2.0/index.txt"]])])
      [:scm
       [:url url]
       [:connection (str "scm:git:git://github.com/" gh-project ".git")]
