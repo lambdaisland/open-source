@@ -1,3 +1,149 @@
+# [Dom-types](https://github.com/lambadisland/dom-types) 0.0.11 (2021-05-21 / 72aceee)
+
+-  First release
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.116 (2021-04-26 / e1dbcb3)
+
+-  Fixed an issue with advanced compilation when calling `level-value`, which is
+  used by the console handler
+
+# [Daedalus](https://github.com/lambadisland/daedalus) 0.0.35 (2021-04-24 / 3ee44c0)
+
+-  `next?` predicate
+
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.112 (2021-04-21 / a104211)
+
+-  Artifact name changed to `com.lambdaisland/glogi` in line with Clojars policy
+
+# [Kaocha-cljs](https://github.com/lambadisland/kaocha-cljs) 1.0.93 (2021-04-21 / b6a7aa1)
+
+-  Clearly alert the user that ClojureScript versions before 1.10 aren't
+  supported, rather than failing on whatever 1.10 functionality happens to be
+  invoked first.
+-  Show the file/line of the deftest in case cljs.test is not able to provide a
+  reasonable file/line number.
+-  Bump com.lambdaisland/glogi to 1.0.112
+-  Release under com.lambdaisland/kaocha-cljs in line with Clojars policy
+-  Bump all dependencies
+
+# [Funnel-client](https://github.com/lambadisland/funnel-client) 0.0.18 (2021-04-21 / 9afe32b)
+
+-  Bump lambdaisland/glogi to 1.0.106
+
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.106 (2021-04-20 / 1128462)
+
+-  Prevent single-arg `logger` from erasing the log level
+
+# [Regal](https://github.com/lambadisland/regal) 0.0.94 (2021-04-20 / e087c28)
+
+-  Added support for `[:repeat form num]` (so fixed number of repeats, instead of
+  min/max) to the generator
+
+# [Regal](https://github.com/lambadisland/regal) 0.0.97 (2021-04-20 / 6f5f1cc)
+
+-  Add `lambdaisland.regal.generator/generate` as a shorthand for generating a
+  single value from a regal expression
+
+# [Chui](https://github.com/lambadisland/chui) 1.0.179 (2021-04-19 / 7332d1e)
+
+-  Upgrade glogi dependency
+
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.100 (2021-04-15 / 8a8ccf0)
+
+-  More fixes to deal with upstream changes in Google Closure Library
+
+# [Daedalus](https://github.com/lambadisland/daedalus) 0.0.31 (2021-04-05 / d48b47e)
+
+-  Two-arity version of debug draw functions
+-  Add debug-draw to path-handler
+-  Add ILookup support to path-handler
+
+# [Daedalus](https://github.com/lambadisland/daedalus) 0.0.28 (2021-04-03 / 6df687c)
+
+-  Added combined "path-handler" for a more convenient and encapsulated API
+
+# [Daedalus](https://github.com/lambadisland/daedalus) 0.0.25 (2021-03-28 / ce0c699)
+
+-  Added `reset` for path-iterators
+-  Added `polygon` function
+
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.80 (2021-03-09 / 9c5ea2b)
+
+-  Maintain compatibility with newer versions of the Google Closure library,
+  which introduced breaking changes in v20210302
+
+# [Glogi](https://github.com/lambadisland/glogi) 1.0.83 (2021-03-09 / d0f76e8)
+
+-  With `lambdaisland.glogc` there is now an official way to use the
+  Glogi/Pedestal-log combo in a consistent cross-platform way
+
+# [Kaocha](https://github.com/lambadisland/kaocha) 1.0.829 (2021-03-08 / a88ebda)
+
+-  Kaocha watch can now add ignores from `.gitignore` and `.ignore`. To enable
+    this feature, set `:kaocha.watch/use-ignore-file` to true in your deps.edn.
+-  Kaocha now falls back to the notifications provided by Java's AWT when it can't
+    find `notify-send` or `terminal-notifier`.
+-  Clearly alert the user that Clojure versions before 1.9 aren't supported, rather than
+    failing on whatever 1.9 functionality happens to be invoked first.
+-  Fixed an issue with the definition of spec `:kaocha.test-plan/load-error` that
+    caused a ClassCastException whenever a generator was created for it.
+-  Errors when loading plugins are more specific, specifying which namespaces, if
+    any, failed to load.
+-  Warn when running Kaocha without a configuration file. This is fine for
+    experimenting, but for long-term use, we recommend creating a configuration
+    file to avoid changes in behavior between releases.
+-  Provide a warning when no tests are found.
+-  Fix exception when running Kaocha on Windows with the built-in notification
+    plugin enabled.
+
+# [Daedalus](https://github.com/lambadisland/daedalus) 0.0.14 (2021-02-28 / 83a1146)
+
+-  Initial release
+# [Data-printers](https://github.com/lambadisland/data-printers) 0.0.22 (2021-02-28 / f763641)
+
+
+# [Chui](https://github.com/lambadisland/chui) 1.0.173 (2021-02-26 / 1e3ed0b)
+
+-  Added text wrapping support for test reports
+-  Added basic column resizing via `resize: horizontal` CSS support
+-  Change default in UI to show passing tests
+
+# [Data-printers](https://github.com/lambadisland/data-printers) 0.0.19 (2021-02-25 / 68f6e4e)
+
+-  Improve ClojureScript handling
+
+# [Data-printers](https://github.com/lambadisland/data-printers) 0.0.8 (2021-02-24 / 0aa1553)
+
+-  `lambdaisland.data-printers/register-print`
+-  `lambdaisland.data-printers/register-pprint`
+-  `lambdaisland.data-printers.puget/register-puget`
+-  `lambdaisland.data-printers.deep-diff/register-deep-diff`
+-  `lambdaisland.data-printers.deep-diff2/register-deep-diff2`
+-  `lambdaisland.data-printers.transit/register-write-handler`
+# [Data-printers](https://github.com/lambadisland/data-printers) 0.0.11 (2021-02-24 / c94fdcc)
+
+-  Include optional dependencies in the pom, marked as optional
+
+# [Garden-watcher](https://github.com/lambadisland/garden-watcher) 1.0.33 (2021-01-14 / 777c23b)
+
+-  Support for *.cljc files
+-  Make namespace to file path conversion (and vice versa) more robust
+
+# [Garden-watcher](https://github.com/lambadisland/garden-watcher) 1.0.36 (2021-01-14 / 4628d5b)
+
+-  Update dependencies
+  - com.stuartsierra/component {:mvn/version "0.4.0"} -> {:mvn/version "1.0.0"}
+  - org.clojure/java.classpath {:mvn/version "0.3.0"} -> {:mvn/version "1.0.0"}
+  - garden {:mvn/version "1.3.9"} -> {:mvn/version "1.3.10"}
+-  com.stuartsierra/component {:mvn/version "0.4.0"} -> {:mvn/version "1.0.0"}
+-  org.clojure/java.classpath {:mvn/version "0.3.0"} -> {:mvn/version "1.0.0"}
+-  garden {:mvn/version "1.3.9"} -> {:mvn/version "1.3.10"}
+
+# [Fetch](https://github.com/lambadisland/fetch) 0.0.23 (2021-01-04 / b8a521a)
+
+-  Fix query-params encoding issue and path/query-params normalization (@den1k)
+-  Dependency version bumps: lambdaisland/uri, js-interop, transit-cljs
+-  Remove direct dependency on Clojure/ClojureScript, people will generally bring them themselves
+
 # [Fetch](https://github.com/lambadisland/fetch) 0.0.16 (2020-12-01 / d5f92bd)
 
 -  * Replaced `kitchen-async` dependency with `mhuebert/kitchen-async`, which is the same lib with a fixed version on Clojars
@@ -7,6 +153,8 @@
 
 # [Kaocha](https://github.com/lambadisland/kaocha) 1.0.726 (2020-11-24 / faa6ef6)
 
+-  `If the value of a configuration key is not a collection or symbol,
+  a more helpful error message is output. Fixes #124`
 -  `kaocha.type.spec.test.check` now correctly builds fdef testables with
   configuration options from their enclosing test suites.
 -  `kaocha.plugin.alpha.spec-test-check` now honors command line arguments based
@@ -147,7 +295,7 @@
 
 # [Funnel-client](https://github.com/lambadisland/funnel-client) 0.0.13 (2020-08-19 / 0eb52ad)
 
--  Bump lambdaisland.glogi to 1.0.70
+-  Bump lambdaisland/glogi to 1.0.70
 
 # [Chui](https://github.com/lambadisland/chui) 0.0.133 (2020-08-17 / af3a0d3)
 
@@ -582,6 +730,12 @@
 -  Added support for `cljs.test/async`.
 -  Added initial support for `cljs.test/use-fixtures`. Currently both `:each` and `:once` fixtures are treated as `:each` fixtures, so they run before/after each test var.
 
+# [Hillchart](https://github.com/lambadisland/hillchart) 1.0.0 (2019-04-05)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) 1.0.0 (2019-04-05)
+
+
 # [Deep-diff2](https://github.com/lambadisland/deep-diff2) 0.0-35 (2019-03-31 / 3b2ad04)
 
 -  Added type hints to prevent reflective calls
@@ -736,7 +890,6 @@
 # [Kaocha-cljs](https://github.com/lambadisland/kaocha-cljs) 0.0-11 (2018-12-12 / 53fe73a)
 
 -  Initial implementation
-
 # [Kaocha-cloverage](https://github.com/lambadisland/kaocha-cloverage) 0.0-22 (2018-12-10 / ee13a86)
 
 -  Don't rely on Cloverage to find namespaces, this fixes compatibility with Cucumber.
@@ -809,6 +962,15 @@
 # [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-28 (2018-12-05 / 39c6c82)
 
 -  Add Kaocha as a dependency, so that cljdoc can analyze kaocha-cucumber
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.4.0](https://github.com/broofa/node-mime/compare/v2.3.1...v2.4.0) (2018-11-26)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.4.0](https://github.com/broofa/node-mime/compare/v2.3.1...v2.4.0) (2018-11-26)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.4.0](https://github.com/broofa/node-mime/compare/v2.3.1...v2.4.0) (2018-11-26)
+
 
 # [Kaocha-cucumber](https://github.com/lambadisland/kaocha-cucumber) 0.0-20 (2018-11-23 / bf77871)
 
@@ -901,6 +1063,12 @@
 
 -  `lambdaisland.deep-diff.printer/print-*` are now public, as they can be used
   in custom print handlers.
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [1.4.0](https://github.com/medikoo/cli-color/compare/v1.3.0...v1.4.0) (2018-10-23)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [1.4.0](https://github.com/medikoo/cli-color/compare/v1.3.0...v1.4.0) (2018-10-23)
+
 
 # [Kaocha](https://github.com/lambadisland/kaocha) 0.0-217 (2018-10-22 / 642cff8)
 
@@ -1012,6 +1180,12 @@
 -  `:kaocha.suite/test-paths` have been renamed to just use the `:kaocha`
 namespace.
 
+# [Hillchart](https://github.com/lambadisland/hillchart) [1.3.0](https://github.com/medikoo/cli-color/compare/v1.2.0...v1.3.0) (2018-08-20)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [1.3.0](https://github.com/medikoo/cli-color/compare/v1.2.0...v1.3.0) (2018-08-20)
+
+
 # [Kaocha](https://github.com/lambadisland/kaocha) b0a70dc267a (2018-07-29)
 
 -  Capture output, this is enabled by default. Only output of failing tests is
@@ -1028,6 +1202,12 @@ namespace.
   same result.
 -  When specifying an invalid reporter var, error before trying to load tests.
 -  Correctly count matcher-combinator mismatch failures when exiting early (Ctrl-C).
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [3.3.0](https://github.com/kelektiv/node-uuid/compare/v3.2.1...v3.3.0) (2018-06-22)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [3.3.0](https://github.com/kelektiv/node-uuid/compare/v3.2.1...v3.3.0) (2018-06-22)
+
 
 # [Kaocha](https://github.com/lambadisland/kaocha) 7b79fad92d (2018-06-16)
 
@@ -1066,6 +1246,63 @@ namespace.
   control then overwrite `tests.edn` with the output of `--print-config` and
   tweak.
 
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.3.0](https://github.com/broofa/node-mime/compare/v2.2.2...v2.3.0) (2018-04-11)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.3.0](https://github.com/broofa/node-mime/compare/v2.2.2...v2.3.0) (2018-04-11)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.3.0](https://github.com/broofa/node-mime/compare/v2.2.2...v2.3.0) (2018-04-11)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [6.0.0](https://github.com/moxystudio/node-cross-spawn/compare/5.1.0...6.0.0) (2018-01-23)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [6.0.0](https://github.com/moxystudio/node-cross-spawn/compare/5.1.0...6.0.0) (2018-01-23)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [3.2.0](https://github.com/kelektiv/node-uuid/compare/v3.1.0...v3.2.0) (2018-01-16)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [3.2.0](https://github.com/kelektiv/node-uuid/compare/v3.1.0...v3.2.0) (2018-01-16)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.2.0](https://github.com/broofa/node-mime/compare/v2.1.0...v2.2.0) (2018-01-04)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.2.0](https://github.com/broofa/node-mime/compare/v2.1.0...v2.2.0) (2018-01-04)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.2.0](https://github.com/broofa/node-mime/compare/v2.1.0...v2.2.0) (2018-01-04)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.1.0](https://github.com/broofa/node-mime/compare/v2.0.5...v2.1.0) (2017-12-22)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.1.0](https://github.com/broofa/node-mime/compare/v2.0.5...v2.1.0) (2017-12-22)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.1.0](https://github.com/broofa/node-mime/compare/v2.0.5...v2.1.0) (2017-12-22)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.2.0](https://github.com/knownasilya/cli-width/compare/v2.1.1...v2.2.0) (2017-08-22)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.2.0](https://github.com/knownasilya/cli-width/compare/v2.1.1...v2.2.0) (2017-08-22)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [3.1.0](https://github.com/kelektiv/node-uuid/compare/v3.1.0...v3.0.1) (2017-06-17)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [3.1.0](https://github.com/kelektiv/node-uuid/compare/v3.1.0...v3.0.1) (2017-06-17)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.0.0](https://github.com/nexdrew/ansi-align/compare/v1.1.0...v2.0.0) (2017-05-01)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [2.0.0](https://github.com/nexdrew/ansi-align/compare/v1.1.0...v2.0.0) (2017-05-01)
+
+
 # [Uri](https://github.com/lambadisland/uri) 1.1.0 (2017-04-25)
 
 -  Predicate functions `absolute?` and `relative?`
@@ -1073,3 +1310,42 @@ namespace.
 # [Uri](https://github.com/lambadisland/uri) 1.0.0 (2017-02-23)
 
 -  Initial release, public vars: `uri`, `join`, `coerce`, `parse`, `edn-readers`
+# [Hillchart](https://github.com/lambadisland/hillchart) 3.0.1 (2016-11-28)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) 3.0.1 (2016-11-28)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) 3.0.0 (2016-11-17)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) 3.0.0 (2016-11-17)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [5.0.0](https://github.com/moxystudio/node-cross-spawn/compare/4.0.2...5.0.0) (2016-10-30)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [5.0.0](https://github.com/moxystudio/node-cross-spawn/compare/4.0.2...5.0.0) (2016-10-30)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [3.0.0](https://github.com/tapjs/signal-exit/compare/v2.1.2...v3.0.0) (2016-06-13)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [3.0.0](https://github.com/tapjs/signal-exit/compare/v2.1.2...v3.0.0) (2016-06-13)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [1.1.0](https://github.com/nexdrew/ansi-align/compare/v1.0.0...v1.1.0) (2016-06-06)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) [1.1.0](https://github.com/nexdrew/ansi-align/compare/v1.0.0...v1.1.0) (2016-06-06)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) 1.0.0 (2016-04-30)
+
+
+# [Hillchart](https://github.com/lambadisland/hillchart) 1.0.0 (2016-04-30)
+
+
+# [Puck](https://github.com/lambadisland/puck) 1.0.0 (2016-02-04)
+
+
