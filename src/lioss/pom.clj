@@ -104,10 +104,16 @@
           [:id "sign-artifacts"]
           [:phase "verify"]
           [:goals [:goal "sign"]]]]]]]
-     [:repositories
-      [:repository
-       [:id "clojars"]
-       [:url "https://repo.clojars.org/"]]]
+     (into
+      [:repositories
+       [:repository
+        [:id "clojars"]
+        [:url "https://repo.clojars.org/"]]]
+      (map (fn [[id {:keys [url]}]]
+             [:repository
+              [:id id]
+              [:url url]]))
+      (:mvn/repos opts))
      [:distributionManagement
       [:repository
        [:id "clojars"]
