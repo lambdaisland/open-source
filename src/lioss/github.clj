@@ -13,6 +13,13 @@
     "funnel" "edn-lines" "fetch" "data-printers" "daedalus"
     "cljbox2d" "spec-monstah-malli" "trikl" "zipper-viz"})
 
+(def get-token
+  (memoize (fn []
+             (println "GitHub token needed for this operation.")
+             (println "You can create a token by visiting https://github.com/settings/tokens.")
+             (print "Token: ")
+             (read-line))))
+
 (defn get-next-url
   "Gets the next URL from the Link header."
   [header]
@@ -79,12 +86,6 @@
       (get "content")
       decode-base64))
 
-(def get-token
-  (memoize (fn []
-             (println "GitHub token needed for this operation.")
-             (println "You can create a token by visiting https://github.com/settings/tokens.")
-             (print "Token: ")
-             (read-line))))
 
 (defn get-clojars-lioss-repositories
   "Gets Lambda Island Open Source repositories with a Clojars badge.
