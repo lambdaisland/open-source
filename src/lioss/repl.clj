@@ -15,5 +15,6 @@
   asking for a token."
   []
   (->> (github/get-clojars-lioss-repositories (github/get-token))
-
-       (pmap github/get-all-repository-issues)))
+       (pmap #(get % "name"))
+       (pmap get-repository-issues)
+       (apply concat)))
