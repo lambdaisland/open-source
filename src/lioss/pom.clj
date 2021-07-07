@@ -112,6 +112,7 @@
       (map (fn [[id {:keys [url]}]]
              [:repository
               [:id id]
+              [:name id]
               [:url url]]))
       (:mvn/repos opts))
      [:distributionManagement
