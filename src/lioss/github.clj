@@ -130,7 +130,7 @@
         (recur next-url new-issues)
         new-issues))))
 
-(comment (->> (get-all-repository-issues "kaocha")
+(comment (->> (get-all-repository-issues "kaocha" (get-token))
               (sort-by #(get % "updated_at"))
               reverse
               ;; (map #(get % "title"))
@@ -145,3 +145,8 @@
        (map (fn [{:strs [title updated_at] }] [title updated_at] )))))
 
 (comment (clone-repositories (get-clojars-lioss-repositories) ".."))
+
+(get-in 
+        (deref (http/get "https://api.github.com/orgs/lambdaisland/repos" {"Authorization" (str "token " (get-token))} ))
+        [:body ])
+
