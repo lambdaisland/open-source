@@ -68,7 +68,7 @@
   {:name           (git/project-name)
    :version        (git/version-string)
    :sha            (git/current-sha)
-   :group-id       "com.lambdaisland"
+   :group-id       nil
    :gh-project     (str "lambdaisland/" (git/project-name))
    :org-name       "Lambda Island"
    :org-url        "https://lambdaisland.com"
@@ -95,6 +95,7 @@
       versions))))
 
 (defn main [opts]
+  (assert (:group-id opts) ":group-id should be set explicitly to \"lambdaisland\" or \"com.lambdaisland\"")
   (let [commands (concat (:commands opts) commands)
         opts     (merge defaults (util/read-deps) opts)
         opts     (-> opts
