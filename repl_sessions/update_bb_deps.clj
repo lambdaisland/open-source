@@ -34,6 +34,10 @@
   (update-artifact (shellutil/glob "../*/bb_deps.edn")
                    'lambdaisland/open-source
                    :sha
+                   (git/current-sha))
+  (update-artifact (shellutil/glob "../*/bb.edn")
+                   'lambdaisland/open-source
+                   :sha
                    (git/current-sha)))
 
 (def renames
@@ -43,16 +47,17 @@
     lambdaisland/daedalus com.lambdaisland/daedalus})
 
 (def versions
-  '{com.lambdaisland/glogi "1.0.116"
-    com.lambdaisland/kaocha-cljs "1.0.93"
+  '{com.lambdaisland/glogi "1.0.128"
+    com.lambdaisland/kaocha-cljs "1.0.113"
     com.lambdaisland/daedalus "0.0.35"})
 
 (comment
-  (let [deps-edn-files (mapcat shellutil/glob ["/home/arne/ITRevolution/does/**/deps.edn"
-                                               "/home/arne/Eleven/**/deps.edn"
-                                               "/home/arne/ARS/**/deps.edn"
-                                               "/home/arne/LambdaIsland/**/deps.edn"
-                                               "../**/deps.edn"])]
+  (let [deps-edn-files (mapcat shellutil/glob ["/home/arne/ITRevolution/does/**/{deps,bb}.edn"
+                                               "/home/arne/Eleven/**/{deps,bb}.edn"
+                                               "/home/arne/ARS/**/{deps,bb}.edn"
+                                               "/home/arne/LambdaIsland/**/{deps,bb}.edn"
+                                               "../**/{deps,bb}.edn"
+                                               ])]
     (println "renaming")
     (doseq [[from to] renames]
       (rename-artifact deps-edn-files from to))
