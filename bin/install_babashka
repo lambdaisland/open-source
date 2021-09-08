@@ -43,8 +43,8 @@ TMPFILE=$(mktemp)
 
 # Do redirect manually to work around the fact that on Windows you might have an
 # older cURL which doesn't honor redirects.
-LOCATION="$(curl -I "${DOWNLOAD_URL}" | grep -i '^location' | sed -e 's/location: //i' -e 's/[\r\n]//g')"
-curl -o "${TMPFILE}" -L "${LOCATION}"
+LOCATION="$(curl -sI "${DOWNLOAD_URL}" | grep -i '^location' | sed -e 's/location: //i' -e 's/[\r\n]//g')"
+curl -o "${TMPFILE}" -sL "${LOCATION}"
 
 case "${EXT}" in
   zip) unzip -qqo "${TMPFILE}" -d "${INSTALL_DIR}" ;;
