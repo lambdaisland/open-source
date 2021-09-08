@@ -1,27 +1,48 @@
 #!/bin/sh
 
-set -xe
+set -e
+# set -x
+
+INSTALL_DIR="$1"
+if [ -z "${INSTALL_DIR}" ]; then
+  INSTALL_DIR="${HOME}/bin"
+fi
+
+ORGANIZATION=babashka
+PROJECT=babashka
+ARCHITECTURE=amd64
 
 # https://gist.github.com/lukechilds/a83e1d7127b78fef38c2914c4ececc3c
 gh_latest_release() {
-  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
-    grep '"tag_name":' |                                            # Get tag line
-    sed -E 's/.*"v([^"]+)".*/\1/'                                   # Pluck JSON value
+  LATEST_RELEASE_URL="https://api.github.com/repos/${ORGANIZATION}/${PROJECT}/releases/latest"
+  curl --silent "$LATEST_RELEASE_URL" | # Get latest release from GitHub api
+    grep '"tag_name":'                | # Get tag line
+    sed -E 's/.*"v([^"]+)".*/\1/'       # Pluck JSON value
 }
 
 current_platform() {
     case "$(uname -s)" in
         Linux*)  echo linux;;
         Darwin*) echo macos;;
+        MINGW64*) echo windows;;
     esac
 }
 
-BABASHKA_VERSION=$(gh_latest_release borkdude/babashka)
+VERSION=$(gh_latest_release)
 PLATFORM=$(current_platform)
-DOWNLOAD_URL="https://github.com/borkdude/babashka/releases/download/v${BABASHKA_VERSION}/babashka-${BABASHKA_VERSION}-${PLATFORM}-amd64.zip"
-INSTALL_DIR="$HOME/bin"
+case $PLATFORM in
+  linux) EXT=tar.gz ;;
+  macos) EXT=tar.gz ;;
+  windows) EXT=zip ;;
+esac
+
+DOWNLOAD_URL="https://github.com/${ORGANIZATION}/${PROJECT}/releases/download/v${VERSION}/${PROJECT}-${VERSION}-${PLATFORM}-${ARCHITECTURE}.${EXT}"
 
 mkdir -p "${INSTALL_DIR}"
-curl -o "/tmp/bb.zip" -sL "${DOWNLOAD_URL}"
-unzip -qqo "/tmp/bb.zip" -d "${INSTALL_DIR}"
-rm "/tmp/bb.zip"
+TMPFILE=$(mktemp)
+curl -o "${TMPFILE}" -sL "${DOWNLOAD_URL}"
+case "${EXT}" in
+  zip) unzip -qqo "${TMPFILE}" -d "${INSTALL_DIR}" ;;
+  tar.gz) tar -xvf "${TMPFILE}" -C "${INSTALL_DIR}" ;;
+esac
+rm "${TMPFILE}"
