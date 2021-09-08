@@ -40,7 +40,12 @@ DOWNLOAD_URL="https://github.com/${ORGANIZATION}/${PROJECT}/releases/download/v$
 
 mkdir -p "${INSTALL_DIR}"
 TMPFILE=$(mktemp)
-curl -o "${TMPFILE}" -sL "${DOWNLOAD_URL}"
+
+# Do redirect manually to work around the fact that on Windows you might have an
+# older cURL which doesn't honor redirects.
+LOCATION=$(curl -I "${DOWNLOAD_URL}" | grep -i location | sed 's/location: //i')
+
+curl -o "${TMPFILE}" -sL "${LOCATION}"
 case "${EXT}" in
   zip) unzip -qqo "${TMPFILE}" -d "${INSTALL_DIR}" ;;
   tar.gz) tar -xvf "${TMPFILE}" -C "${INSTALL_DIR}" ;;
