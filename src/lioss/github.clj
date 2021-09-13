@@ -2,8 +2,8 @@
   (:require [org.httpkit.client :as http]
             [cheshire.core :as json]
             [lioss.git :as git]
-            [clojure.java.shell  :as shell]
-            [clojure.string :as string]) 
+            [clojure.java.shell :as shell]
+            [clojure.string :as string])
   (:import [java.time LocalDateTime Instant]
            [java.time.temporal ChronoUnit ChronoField]))
 
@@ -29,8 +29,8 @@
                :when (string/includes? rel "next")]
            string)))
 
-(comment 
-(rate-limit-reached? @(http/get "https://api.github.com/orgs/lambdaisland/repos")))
+(comment
+  (rate-limit-reached? @(http/get "https://api.github.com/orgs/lambdaisland/repos")))
 
 (defn rate-limit-reached?
   [response]
@@ -45,19 +45,19 @@
   [& token]
   (loop [url "https://api.github.com/orgs/lambdaisland/repos"
          repositories []]
-    (let [headers (when-not (nil? token) 
+    (let [headers (when-not (nil? token)
                     {"Authorization" (str "token " (get-token))})
           response @(http/get url headers)
           body (json/decode (:body response))
           new-repositories (into repositories body)]
-      (if-let [next-url  (get-next-url (get-in response [:headers :link]))]
+      (if-let [next-url (get-next-url (get-in response [:headers :link]))]
         (recur next-url new-repositories)
         new-repositories))))
 
 (defn get-top-lioss-repositories
   "Fetches only the Lambda Island Open Source repositories featured in our README."
   []
-  (filter  #(contains? highlighted  (get %  "name" ))
+  (filter #(contains? highlighted (get % "name"))
           (get-all-lioss-repositories)))
 
 (defn get-recent-lioss-repositories
@@ -68,8 +68,8 @@
    (let [year-ago (.minus (Instant/now) 365 ChronoUnit/DAYS) ]))
   ([start-date]
    (filter
-     #(= -1 (compare start-date (Instant/parse (get % "updated_at")) ))
-     (get-all-lioss-repositories))))
+    #(= -1 (compare start-date (Instant/parse (get % "updated_at"))))
+    (get-all-lioss-repositories))))
 
 (defn decode-base64 [s]
   (:out (shell/sh "base64" "-d" :in s)))
@@ -77,7 +77,7 @@
 (defn get-file
   "Gets a file from the respository"
   [repository path request-opts]
-  (-> (get  repository "contents_url")
+  (-> (get repository "contents_url")
       (string/replace "{+path}" path)
       (http/get request-opts)
       deref
@@ -96,15 +96,15 @@
   Because it does a signficant number of requests, it requires authorization."
   [token]
   (let [headers {"Authorization" (str "token " token)} ]
-    (filter #(string/includes? (get-file %  "README.md" {:headers headers})
+    (filter #(string/includes? (get-file % "README.md" {:headers headers})
                                "img.shields.io/clojars")
             (get-all-lioss-repositories))))
 
 (defn clone-repositories [repositories dir]
   (doseq
-    [url  (map #(get % "clone_url") repositories)]
+      [url (map #(get % "clone_url") repositories)]
     (try
-      (git/clone-with-cwd! url dir )
+      (git/clone-with-cwd! url dir)
       (catch Exception _e
         (println _e)))))
 
@@ -134,19 +134,18 @@
               (sort-by #(get % "updated_at"))
               reverse
               ;; (map #(get % "title"))
-              (map (fn [{:strs [title updated_at] }] [title updated_at] ))))
+              (map (fn [{:strs [title updated_at] }] [title updated_at]))))
 
-(comment (def issues 
-  (->> (map #(get % "name") (get-clojars-lioss-repositories (get-token)))
-       (mapcat #(do (prn %) (get-all-repository-issues %) ) )
-       (sort-by #(get % "updated_at"))
-       reverse
-       ;; (map #(get % "title"))
-       (map (fn [{:strs [title updated_at] }] [title updated_at] )))))
+(comment (def issues
+           (->> (map #(get % "name") (get-clojars-lioss-repositories (get-token)))
+                (mapcat #(do (prn %) (get-all-repository-issues %)))
+                (sort-by #(get % "updated_at"))
+                reverse
+                ;; (map #(get % "title"))
+                (map (fn [{:strs [title updated_at] }] [title updated_at])))))
 
 (comment (clone-repositories (get-clojars-lioss-repositories) ".."))
 
-(get-in 
-        (deref (http/get "https://api.github.com/orgs/lambdaisland/repos" {"Authorization" (str "token " (get-token))} ))
-        [:body ])
-
+(get-in
+ (deref (http/get "https://api.github.com/orgs/lambdaisland/repos" {"Authorization" (str "token " (get-token))}))
+ [:body ])
