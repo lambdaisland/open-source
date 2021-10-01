@@ -74,6 +74,10 @@
      `[:dependencies ~@(concat
                         (pom-deps (:deps opts))
                         (pom-alias-deps opts))]
+     (when-let [authors (:authors opts)]
+       `[:developers
+         ~@(for [author authors]
+             [:developer [:name author]])])
      [:build
       (when (seq (:paths opts))
         [:sourceDirectory (first (:paths opts))])

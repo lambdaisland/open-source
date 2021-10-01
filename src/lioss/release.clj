@@ -109,7 +109,10 @@
           opts (update (assoc opts :sha sha)
                        :modules
                        (fn [mods]
-                         (map #(assoc % :sha sha) mods)))]
+                         (map #(assoc % :sha sha) mods)))
+          opts (cond-> opts
+                 (.exists (io/file "AUTHORS"))
+                 (assoc :authors (str/split (str/trim (slurp "AUTHORS")) #"\R")))]
       (pom/spit-poms opts)
       (util/do-modules opts (fn [_] (mvn "deploy")))
       (mvn "deploy")
