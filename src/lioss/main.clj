@@ -73,7 +73,9 @@
    :org-name       "Lambda Island"
    :org-url        "https://lambdaisland.com"
    :date           (str (java.time.LocalDate/now))
-   :latest-version (or (git/last-released-version) "0.0.0")})
+   :latest-version (or (git/last-released-version) "0.0.0")
+   :authors        (when (.exists (io/file "AUTHORS"))
+                     (str/split (str/trim (slurp "AUTHORS")) #"\R"))})
 
 (defn module-versions [{:keys [name group-id version modules]}]
   (into {(symbol group-id name) version}
