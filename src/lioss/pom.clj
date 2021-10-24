@@ -65,7 +65,11 @@
           :mpl
           [:license
            [:name "MPL-2.0"]
-           [:url "https://www.mozilla.org/media/MPL/2.0/index.txt"]])])
+           [:url "https://www.mozilla.org/media/MPL/2.0/index.txt"]]
+          :mit
+          [:license
+           [:name "The MIT License (MIT)"]
+           [:url "https://opensource.org/licenses/MIT"]])])
      [:scm
       [:url url]
       [:connection (str "scm:git:git://github.com/" gh-project ".git")]

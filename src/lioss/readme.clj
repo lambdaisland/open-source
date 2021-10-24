@@ -87,7 +87,9 @@
                                :mpl
                                "MPL 2.0"
                                :epl
-                               "EPL 1.0")))))
+                               "EPL 1.0"
+                               :mit
+                               "MIT")))))
 
 (defn do-update [params]
   (let [params   (extra-params params)
