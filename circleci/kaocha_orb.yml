@@ -20,7 +20,7 @@ commands:
       clojure_version:
         description: Clojure version to use (full Maven version)
         type: string
-        default: 1.9.0
+        default: 1.10.3
 
     steps:
       - run: mkdir -p test-results/kaocha
