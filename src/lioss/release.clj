@@ -121,7 +121,9 @@
       (git/git! "push" "--tags")
       (git/git! "push")
 
-      (trigger-cljdoc-build opts)
+      ;; Disable this for now, something changed on the server causing curl to
+      ;; hang instead of exiting
+      #_(trigger-cljdoc-build opts)
       (util/do-modules opts trigger-cljdoc-build)
 
       (print-versions opts)
