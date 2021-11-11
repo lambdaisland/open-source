@@ -14,3 +14,5 @@ based on the openjdk images, which are in turn based on Debian. They include:
 - Node, npm, yarn
 - Maven
 - Make
+
+These images are available [via Dockerhub](https://hub.docker.com/r/lambdaisland/clojure/tags)
