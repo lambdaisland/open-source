@@ -52,6 +52,16 @@
                      (str "# " version " (" date " / " (subs sha 0 7) ")")
                      (next lines))))))
 
+(defn bump-version
+  "We bump the minor version on every release, the teeny version is the number of
+  git commits and is handled in [[git/version-number]]."
+  [_]
+  (let [version (if (.exists (io/file ".VERSION_PREFIX"))
+                  (str/trim (slurp ".VERSION_PREFIX"))
+                  "0.0")]
+    (when-let [[_ major minor] (re-find #"^(\d+)\.(\d+)$" version)]
+      (spit ".VERSION_PREFIX" (str major "." (inc (Long/parseLong minor)))))))
+
 (defn changelog-stanza
   ([]
    (changelog-stanza "CHANGELOG.md"))
@@ -101,6 +111,7 @@
                opts)]
     (update-versions-in "README.md" (:module-versions opts))
     (bump-changelog opts)
+    (bump-version opts)
     (git/git! "add" "-A")
     (git/git! "commit" "-m" (changelog-stanza))
     (git/git! "tag" (str "v" (:version opts)))
