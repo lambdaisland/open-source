@@ -55,6 +55,7 @@
      [:organization
       [:name (:org-name opts)]
       [:url (:org-url opts)]]
+     [:properties [:project.build.sourceEncoding "UTF-8"]]
      (when (:license opts)
        [:licenses
         (case (:license opts)
@@ -94,7 +95,10 @@
        [:plugin
         [:groupId "org.apache.maven.plugins"]
         [:artifactId "maven-compiler-plugin"]
-        [:version "3.8.1"]]
+        [:version "3.8.1"]
+        [:configuration
+         [:source (:source-java-version opts "1.8")]
+         [:target (:target-java-version opts "1.8")]]]
        [:plugin
         [:groupId "org.apache.maven.plugins"]
         [:artifactId "maven-jar-plugin"]
