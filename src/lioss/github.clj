@@ -2,7 +2,7 @@
   (:require [cheshire.core :as json]
             [clojure.java.io :as io]
             [clojure.java.shell :as shell]
-            [clojure.string :as string]
+            [clojure.string :as str]
             [lioss.git :as git]
             [org.httpkit.client :as http])
   (:import [java.time LocalDateTime Instant]
@@ -32,10 +32,10 @@
 (defn get-next-url
   "Gets the next URL from the Link header."
   [header]
-  (first (for [header-line (string/split header #",")
-               :let [[url rel] (string/split header-line #";")
-                     string (second (re-matches #"<(.*)>" (string/trim url)))]
-               :when (string/includes? rel "next")]
+  (first (for [header-line (str/split header #",")
+               :let [[url rel] (str/split header-line #";")
+                     string (second (re-matches #"<(.*)>" (str/trim url)))]
+               :when (str/includes? rel "next")]
            string)))
 
 (comment
@@ -86,7 +86,7 @@
   "Gets a file from the respository"
   [repository path request-opts]
   (-> (get repository "contents_url")
-      (string/replace "{+path}" path)
+      (str/replace "{+path}" path)
       (http/get request-opts)
       deref
       :body
@@ -103,8 +103,8 @@
   Because it does a signficant number of requests, it requires authorization."
   [token]
   (let [headers {"Authorization" (str "token " token)} ]
-    (filter #(string/includes? (get-file % "README.md" {:headers headers})
-                               "img.shields.io/clojars")
+    (filter #(str/includes? (get-file % "README.md" {:headers headers})
+                            "img.shields.io/clojars")
             (get-all-lioss-repositories))))
 
 (defn clone-repositories [repositories dir]
@@ -142,7 +142,7 @@
               {:headers {"Accept" "application/vnd.github.v3+json"
                          "Authorization" (str "token " (get-token))}
                :body (str "{\"tag_name\": \"" release-tag "\", "
-                          "\"body\": " (pr-str (str/join "\n" (next (string/split changelog #"\R")))) ", "
+                          "\"body\": " (pr-str (str/join "\n" (next (str/split changelog #"\R")))) ", "
                           "\"name\": " (pr-str (or release-title release-tag))
                           "}")}))
 
