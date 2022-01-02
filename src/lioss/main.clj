@@ -62,7 +62,11 @@
 
    "update-readme"
    {:description "Update sections in README.md"
-    :command readme/do-update}])
+    :command readme/do-update}
+
+   "bump-version"
+   {:description "Bump minor version"
+    :command release/bump-version}])
 
 (def defaults
   {:name           (git/project-name)
