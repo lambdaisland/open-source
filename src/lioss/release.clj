@@ -1,6 +1,7 @@
 (ns lioss.release
   (:require [lioss.pom :as pom]
             [lioss.git :as git]
+            [lioss.github :as github]
             [lioss.subshell :as subshell]
             [lambdaisland.regal :as regal]
             [clojure.java.io :as io]
@@ -111,12 +112,15 @@
                    (System/exit 1))
                  opts)
                opts)
-        opts (bump-version opts)]
+        opts (bump-version opts)
+        opts (assoc opts
+                    :changelog (changelog-stanza)
+                    :release-tag (str "v" (:version opts)))]
     (update-versions-in "README.md" (:module-versions opts))
     (bump-changelog opts)
     (git/git! "add" "-A")
-    (git/git! "commit" "-m" (changelog-stanza))
-    (git/git! "tag" (str "v" (:version opts)))
+    (git/git! "commit" "-m" (:changelog opts))
+    (git/git! "tag" (:release-tag opts))
 
     (let [sha (git/current-sha)
           opts (update (assoc opts :sha sha)
@@ -133,6 +137,8 @@
       (git/git! "commit" "-m" "Update pom.xml and add CHANGELOG.md placeholders")
       (git/git! "push" "--tags")
       (git/git! "push")
+
+      (github/create-release opts)
 
       ;; Disable this for now, something changed on the server causing curl to
       ;; hang instead of exiting

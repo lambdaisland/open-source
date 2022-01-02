@@ -1,9 +1,10 @@
 (ns lioss.github
-  (:require [org.httpkit.client :as http]
-            [cheshire.core :as json]
-            [lioss.git :as git]
+  (:require [cheshire.core :as json]
+            [clojure.java.io :as io]
             [clojure.java.shell :as shell]
-            [clojure.string :as string])
+            [clojure.string :as string]
+            [lioss.git :as git]
+            [org.httpkit.client :as http])
   (:import [java.time LocalDateTime Instant]
            [java.time.temporal ChronoUnit ChronoField]))
 
@@ -13,12 +14,20 @@
     "funnel" "edn-lines" "fetch" "data-printers" "daedalus"
     "cljbox2d" "spec-monstah-malli" "trikl" "zipper-viz"})
 
+(defn hub-token []
+  (let [hub-config (str (System/getenv "HOME") "/.config/hub")]
+    (when (.exists (io/file hub-config))
+      (second
+       (re-find #"oauth_token:\s*(.*)" (slurp hub-config))))))
+
+(defn prompt-for-token []
+  (println "GitHub token needed for this operation.")
+  (println "You can create a token by visiting https://github.com/settings/tokens.")
+  (print "Token: ")
+  (read-line))
+
 (def get-token
-  (memoize (fn []
-             (println "GitHub token needed for this operation.")
-             (println "You can create a token by visiting https://github.com/settings/tokens.")
-             (print "Token: ")
-             (read-line))))
+  (memoize (fn [] (or (hub-token) (prompt-for-token)))))
 
 (defn get-next-url
   "Gets the next URL from the Link header."
@@ -38,7 +47,6 @@
       (get-in [:headers :x-ratelimit-remaining])
       Integer/parseInt
       zero?))
-
 
 (defn get-all-lioss-repositories
   "Fetch every Lambda Island Open Source repository."
@@ -86,7 +94,6 @@
       (get "content")
       decode-base64))
 
-
 (defn get-clojars-lioss-repositories
   "Gets Lambda Island Open Source repositories with a Clojars badge.
 
@@ -130,22 +137,28 @@
         (recur next-url new-issues)
         new-issues))))
 
-(comment (->> (get-all-repository-issues "kaocha" (get-token))
-              (sort-by #(get % "updated_at"))
-              reverse
-              ;; (map #(get % "title"))
-              (map (fn [{:strs [title updated_at] }] [title updated_at]))))
+(defn create-release [{:keys [gh-project release-tag changelog]}]
+  @(http/post (str "https://api.github.com/repos/" gh-project "/releases")
+              {:headers {"Accept" "application/vnd.github.v3+json"
+                         "Authorization" (str "token " (get-token))}
+               :body (str "{\"tag_name\": \"" release-tag "\", \"body\": " (pr-str changelog) "}")}))
 
-(comment (def issues
-           (->> (map #(get % "name") (get-clojars-lioss-repositories (get-token)))
-                (mapcat #(do (prn %) (get-all-repository-issues %)))
-                (sort-by #(get % "updated_at"))
-                reverse
-                ;; (map #(get % "title"))
-                (map (fn [{:strs [title updated_at] }] [title updated_at])))))
 
-(comment (clone-repositories (get-clojars-lioss-repositories) ".."))
+(comment
+  (->> (get-all-repository-issues "kaocha" (get-token))
+       (sort-by #(get % "updated_at"))
+       reverse
+       ;; (map #(get % "title"))
+       (map (fn [{:strs [title updated_at] }] [title updated_at])))
 
-(get-in
- (deref (http/get "https://api.github.com/orgs/lambdaisland/repos" {"Authorization" (str "token " (get-token))}))
- [:body ])
+  (def issues
+    (->> (map #(get % "name") (get-clojars-lioss-repositories (get-token)))
+         (mapcat #(do (prn %) (get-all-repository-issues %)))
+         (sort-by #(get % "updated_at"))
+         reverse
+         ;; (map #(get % "title"))
+         (map (fn [{:strs [title updated_at] }] [title updated_at]))))
+
+  (clone-repositories (get-clojars-lioss-repositories) "..")
+
+  (get-in (deref (http/get "https://api.github.com/orgs/lambdaisland/repos" {"Authorization" (str "token x" )})) [:body]))
