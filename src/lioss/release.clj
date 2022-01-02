@@ -105,14 +105,16 @@
 
   (git/clean!)
 
-  (let [opts (if-let [hook (:pre-release-hook opts)]
+  (let [opts (bump-version opts)
+        opts (assoc opts :release-title (when (seq (:argv opts))
+                                          (str/join " " (:argv opts))))
+        opts (if-let [hook (:pre-release-hook opts)]
                (let [opts (hook opts)]
                  (when (nil? opts)
                    (println ":pre-release-hook returned nil!")
                    (System/exit 1))
                  opts)
                opts)
-        opts (bump-version opts)
         _    (bump-changelog opts)
         opts (assoc opts
                     :changelog (changelog-stanza)

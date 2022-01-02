@@ -137,11 +137,14 @@
         (recur next-url new-issues)
         new-issues))))
 
-(defn create-release [{:keys [gh-project release-tag changelog]}]
+(defn create-release [{:keys [gh-project release-tag changelog release-title]}]
   @(http/post (str "https://api.github.com/repos/" gh-project "/releases")
               {:headers {"Accept" "application/vnd.github.v3+json"
                          "Authorization" (str "token " (get-token))}
-               :body (str "{\"tag_name\": \"" release-tag "\", \"body\": " (pr-str changelog) "}")}))
+               :body (str "{\"tag_name\": \"" release-tag "\", "
+                          "\"body\": " (pr-str (str/join "\n" (next (string/split changelog #"\R")))) ", "
+                          "\"name\": " (pr-str (or release-title release-tag))
+                          "}")}))
 
 
 (comment
