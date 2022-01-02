@@ -113,11 +113,11 @@
                  opts)
                opts)
         opts (bump-version opts)
+        _    (bump-changelog opts)
         opts (assoc opts
                     :changelog (changelog-stanza)
                     :release-tag (str "v" (:version opts)))]
     (update-versions-in "README.md" (:module-versions opts))
-    (bump-changelog opts)
     (git/git! "add" "-A")
     (git/git! "commit" "-m" (:changelog opts))
     (git/git! "tag" (:release-tag opts))
