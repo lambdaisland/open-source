@@ -7,6 +7,11 @@
   (doto (ProcessBuilder. args)
     (.inheritIO)))
 
+(def windows? (str/starts-with? (System/getProperty "os.name") "Windows"))
+
+(defn- cmd->str [args]
+  (str/join " " (map #(if (str/includes? % " ") (pr-str %) %) args)))
+
 (defn spawn
   "Like [[clojure.java.shell/sh]], but inherit IO stream from the parent process,
   and prints out the invocation."
@@ -16,7 +21,7 @@
                       [{} args])
         dir (:dir opts util/*cwd*)
         args (if windows? (cons "winpty" args) args)]
-    (println "=>" (str/join " " args) (if dir (str "(in " dir ")") ""))
+    (println "=>" (cmd->str args) (if dir (str "(in " dir ")") ""))
     (let [res (-> (process-builder args)
                   (cond-> dir
                     (.directory (io/file dir)))
