@@ -14,7 +14,8 @@
   (let [[opts args] (if (map? (last args))
                       [(last args) (butlast args)]
                       [{} args])
-        dir (:dir opts util/*cwd*)]
+        dir (:dir opts util/*cwd*)
+        args (if windows? (cons "winpty" args) args)]
     (println "=>" (str/join " " args) (if dir (str "(in " dir ")") ""))
     (let [res (-> (process-builder args)
                   (cond-> dir
