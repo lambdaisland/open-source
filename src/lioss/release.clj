@@ -1,48 +1,22 @@
 (ns lioss.release
-  (:require [lioss.pom :as pom]
+  "Cutting new releases of libraries, handles the whole rigamarole
+
+  - runs test (use SKIP_TESTS=1 to skip)
+  - bump version
+  - update pom.xml
+  - build and upload jar
+  - update version strings in README
+  - add new stanza to the top of the CHANGELOG
+  - create a new release on Github
+  - trigger a cljdoc build"
+  (:require [clojure.java.io :as io]
+            [clojure.string :as str]
             [lioss.git :as git]
             [lioss.github :as github]
+            [lioss.pom :as pom]
             [lioss.subshell :as subshell]
-            [lambdaisland.regal :as regal]
-            [clojure.java.io :as io]
             [lioss.util :as util]
-            [clojure.string :as str]))
-
-(defn update-versions-in [file versions]
-  (let [blob (slurp file)]
-    (spit file
-          (reduce
-           (fn [blob [k v]]
-             (-> blob
-                 (str/replace (regal/regex
-                               [:cat (str k)
-                                [:capture
-                                 [:+ :whitespace]
-                                 "{"
-                                 [:* :whitespace]
-                                 ":mvn/version"
-                                 [:+ :whitespace]
-                                 "\""]
-                                [:+ [:not "\""]]
-                                [:capture
-                                 "\""
-                                 [:* :whitespace]
-                                 "}"]])
-                              (str k "$1" v "$2" ))
-                 (str/replace (regal/regex
-                               [:cat
-                                [:capture
-                                 "[" (str k)
-                                 [:+ :whitespace]
-                                 "\""]
-                                [:+ [:not "\""]]
-                                [:capture
-                                 "\""
-                                 [:* :whitespace]
-                                 "]"]])
-                              (str "$1" v "$2" ))))
-           blob
-           versions))))
+            [lioss.version :as version]))
 
 (defn bump-changelog [{:keys [version date sha] :as opts}]
   (let [blob (slurp "CHANGELOG.md")
@@ -52,18 +26,6 @@
                     (cons
                      (str "# " version " (" date " / " (subs sha 0 7) ")")
                      (next lines))))))
-
-(defn bump-version
-  "We bump the minor version on every release, the teeny version is the number of
-  git commits and is handled in [[git/version-string]]. Returns the `opts` with
-  updates version."
-  [opts]
-  (let [version (if (.exists (io/file ".VERSION_PREFIX"))
-                  (str/trim (slurp ".VERSION_PREFIX"))
-                  "0.0")]
-    (when-let [[_ major minor] (re-find #"^(\d+)\.(\d+)$" version)]
-      (spit ".VERSION_PREFIX" (str major "." (inc (Long/parseLong minor))))))
-  (assoc opts :version (git/version-string)))
 
 (defn changelog-stanza
   ([]
@@ -105,7 +67,9 @@
 
   (git/clean!)
 
-  (let [opts (bump-version opts)
+  (version/bump-version!)
+
+  (let [opts (version/add-version-info opts)
         opts (assoc opts :release-title (when (seq (:argv opts))
                                           (str/join " " (:argv opts))))
         opts (if-let [hook (:pre-release-hook opts)]
@@ -119,7 +83,7 @@
         opts (assoc opts
                     :changelog (changelog-stanza)
                     :release-tag (str "v" (:version opts)))]
-    (update-versions-in "README.md" (:module-versions opts))
+    (version/update-versions-in "README.md" (:module-versions opts))
     (git/git! "add" "-A")
     (git/git! "commit" "-m" (:changelog opts))
     (git/git! "tag" (:release-tag opts))

@@ -34,14 +34,6 @@
 (defn clone! [url]
   (git! "clone" url))
 
-(defn version-string []
-  (str
-   (if (.exists (io/file ".VERSION_PREFIX"))
-     (str/trim (slurp ".VERSION_PREFIX"))
-     "0.0")
-   "."
-   (commit-count)))
-
 (defn project-name []
   (if-let [repo (System/getenv "GITHUB_REPOSITORY")]
     (second (str/split repo #"/"))

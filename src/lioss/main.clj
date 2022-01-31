@@ -9,7 +9,8 @@
             [lioss.pom :as pom]
             [lioss.readme :as readme]
             [lioss.release :as release]
-            [lioss.util :as util]))
+            [lioss.util :as util]
+            [lioss.version :as version]))
 
 (defn print-help [prefix commands]
   (println "Usage:" prefix "[COMMAND] [COMMAND_ARGS...]")
@@ -81,25 +82,6 @@
    :authors        (when (.exists (io/file "AUTHORS"))
                      (str/split (str/trim (slurp "AUTHORS")) #"\R"))})
 
-(defn module-versions [{:keys [name group-id version modules]}]
-  (into {(symbol group-id name) version}
-        (map (fn [{:keys [name group-id version]}]
-               [(symbol group-id name) version]))
-        modules))
-
-(defn override-versions [opts versions]
-  (update
-   opts
-   :deps
-   (fn [deps]
-     (reduce
-      (fn [deps [artifact version]]
-        (if (contains? deps artifact)
-          (assoc deps artifact {:mvn/version version})
-          deps))
-      deps
-      versions))))
-
 (defn main [opts]
   (assert (:group-id opts) ":group-id should be set explicitly to \"lambdaisland\" or \"com.lambdaisland\"")
   (let [commands (concat (:commands opts) commands)
@@ -107,15 +89,8 @@
         opts     (-> opts
                      (update :modules #(for [{:keys [name] :as mod-opts} %]
                                          (util/with-cwd (str "modules/" name)
-                                           (merge opts mod-opts)))))
-        mod-vers (module-versions opts)
-        opts     (-> opts
-                     (assoc :module-versions mod-vers)
-                     (override-versions mod-vers)
-                     (update :modules
-                             (fn [mods]
-                               (map #(override-versions % mod-vers)
-                                    mods))))]
+                                           (merge opts mod-opts))))
+                     (version/add-version-info))]
 
     (if-let [{:keys [command]} (get (apply hash-map commands)
                                     (first *command-line-args*))]
