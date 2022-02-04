@@ -67,7 +67,7 @@
 
    "bump-version"
    {:description "Bump minor version"
-    :command release/bump-version}])
+    :command version/bump-version!}])
 
 (def defaults
   {:name           (git/project-name)
