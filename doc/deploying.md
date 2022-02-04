@@ -148,6 +148,8 @@ that you have a deploy token set up. You should have something like this in
 </settings>
 ```
 
+You also need a Github access token handy to create a release or need to configure `hub`. 
+
 `bin/proj release` will do a bunch of things
 
 - Update the pom
