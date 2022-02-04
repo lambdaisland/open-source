@@ -24,6 +24,7 @@
   (println "GitHub token needed for this operation.")
   (println "You can create a token by visiting https://github.com/settings/tokens.")
   (print "Token: ")
+  (flush)
   (read-line))
 
 (def get-token
