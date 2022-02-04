@@ -56,7 +56,7 @@
   "Add version info to the opts map, needs to be called again if the version
   changes."
   [opts]
-  (let [opt      (assoc opts :version (read-version-string))
+  (let [opts      (assoc opts :version (read-version-string))
         mod-vers (module-versions opts)]
     (-> opts
         (assoc :module-versions mod-vers)
