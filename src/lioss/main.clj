@@ -71,7 +71,6 @@
 
 (def defaults
   {:name           (git/project-name)
-   :version        (git/version-string)
    :sha            (git/current-sha)
    :group-id       nil
    :gh-project     (str "lambdaisland/" (git/project-name))
