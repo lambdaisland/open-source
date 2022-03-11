@@ -88,7 +88,9 @@
         opts     (-> opts
                      (update :modules #(for [{:keys [name] :as mod-opts} %]
                                          (util/with-cwd (str "modules/" name)
-                                           (merge opts mod-opts))))
+                                           (merge (dissoc opts :modules)
+                                                  (util/read-deps)
+                                                  mod-opts))))
                      (version/add-version-info))]
 
     (if-let [{:keys [command]} (get (apply hash-map commands)
