@@ -11,8 +11,9 @@
   version (symbol -> version)"
   [{:keys [name group-id version modules]}]
   (into {(symbol group-id name) version}
-        (map (fn [{:keys [name group-id version]}]
-               [(symbol group-id name) version]))
+        (map (fn [{:keys [name group-id] :as module}]
+               [(symbol group-id name) (or (:version module)
+                                           version)]))
         modules))
 
 (defn override-deps-versions
