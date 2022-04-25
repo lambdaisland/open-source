@@ -22,6 +22,35 @@ kaocha-junit-xml, kaocha-cloverage, kaocha-cucumber, and kaocha-boot.
 
 [project site](https://github.com/lambdaisland/kaocha) | [releases](https://github.com/lambdaisland/kaocha/releases)
 
+### Corgi
+
+Corgi is a unbundled vim-style Emacs configuration for Clojure developers and
+teams. It provides a great Clojure development experience out of the box. By
+being minimal and having reproducibel installs it has good performance and is
+uber-stable, while still leaving room for customization by the user.
+
+[project site](https://github.com/corgi-emacs/corgi) | [releases](https://github.com/corgi-emacs/corgi/releases)
+
+### Ornament
+
+CSS-in-Clj(s). Create styled components in your Clojure or ClojureScript code,
+which compile to plain CSS files and Hiccup/Reagent style component functions.
+Keep your styling and markup separated but co-located. Works with Garden CSS
+syntax, or with Tailwind-style utility classes.
+
+[project site](https://github.com/lambdaisland/ornament) | [releases](https://github.com/lambdaisland/ornament/releases)
+
+### lambdaisland/hiccup
+
+Our take on the Hiccup templating syntax for writing HTML inside Clojure.
+Provides escaping by default to prevent cross site scripting attacks, and
+supports fragments (`:<>`) and functions-as-components, just like Reagent. This
+library is clojure (backend) only, but can help to write cross-platform
+components by supporting some of the same Hiccup extensions as Reagent. Pairs
+well with Ornament.
+
+[project site](https://github.com/lambdaisland/hiccup) | [releases](https://github.com/lambdaisland/hiccup/releases)
+
 ### deep-diff2
 
 Deep-diff is our most downloaded project, it compares Clojure data structures
@@ -29,6 +58,19 @@ and gives an easy to scan visual overview of the differences. This is a spin-off
 from Kaocha, where it is used to provide clearer error messages when tests fail.
 
 [project site](https://github.com/lambdaisland/deep-diff2) | [releases](https://github.com/lambdaisland/deep-diff2/releases)
+
+### Facai
+
+Test factories for fun and profit. Gongxi Facai!
+
+[project site](https://github.com/lambdaisland/facai) | [releases](https://github.com/lambdaisland/facai/releases)
+
+### Faker
+
+Port of the Faker Ruby gem, generate dummy values for your tests, factories, or
+UI demos.
+
+[project site](https://github.com/lambdaisland/faker) | [releases](https://github.com/lambdaisland/faker/releases)
 
 ### Regal
 
@@ -50,6 +92,14 @@ A idiomatic and cross-platform URI library. RFC-compliant to the dot, it also
 contains helpers for normalization, and for manipulating query strings.
 
 [project site](https://github.com/lambdaisland/uri) | [releases](https://github.com/lambdaisland/uri/releases)
+
+### lambdaisland/classpath
+
+Classpath/classloader/deps.edn related utilities. Inspect the current
+classloader stack, manipulate the classpath, and provide hot-reloading for
+deps.edn.
+
+[project site](https://github.com/lambdaisland/classpath) | [releases](https://github.com/lambdaisland/classpath/releases)
 
 ### Glogi
 
@@ -85,6 +135,12 @@ discoverability, so clients can find out who is there to talk to.
 
 [project site](https://github.com/lambdaisland/funnel) | [releases](https://github.com/lambdaisland/funnel/releases)
 
+### funnel-client
+
+Clojure and ClojureScript client implementations, to make it easy to build funnel-based tools.
+
+[project site](https://github.com/lambdaisland/funnel-client) | [rel-clienteases](https://github.com/lambdaisland/funnel-client/rel-clienteases)
+
 ### edn-lines
 
 Read/write newline-separated EDN files.
@@ -97,17 +153,43 @@ An idiomatic, promises-based wrapped for JavaScript's `fetch`.
 
 [project site](https://github.com/lambdaisland/fetch) | [releases](https://github.com/lambdaisland/fetch/releases)
 
+### lambdaisland/deja-fu
+
+Lightweight and idiomatic ClojureScript local time/date library 
+
+[project site](https://github.com/lambdaisland/deja-fu) | [releases](https://github.com/lambdaisland/deja-fu/releases)
+
 ### lambdaisland/data-printers
 
 Define print handlers for custom or third party types easily. Cross platform and with support for multiple printing backends.
 
 [project site](https://github.com/lambdaisland/data-printers) | [releases](https://github.com/lambdaisland/data-printers/releases)
 
+### lambdaisland/dom-type
+
+Implement print handlers (through data-printers) for various JavaScript types.
+This way instead of printing `#object[HTMLElement]` you'll get `#js/Element
+[:div "hello"]`.
+
+[project site](https://github.com/lambdaisland/dom-types) | [releases](https://github.com/lambdaisland/dom-types/releases)
+
+### Shellutils
+
+Globbing and other shell/file utils
+
+[project site](https://github.com/lambdaisland/shellutils) | [releases](https://github.com/lambdaisland/shellutils/releases)
+
 ### lambdaisland/daedalus
 
 2D pathfinding for ClojureScript, primarily for use in games. A wrapper around hxDaedalus-js.
 
 [project site](https://github.com/lambdaisland/daedalus) | [releases](https://github.com/lambdaisland/daedalus/releases)
+
+### Puck
+
+Wrapper for the Pixi.js rendering library, and other game development utilities.
+
+[project site](https://github.com/lambdaisland/puck) | [releases](https://github.com/lambdaisland/puck/releases)
 
 ### lambdaisland/cljbox2d
 
@@ -116,6 +198,43 @@ _still in alpha_
 2D physics engine API, Uses jBox2D on Clojure, and Planck.js on ClojureScript.
 
 [project site](https://github.com/lambdaisland/cljbox2d) | [releases](https://github.com/lambdaisland/cljbox2d/releases)
+
+### Witchcraft
+
+A Clojure API and Plugin for Bukkit-based Minecraft server. Manipulate the Minecraft world from a REPL.
+
+[project site](https://github.com/lambdaisland/witchcraft) | [releases](https://github.com/lambdaisland/witchcraft/releases)
+[plugin site](https://github.com/lambdaisland/witchcraft-plugin) | [plugin releases](https://github.com/lambdaisland/witchcraft-plugin/releases)
+
+### reitit-jaatya
+
+Build a static site based on your reitit routes.
+
+[project site](https://github.com/lambdaisland/reitit-jaatya) | [releases](https://github.com/lambdaisland/reitit-jaatya/releases)
+
+### Embedkit
+
+Turn Metabase into a dashboard engine. Provides an idempotent API for
+programatically creating dashboards in Metabase and embedding them inside your
+application.
+
+[project site](https://github.com/lambdaisland/embedkit) | [releases](https://github.com/lambdaisland/embedkit/releases)
+
+### metabase-datomic
+
+A Datomic database connector for Metabase. This was created before Datomic
+Analytics, and so no longer actively maintained. You can use Datomic Analytics
+and Presto/Trino to connect to Metabase instead. That said it can still provide
+some benefits because it supports some Datomic features directly, or can serve
+as a basis for implementing connectors for other Datalog databases.
+
+[project site](https://github.com/lambdaisland/metabase-datomic) | [releases](https://github.com/lambdaisland/metabase-datomic/releases)
+
+### nREPL-proxy
+
+Proxy server for debugging nREPL messages.
+
+[project site](https://github.com/lambdaisland/nrepl-proxy) | [releases](https://github.com/lambdaisland/nrepl-proxy/releases)
 
 ### Specmonstah-Malli
 
@@ -140,6 +259,12 @@ _still in alpha_
 Visualize Clojure.zip zippers with graphviz.
 
 [project site](https://github.com/lambdaisland/zipper-viz) | [releases](https://github.com/lambdaisland/zipper-viz/releases)
+
+### Garden-watcher
+
+Component to watch Garden namespaces for changes, and recompile them to CSS on the fly.
+
+[project site](https://github.com/lambdaisland/garden-watcher) | [releases](https://github.com/lambdaisland/garden-watcher/releases)
 
 ## Style Guide and Project Setup
 
