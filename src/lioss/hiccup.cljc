@@ -1,12 +1,13 @@
 (ns lioss.hiccup
-  "Babashka-compatible hiccup
+  "Babashka(nbb)-compatible hiccup
 
   - supports #id and .class shorthands
   - escape attributes and text elements
   - outputs indented/pretty-printed HTML/XML
   - prevent escaping by using a [:raw-html \"...\"] element
   "
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            #?@(:cljs [[goog.string :as gstring]])))
 
 (defn- split-tag [tag]
   (let [tag (name tag)
@@ -49,7 +50,7 @@
 (defn- render-attrs [m]
   (->> m
        (map (fn [[k v]]
-              (format " %s=\"%s\"" (name k) (escape-attr v))))
+              (#?(:clj format :cljs gstring/format) " %s=\"%s\"" (name k) (escape-attr v))))
        (str/join "")))
 
 (def ^:dynamic *nesting* 0)
@@ -77,26 +78,28 @@
         (or (empty? children)
             (and (= 1 (count children))
                  (not (coll? (first children)))))
-        (format (str "\n%s"
-                     "<%s%s>"
-                     "%s"
-                     "</%s>")
-                (apply str (repeat *nesting* "  "))
-                tag (render-attrs attrs)
-                (apply str (mapcat h* children))
-                tag)
+        (#?(:clj format :cljs gstring/format)
+         (str "\n%s"
+              "<%s%s>"
+              "%s"
+              "</%s>")
+         (apply str (repeat *nesting* "  "))
+         tag (render-attrs attrs)
+         (apply str (mapcat h* children))
+         tag)
 
         :else
-        (format (str "\n%s"
-                     "<%s%s>"
-                     "%s"
-                     "\n%s"
-                     "</%s>")
-                (apply str (repeat *nesting* "  "))
-                tag (render-attrs attrs)
-                (apply str (mapcat h* children))
-                (apply str (repeat *nesting* "  "))
-                tag)))
+        (#?(:clj format :cljs gstring/format)
+         (str "\n%s"
+              "<%s%s>"
+              "%s"
+              "\n%s"
+              "</%s>")
+         (apply str (repeat *nesting* "  "))
+         tag (render-attrs attrs)
+         (apply str (mapcat h* children))
+         (apply str (repeat *nesting* "  "))
+         tag)))
 
     (seq? hiccup)
     (apply str (mapcat h* hiccup))
