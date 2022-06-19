@@ -4,19 +4,29 @@
             [lioss.util :as util]
             [lioss.subshell :as subshell]))
 
+(defn parse-artifact-name [sym]
+  (let [group (if (qualified-symbol? sym)
+                (namespace sym)
+                (name sym))
+        [name classifier] (str/split (name sym) #"\$")]
+    (cond->
+        {:group-id group
+         :artifact-id name}
+      classifier
+      (assoc :classifier classifier))))
+
 (defn pom-deps [deps]
   (for [[artifact coords] deps]
     (do
       (when-not (:mvn/version coords)
         (println "WARN: can't add to pom.xml" artifact coords))
-      [:dependency
-       [:groupId (if (qualified-symbol? artifact)
-                   (namespace artifact)
-                   (str artifact))]
-       [:artifactId (if (qualified-symbol? artifact)
-                      (name artifact)
-                      (str artifact))]
-       [:version (:mvn/version coords)]])))
+      (let [{:keys [artifact-id group-id classifier]} (parse-artifact-name artifact)]
+        [:dependency
+         [:groupId group-id]
+         [:artifactId artifact-id]
+         [:version (:mvn/version coords)]
+         (when classifier
+           [:classifier classifier])]))))
 
 (defn pom-alias-deps [opts]
   (concat
