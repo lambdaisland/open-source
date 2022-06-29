@@ -164,6 +164,29 @@
        [:name "Clojars repository"]
        [:url "https://clojars.org/repo"]]]]))
 
+(defn old-group-id-pom [opts]
+  (let [proj-name (:name opts)
+        version (:version opts)
+        old-group-id (:old-group-id opts)
+        group-id (:group-id opts)]
+    [:project {:xmlns "http://maven.apache.org/POM/4.0.0"
+               :xmlns:xsi "http://www.w3.org/2001/XMLSchema-instance"
+               :xsi:schemalocation "http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"}
+     [:modelVersion "4.0.0"]
+     [:groupId old-group-id]
+     [:artifactId proj-name]
+     [:version version]
+     [:dependencies
+      [:dependency
+       [:groupId group-id]
+       [:artifactId proj-name]
+       [:version version]]]
+     [:distributionManagement
+      [:repository
+       [:id "clojars"]
+       [:name "Clojars repository"]
+       [:url "https://clojars.org/repo"]]]]))
+
 (defn spit-pom [h]
   (util/spit-cwd "pom.xml" (hiccup->xml h)))
 
@@ -174,3 +197,6 @@
 (defn spit-relocation-poms [opts]
   (spit-pom (relocation-pom opts))
   (util/do-modules opts (comp spit-pom relocation-pom)))
+
+(defn spit-old-group-id-pom [opts]
+  (spit-pom (old-group-id-pom opts)))

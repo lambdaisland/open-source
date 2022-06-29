@@ -96,6 +96,15 @@
       (pom/spit-poms opts)
       (util/do-modules opts (fn [_] (mvn "deploy")))
       (mvn "deploy")
+
+      ;; if :old-group-id is defined, create a new pom (in temp dir)
+      ;; with :old-group-id (name, version same) and points to the
+      ;; package under actual :group-id as a single dependency
+      (when (:old-group-id opts)
+        (util/with-temp-cwd
+          (pom/spit-old-group-id-pom opts)
+          (mvn "deploy")))
+
       (prepend-changelog-placeholders)
       (git/git! "add" "pom.xml")
       (util/do-modules opts (fn [_] (git/git! "add" "pom.xml")))
