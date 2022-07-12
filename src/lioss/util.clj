@@ -1,5 +1,15 @@
 (ns lioss.util
+  (:require [clojure.java.io :as io])
   (:import [java.io File]))
+
+(defn delete-recursively
+  "Delete a directory recursively.
+
+  Also deletes if given just a file."
+  [^java.io.File file]
+  (when (.isDirectory file)
+    (run! delete-recursively (.listFiles file)))
+  (io/delete-file file))
 
 (def ^:dynamic *cwd* (System/getProperty "user.dir"))
 
@@ -12,6 +22,19 @@
          ~@body
          (finally
            (System/setProperty "user.dir" prev#))))))
+
+(defmacro with-temp-cwd
+  "Same as with-cwd except that it creates a temp dir
+  in *cwd* and evals the body inside it.
+
+  It cleans up the temp dir afterwards also removing
+  any temp files created within it."
+  [& body]
+  `(let [cwd# ".temp"
+         dir# (File. *cwd* cwd#)]
+     (.mkdirs dir#)
+     (with-cwd cwd# ~@body)
+     (delete-recursively dir#)))
 
 (defn slurp-cwd [f]
   (slurp (File. *cwd* f)))
