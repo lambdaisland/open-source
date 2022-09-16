@@ -1,11 +1,11 @@
 {:paths ["src" "resources"]
  :deps
- {lambdaisland/regal {:mvn/version "0.0.97"}
-  rewrite-clj/rewrite-clj {:mvn/version "1.0.605-alpha"}
-  olical/depot {:mvn/version "2.2.0"}}
+ {lambdaisland/regal {:mvn/version "0.0.143"}
+  rewrite-clj/rewrite-clj {:mvn/version "1.1.45"}
+  olical/depot {:mvn/version "2.3.0"}}
 
  :aliases
  {:build-releases
   {:extra-deps {lambdaisland/janus {:git/url "https://github.com/lambdaisland/janus"
-                                    :sha "1547a8b2edc69e19d051828f481d9a9fe7c08f85"}}
+                                    :sha "77a33f8cb209fffed40d60515fcf2092befa9972"}}
    :main-opts ["-m" "lioss.releases"]}}}
