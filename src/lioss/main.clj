@@ -79,7 +79,8 @@
    :date           (str (java.time.LocalDate/now))
    :latest-version (or (git/last-released-version) "0.0.0")
    :authors        (when (.exists (io/file "AUTHORS"))
-                     (str/split (str/trim (slurp "AUTHORS")) #"\R"))})
+                     (str/split (str/trim (slurp "AUTHORS")) #"\R"))
+   :paths          ["src"]})
 
 (defn main [opts]
   (assert (:group-id opts) ":group-id should be set explicitly to \"lambdaisland\" or \"com.lambdaisland\"")
