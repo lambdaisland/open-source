@@ -21,6 +21,12 @@ executors:
   openjdk17:
     docker:
       - image: lambdaisland/clojure:openjdk17
+  openjdk18:
+    docker:
+      - image: docker.nextjournal.com/environment@sha256:1689850c40afbc13294e48a1c6155dbbe6f2bc9cc61c3d958d70790a724628d0
+  openjdk19:
+    docker:
+      - image: docker.nextjournal.com/environment@sha256:589aaae492851a3485867c47934b4b9c592c97c5e1ec6b0246a6a234f3c030a7
 
 commands:
   with_cache:
