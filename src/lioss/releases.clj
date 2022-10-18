@@ -25,7 +25,7 @@
                        (sort-by :date)
                        reverse
                        )]
-            (println (str "# [" (str/capitalize project) "](https://github.com/lambadisland/" project ") "  version-id " (" date (when sha (str " / " sha)) ")"))
+            (println (str "# [" (str/capitalize project) "](https://github.com/lambdaisland/" project ") "  version-id " (" date (when sha (str " / " sha)) ")"))
             (println)
             (when (seq added)
               #_(println (str "## Added"))
@@ -50,4 +50,5 @@
         :when (seq (concat added fixed changed))]
     [project added fixed changed])
 
+  (-main [])
   )
