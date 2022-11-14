@@ -163,6 +163,10 @@ Or fake a hub config like  ` echo "oauth_token: $GHTOKEN" >> ~/.config/hub`
 
 And this potentially recursively for modules.
 
+If you encounter gpg related troubles, you probably need to first setup the gpg program properly.
+
+- See [Setup gpg](./gpg.md)
+
 ## Updating `bb_deps.edn`
 
 `bb_deps.edn` usually looks like this
