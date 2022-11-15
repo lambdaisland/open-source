@@ -3,6 +3,7 @@
             [clojure.java.shell :as sh]
             [clojure.pprint :as pprint]
             [clojure.string :as str]
+            [lioss.cucumber :as cucumber]
             [lioss.gh-actions :as gh-actions]
             [lioss.git :as git]
             [lioss.hiccup :as hiccup]
@@ -67,7 +68,11 @@
 
    "bump-version"
    {:description "Bump minor version"
-    :command version/bump-version!}])
+    :command version/bump-version!}
+
+   "gen-cucumber"
+   {:description "Generate docs from Cucumber"
+    :command  cucumber/generate-docs}])
 
 (def defaults
   {:name           (git/project-name)
