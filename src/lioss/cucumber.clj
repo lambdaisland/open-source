@@ -3,8 +3,9 @@
             [lambdaisland.cucumber.output :as cucumber-output]
             [lambdaisland.cucumber.gherkin :as gherkin]
             [clojure.string :as str]
-            [clojure.java.io :as io])
-  )
+            [clojure.java.io :as io]))
+
+(def pregenerated-notice "<!-- This document is generated based on a corresponding .feature file, do not edit directly -->\n\n")
 
 (defn list-cucumber-docs
   "Lists any cucumber docs.
@@ -18,6 +19,7 @@
                  (filter #(str/ends-with? % ".feature"))))
 
 (defn has-cucumber-docs? 
+  "Determines whether a repository path contains cucumber feature files with docs to (re)generate."
   [repository-path]
   (boolean (and (.exists (io/file repository-path)) (take 1 (list-cucumber-docs repository-path)))))
 
@@ -32,12 +34,16 @@
                          (str/replace ".feature" ".md")
                          io/writer)]
        (binding [*out* out]
+         (print pregenerated-notice)
          (->> f
               jvm/parse
               gherkin/gherkin->edn
               cucumber-output/print-markdown))))))
 
 
-(generate-docs "/home/alys/repos/lambdaisland/kaocha/")
-
-
+(defn -main [& args]
+  (if-let [repository (first args)]
+    (do 
+      (println "Generating docs")
+      (generate-docs repository))
+    (println "Warning: No repository supplied")))
