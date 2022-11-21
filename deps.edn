@@ -2,10 +2,14 @@
  :deps
  {lambdaisland/regal {:mvn/version "0.0.143"}
   rewrite-clj/rewrite-clj {:mvn/version "1.1.45"}
-  olical/depot {:mvn/version "2.3.0"}}
+  olical/depot {:mvn/version "2.3.0"}
+  lambdaisland/tools.namespace {:mvn/version "0.1.247"}}
 
  :aliases
  {:build-releases
   {:extra-deps {lambdaisland/janus {:git/url "https://github.com/lambdaisland/janus"
                                     :sha "77a33f8cb209fffed40d60515fcf2092befa9972"}}
-   :main-opts ["-m" "lioss.releases"]}}}
+   :main-opts ["-m" "lioss.releases"]}
+  :cucumber 
+  {:extra-deps {lambdaisland/kaocha-cucumber {:mvn/version "0.0-53"}}
+   :main-opts ["-m" "lioss.cucumber"]}}}
