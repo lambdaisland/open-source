@@ -6,6 +6,7 @@
 (defn ensure-repos [ctx]
   (doseq [alias (:aliases ctx)]
     (when-not (.isDirectory (io/file (str "../" (name alias))))
+      (println "Cloning" (name alias))
       (let [result (sh/sh "git" "clone" (str "git@github.com:lambdaisland/" (name alias))
                           :dir "..")]
         (when (not= 0 (:exit result))
