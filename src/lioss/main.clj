@@ -3,6 +3,7 @@
             [clojure.java.shell :as sh]
             [clojure.pprint :as pprint]
             [clojure.string :as str]
+            [lambdaisland.launchpad :as launchpad]
             [lioss.gh-actions :as gh-actions]
             [lioss.git :as git]
             [lioss.hiccup :as hiccup]
@@ -67,7 +68,12 @@
 
    "bump-version"
    {:description "Bump minor version"
-    :command version/bump-version!}])
+    :command version/bump-version!}
+
+   "launchpad"
+   {:description "Launch a REPL with Launchpad"
+    :command (fn [_]
+               (launchpad/main {:steps (into [(partial launchpad/ensure-java-version 17)] launchpad/default-steps)}))}])
 
 (def defaults
   {:name           (git/project-name)

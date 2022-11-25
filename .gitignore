@@ -1,3 +1,4 @@
 .cpcache
 .nrepl-port
 .store
+deps.local.edn

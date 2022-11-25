@@ -1,5 +1,6 @@
 {:paths ["src"]
  :deps
- {lambdaisland/regal {:mvn/version "0.0.143"}
-  rewrite-clj/rewrite-clj {:mvn/version "1.1.45"}
-  olical/depot {:mvn/version "2.3.0"}}}
+ {com.lambdaisland/launchpad {:mvn/version "0.13.67-alpha"}
+  lambdaisland/regal         {:mvn/version "0.0.143"}
+  olical/depot               {:mvn/version "2.3.0"}
+  rewrite-clj/rewrite-clj    {:mvn/version "1.1.45"}}}

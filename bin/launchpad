@@ -1,0 +1,21 @@
+#!/usr/bin/env bb
+
+(require '[lambdaisland.launchpad :as launchpad]
+         '[clojure.java.shell :as sh])
+
+(defn ensure-repos [ctx]
+  (doseq [alias (:aliases ctx)]
+    (when-not (.isDirectory (io/file (str "../" (name alias))))
+      (let [result (sh/sh "git" "clone" (str "git@github.com:lambdaisland/" (name alias))
+                          :dir "..")]
+        (when (not= 0 (:exit result))
+          (println "WARN: failed to clone lambdaisland/" alias)
+          (print (:out result))
+          (print (:err result))
+          (flush)))))
+  ctx)
+
+(launchpad/main {:steps (concat launchpad/before-steps
+                                [ensure-repos
+                                 launchpad/start-process]
+                                launchpad/after-steps)})
