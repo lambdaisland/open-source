@@ -1,6 +1,6 @@
 name: Add a new GitHub Project card linked to a GitHub issue or a new pr to the Triage project column
 
-on: [issues, pull_request]
+on: workflow_call
 
 jobs:
   add-to-project:
