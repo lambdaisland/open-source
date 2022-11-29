@@ -10,4 +10,5 @@ jobs:
       - uses: actions/add-to-project@v0.4.0
         with:
           project-url: https://github.com/orgs/lambdaisland/projects/2
-          github-token: ${{ secrets.ADD_PROJECT_BOARD }}
+          github-token: ${{ secrets.PROJECT_BOARD_GITHUB }}
+          
