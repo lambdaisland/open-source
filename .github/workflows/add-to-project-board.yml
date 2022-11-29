@@ -1,0 +1,13 @@
+name: Add a new GitHub Project card linked to a GitHub issue or a new pr to the Triage project column
+
+on: workflow_call
+
+jobs:
+  add-to-project:
+    name: Add issue or pr to project board marked as Triage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/add-to-project@v0.4.0
+        with:
+          project-url: https://github.com/orgs/lambdaisland/projects/2
+          github-token: ${{ secrets.ADD_PROJECT_BOARD }}
