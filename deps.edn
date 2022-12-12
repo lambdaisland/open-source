@@ -15,53 +15,54 @@
   {:extra-deps {lambdaisland/kaocha-cucumber {:mvn/version "0.0-53"}}
    :main-opts ["-m" "lioss.cucumber"]}
 
-  :ansi              {:local/root "../ansi"}
-  :chui              {:local/root "../chui"}
-  :classpath         {:local/root "../classpath"}
-  :cljbox2d          {:local/root "../cljbox2d"}
-  :clj-diff          {:local/root "../clj-diff"}
-  :cljs-i18n         {:local/root "../cljs-i18n"}
-  :daedalus          {:local/root "../daedalus"}
-  :data-printers     {:local/root "../data-printers"}
-  :deep-diff2        {:local/root "../deep-diff2"}
-  :deja-fu           {:local/root "../deja-fu"}
-  :dom-types         {:local/root "../dom-types"}
-  :dotenv            {:local/root "../dotenv"}
-  :edn-lines         {:local/root "../edn-lines"}
-  :embedkit          {:local/root "../embedkit"}
-  :exoscale          {:local/root "../exoscale"}
-  :facai             {:local/root "../facai"}
-  :faker             {:local/root "../faker"}
-  :fetch             {:local/root "../fetch"}
-  :funnel            {:local/root "../funnel"}
-  :funnel-client     {:local/root "../funnel-client"}
-  :garden-watcher    {:local/root "../garden-watcher"}
-  :glogi             {:local/root "../glogi"}
-  :hiccup            {:local/root "../hiccup"}
-  :jbox2d            {:local/root "../jbox2d"}
-  :kaocha            {:local/root "../kaocha"}
-  :kaocha-boot       {:local/root "../kaocha-boot"}
-  :kaocha-cljs       {:local/root "../kaocha-cljs"}
-  :kaocha-cljs2      {:local/root "../kaocha-cljs2"}
-  :kaocha-cloverage  {:local/root "../kaocha-cloverage"}
-  :kaocha-cucumber   {:local/root "../kaocha-cucumber"}
-  :kaocha-junit-xml  {:local/root "../kaocha-junit-xml"}
-  :kaocha-midje      {:local/root "../kaocha-midje"}
-  :launchpad         {:local/root "../launchpad"}
-  :move-namespace    {:local/root "../move-namespace"}
-  :nrepl-proxy       {:local/root "../nrepl-proxy"}
-  :ornament          {:local/root "../ornament"}
-  :plenish           {:local/root "../plenish"}
-  :puck              {:local/root "../puck"}
-  :regal             {:local/root "../regal"}
-  :reitit-jaatya     {:local/root "../reitit-jaatya"}
-  :shellutils        {:local/root "../shellutils"}
-  :specmonstah-malli {:local/root "../specmonstah-malli"}
-  :tools.namespace   {:local/root "../tools.namespace"}
-  :trikl             {:local/root "../trikl"}
-  :uri               {:local/root "../uri"}
-  :webbing           {:local/root "../webbing"}
-  :webstuff          {:local/root "../webstuff"}
-  :witchcraft        {:local/root "../witchcraft"}
-  :witchcraft-plugin {:local/root "../witchcraft-plugin"}
-  :zipper-viz        {:local/root "../zipper-viz"}}}
+  :ansi              {:extra-deps {lambdaisland/ansi {:local/root "../ansi"}}}
+  :chui              {:extra-deps {lambdaisland/chui {:local/root "../chui"}}}
+  :classpath         {:extra-deps {lambdaisland/classpath {:local/root "../classpath"}}}
+  :cljbox2d          {:extra-deps {lambdaisland/cljbox2d {:local/root "../cljbox2d"}}}
+  :clj-diff          {:extra-deps {lambdaisland/clj-diff {:local/root "../clj-diff"}}}
+  :cljs-i18n         {:extra-deps {lambdaisland/cljs-i18n {:local/root "../cljs-i18n"}}}
+  :daedalus          {:extra-deps {lambdaisland/daedalus {:local/root "../daedalus"}}}
+  :data-printers     {:extra-deps {lambdaisland/data-printers {:local/root "../data-printers"}}}
+  :deep-diff2        {:extra-deps {lambdaisland/deep-diff2 {:local/root "../deep-diff2"}}}
+  :deja-fu           {:extra-deps {lambdaisland/deja-fu {:local/root "../deja-fu"}}}
+  :dom-types         {:extra-deps {lambdaisland/dom-types {:local/root "../dom-types"}}}
+  :dotenv            {:extra-deps {lambdaisland/dotenv {:local/root "../dotenv"}}}
+  :edn-lines         {:extra-deps {lambdaisland/edn-lines {:local/root "../edn-lines"}}}
+  :embedkit          {:extra-deps {lambdaisland/embedkit {:local/root "../embedkit"}}}
+  :exoscale          {:extra-deps {lambdaisland/exoscale {:local/root "../exoscale"}}}
+  :facai             {:extra-deps {lambdaisland/facai {:local/root "../facai"}}}
+  :harvest           {:extra-deps {lambdaisland/facai {:local/root "../harvest"}}}
+  :faker             {:extra-deps {lambdaisland/faker {:local/root "../faker"}}}
+  :fetch             {:extra-deps {lambdaisland/fetch {:local/root "../fetch"}}}
+  :funnel            {:extra-deps {lambdaisland/funnel {:local/root "../funnel"}}}
+  :funnel-client     {:extra-deps {lambdaisland/funnel-client {:local/root "../funnel-client"}}}
+  :garden-watcher    {:extra-deps {lambdaisland/garden-watcher {:local/root "../garden-watcher"}}}
+  :glogi             {:extra-deps {lambdaisland/glogi {:local/root "../glogi"}}}
+  :hiccup            {:extra-deps {lambdaisland/hiccup {:local/root "../hiccup"}}}
+  :jbox2d            {:extra-deps {lambdaisland/jbox2d {:local/root "../jbox2d"}}}
+  :kaocha            {:extra-deps {lambdaisland/kaocha {:local/root "../kaocha"}}}
+  :kaocha-boot       {:extra-deps {lambdaisland/kaocha-boot {:local/root "../kaocha-boot"}}}
+  :kaocha-cljs       {:extra-deps {lambdaisland/kaocha-cljs {:local/root "../kaocha-cljs"}}}
+  :kaocha-cljs2      {:extra-deps {lambdaisland/kaocha-cljs2 {:local/root "../kaocha-cljs2"}}}
+  :kaocha-cloverage  {:extra-deps {lambdaisland/kaocha-cloverage {:local/root "../kaocha-cloverage"}}}
+  :kaocha-cucumber   {:extra-deps {lambdaisland/kaocha-cucumber {:local/root "../kaocha-cucumber"}}}
+  :kaocha-junit-xml  {:extra-deps {lambdaisland/kaocha-junit-xml {:local/root "../kaocha-junit-xml"}}}
+  :kaocha-midje      {:extra-deps {lambdaisland/kaocha-midje {:local/root "../kaocha-midje"}}}
+  :launchpad         {:extra-deps {lambdaisland/launchpad {:local/root "../launchpad"}}}
+  :move-namespace    {:extra-deps {lambdaisland/move-namespace {:local/root "../move-namespace"}}}
+  :nrepl-proxy       {:extra-deps {lambdaisland/nrepl-proxy {:local/root "../nrepl-proxy"}}}
+  :ornament          {:extra-deps {lambdaisland/ornament {:local/root "../ornament"}}}
+  :plenish           {:extra-deps {lambdaisland/plenish {:local/root "../plenish"}}}
+  :puck              {:extra-deps {lambdaisland/puck {:local/root "../puck"}}}
+  :regal             {:extra-deps {lambdaisland/regal {:local/root "../regal"}}}
+  :reitit-jaatya     {:extra-deps {lambdaisland/reitit-jaatya {:local/root "../reitit-jaatya"}}}
+  :shellutils        {:extra-deps {lambdaisland/shellutils {:local/root "../shellutils"}}}
+  :specmonstah-malli {:extra-deps {lambdaisland/specmonstah-malli {:local/root "../specmonstah-malli"}}}
+  :tools.namespace   {:extra-deps {lambdaisland/tools.namespace {:local/root "../tools.namespace"}}}
+  :trikl             {:extra-deps {lambdaisland/trikl {:local/root "../trikl"}}}
+  :uri               {:extra-deps {lambdaisland/uri {:local/root "../uri"}}}
+  :webbing           {:extra-deps {lambdaisland/webbing {:local/root "../webbing"}}}
+  :webstuff          {:extra-deps {lambdaisland/webstuff {:local/root "../webstuff"}}}
+  :witchcraft        {:extra-deps {lambdaisland/witchcraft {:local/root "../witchcraft"}}}
+  :witchcraft-plugin {:extra-deps {lambdaisland/witchcraft-plugin {:local/root "../witchcraft-plugin"}}}
+  :zipper-viz        {:extra-deps {lambdaisland/zipper-viz {:local/root "../zipper-viz"}}}}}
