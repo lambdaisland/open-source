@@ -339,6 +339,43 @@ differ.
 You may also see older releases that use a variant of this with a dash,
 `<major>.<releases>-<commits>`.
 
+## Commitment to stability
+
+We take backwards compatibility very seriously (don't break userspace!), and avoid breaking changes if at all possible
+
+- projects that are still in version `0.x` are exempted, here we retain the
+  right to "get it right" before locking it down
+- in practice though the main thing that matters is amount of adoption and thus
+  potential breakage. If a `0.x` project is already in widespread use then it's
+  unlikely we'll make breaking changes, and we should bump it to `1.x` at the
+  next release.
+- there's a tiny bit of wiggle room for parts of the API that we don't consider
+  public, or for inputs that are not (yet) officially supported or specified,
+  similar to what Clojure does. (e.g. we may have a function accept a type of
+  argument that in the past would cause an exception.) It still hinges on impact
+  assessment. We should expect this to not impact any users, unless they are
+  really doing things they should definitely not be doing.
+- there's also a little bit of wiggle room for things that "should" work but are
+  actually broken and unusable, or for behavior that is clearly incorrect. E.g.
+  say we discover that `lambdaisland.uri`'s escaping doesn't handle certain
+  input correctly, then we fix that. The idea is that this should benefit
+  existing users rather than hurt them. There's a chance that someone is relying
+  on the broken behavior, and so we break their code. That's a risk we may
+  decide to take.
+- if we do see a legitimate need for breaking changes, then we consider leaving
+  the original namespaces and artifact id "frozen", and instead fork to a new
+  major version with its own namespace names and artifact id, so that at least
+  in principle both can live side by side in the same project without impacting
+  each other. We've done this so far for `deep-diff2` (changes were necessary
+  for clojurescript compat), and kaocha-cljs2 (major rewrite with different
+  underpinnings).
+- projects with an end user UI (including terminal UIs like kaocha) are a
+  special case, we retain the right to improve the UI and general end user
+  experience, even if this means changing existing behavior. In these cases we
+  generally expect anyone who is building tooling on top of these projects to
+  use underlying APIs, which are generally provided (e.g. `kaocha.api`) rather
+  than trying to interface/script the UI. (You shouldn't be shelling out to Kaocha.)
+
 ## Build tooling
 
 We have our own custom tooling for managing Lambda Island projects, which is
