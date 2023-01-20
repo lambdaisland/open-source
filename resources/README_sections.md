@@ -66,7 +66,7 @@ line with the project's goals.
 
 `*` This goes for features too, a feature needs to solve a problem. State the problem it solves first, only then move on to solving it.
 
-`**` Projects that have a version that starts with `0.` may still be breaking changes, although we also consider the level of community adoption. The more widespread a project is, the less likely we're willing to introduce breakage.
+`**` Projects that have a version that starts with `0.` may still see breaking changes, although we also consider the level of community adoption. The more widespread a project is, the less likely we're willing to introduce breakage. See [LambdaIsland-flavored Versioning](https://github.com/lambdaisland/open-source#lambdaisland-flavored-versioning) for more info.
 <!-- /contributing -->
 
 
