@@ -178,8 +178,8 @@
                release-tag "](https://github.com/" gh-project "/releases/tag/" release-tag ")")
           ""
           "```clj"
-          (str `[~mvn-project ~version] "             ;; deps.edn")
-          (str `{~project {:mvn/version ~version}} "  ;; project.clj")
+          (str `[~mvn-project ~version] "                 ;; deps.edn")
+          (str `{~mvn-project {:mvn/version ~version}} "  ;; project.clj")
           "```"])}))))
 
 
