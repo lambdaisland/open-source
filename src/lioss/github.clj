@@ -169,18 +169,20 @@
 (defn notify-prs-of-release [{:keys [gh-project group-id name release-tag version]}]
   (let [mvn-project (symbol group-id name)]
     (doseq [issue (prs-in-last-release)]
-      (issue-comment
-       {:gh-project gh-project
-        :body
-        (str/join
-         "\n"
-         [(str "Released in ["
-               release-tag "](https://github.com/" gh-project "/releases/tag/" release-tag ")")
-          ""
-          "```clj"
-          (str `[~mvn-project ~version] "                 ;; deps.edn")
-          (str `{~mvn-project {:mvn/version ~version}} "  ;; project.clj")
-          "```"])}))))
+      (prn
+       (issue-comment
+        {:gh-project gh-project
+         :issue-number issue
+         :body
+         (str/join
+          "\n"
+          [(str "Released in ["
+                release-tag "](https://github.com/" gh-project "/releases/tag/" release-tag ")")
+           ""
+           "```clj"
+           (str `[~mvn-project ~version] "                 ;; deps.edn")
+           (str `{~mvn-project {:mvn/version ~version}} "  ;; project.clj")
+           "```"])})))))
 
 
 (comment
