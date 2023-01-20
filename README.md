@@ -305,6 +305,65 @@ active development. These are issues that have it spelled out in very fine
 detail what needs to happen. These issues are only open to people who have not
 contributed to Lambda Island projects before.
 
+## LambdaIsland-flavored Versioning
+
+All lambdaisland projects use the following versioning scheme:
+
+```
+<major>.<releases>.<commits>
+```
+
+`<major>` is normally either 0 or 1. 0 means we still consider making braking
+changes, 1 means we have a high commitment to staying compatible with older
+versions, so as not to introduce needless pain for our users.
+
+If we do see a compelling need for breaking changes, then we bump major to 2 (or
+higher), but in that case we also introduce new namespace and artifact names.
+This way version 1 and two can in principle co-exist in the same project, so
+existing code continues to function. Examples are `kaocha-cljs2` (introduces a
+completely different approach for driving a cljs environment), and `deep-diff2`
+(introduced breaking changes that were necessary to support ClojureScript).
+
+`<releases>` is an increasing count of the number of releases that have happened
+so far.
+
+`<commits>` is the total number of commits in this release.
+
+So `1.75.1189` means a stable project, that has seen 75 releases to date, and
+contains 1189 separate commits.
+
+We find this versioning scheme best communicates the maturity (or lack thereof)
+of a project, and gives people a good sense of how much different releases
+differ.
+
+You may also see older releases that use a variant of this with a dash,
+`<major>.<releases>-<commits>`.
+
+## Build tooling
+
+We have our own custom tooling for managing Lambda Island projects, which is
+maintained inthis repo (`lambdaisland/open-source`). You'll find a `bin/proj`
+script in all of our projects, this is a babashka script that provides an entry
+point into this tooling.
+
+```
+➜ bin/proj
+Usage: bin/proj [COMMAND] [COMMAND_ARGS...]
+
+  release                            Release a new version to clojars
+  pom                                Generate pom files
+  relocation-pom                     Generate pom files to relocate artifacts to a new groupId
+  install                            Build and install jar(s) locally
+  print-versions                     Print deps.edn / lein coordinates
+  gh_actions_changelog_output        Print the last stanza of the changelog in a format that GH actions understands
+  help                               Show this help information
+  inspect                            Show expanded opts and exit
+  gen-readme                         Generate README based on a template and fill in project variables
+  update-readme                      Update sections in README.md
+  bump-version                       Bump minor version
+  launchpad                          Launch a REPL with Launchpad
+```
+
 ## Open Collective
 
 If you find value in our work please consider [becoming a backer on Open Collective](http://opencollective.com/lambda-island#section-contribute)
