@@ -114,6 +114,7 @@
       (git/git! "push")
 
       (github/create-release opts)
+      (github/notify-prs-of-release opts)
 
       ;; Disable this for now, something changed on the server causing curl to
       ;; hang instead of exiting

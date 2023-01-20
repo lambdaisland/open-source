@@ -1,6 +1,9 @@
 <!-- opencollective -->
 ## Lambda Island Open Source
 
+[Become a backer](https://opencollective.com/lambda-) and show your support to our open source project on [our site](https://mochajs.org/#backers).
+
+<a href="https://opencollective.com/mochajs"><img src="https://opencollective.com/mochajs/tiers/backers.svg?limit=30&button=false&avatarHeight=46&width=750"></a>
 <img align="left" src="https://github.com/lambdaisland/open-source/raw/master/artwork/lighthouse_readme.png">
 
 &nbsp;

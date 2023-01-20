@@ -1,12 +1,14 @@
 (ns lioss.github
-  (:require [cheshire.core :as json]
-            [clojure.java.io :as io]
-            [clojure.java.shell :as shell]
-            [clojure.string :as str]
-            [lioss.git :as git]
-            [org.httpkit.client :as http])
-  (:import [java.time LocalDateTime Instant]
-           [java.time.temporal ChronoUnit ChronoField]))
+  (:require
+   [cheshire.core :as json]
+   [clojure.java.io :as io]
+   [clojure.java.shell :as shell]
+   [clojure.string :as str]
+   [lioss.git :as git]
+   [org.httpkit.client :as http])
+  (:import
+   (java.time LocalDateTime Instant)
+   (java.time.temporal ChronoUnit ChronoField)))
 
 (def highlighted
   "Repositories that we have highlighted in the README of this repository."
@@ -146,6 +148,39 @@
                           "\"body\": " (pr-str (str/join "\n" (next (str/split changelog #"\R")))) ", "
                           "\"name\": " (pr-str (or release-title release-tag))
                           "}")}))
+
+(defn issue-comment [{:keys [gh-project issue-number body]}]
+  @(http/post (str "https://api.github.com/repos/" gh-project
+                   "/issues/" issue-number "/comments")
+              {:headers {"Accept" "application/vnd.github+json"
+                         "Authorization" (str "token " (get-token))
+                         "X-GitHub-Api-Version" "2022-11-28"}
+               :body (json/generate-string
+                      {:body body})}))
+
+(defn prs-in-last-release []
+  (keep
+   (fn [{:keys [body]}]
+     (second (re-find #"Merge pull request #(\d+)" body)))
+   (let [[v1 v2] (git/all-versions)]
+     (git/parse-log
+      (git/git "log" (str "v" v2 "..v" v1))))))
+
+(defn notify-prs-of-release [{:keys [gh-project group-id name release-tag version]}]
+  (let [mvn-project (symbol group-id name)]
+    (doseq [issue (prs-in-last-release)]
+      (issue-comment
+       {:gh-project gh-project
+        :body
+        (str/join
+         "\n"
+         [(str "Released in ["
+               release-tag "](https://github.com/" gh-project "/releases/tag/" release-tag ")")
+          ""
+          "```clj"
+          (str `[~mvn-project ~version] "             ;; deps.edn")
+          (str `{~project {:mvn/version ~version}} "  ;; project.clj")
+          "```"])}))))
 
 
 (comment

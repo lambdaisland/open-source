@@ -1,9 +1,10 @@
 (ns lioss.git
-  (:require [clojure.java.shell :as sh]
-            [clojure.string :as str]
-            [lioss.subshell :as subshell]
-            [lioss.util :as util]
-            [clojure.java.io :as io]))
+  (:require
+   [clojure.java.io :as io]
+   [clojure.java.shell :as sh]
+   [clojure.string :as str]
+   [lioss.subshell :as subshell]
+   [lioss.util :as util]))
 
 (defn git [& args]
   (str/trim (:out (apply sh/sh "git" args))))
@@ -72,9 +73,21 @@
     (>= (compare-versions v1 v2) 0)
     true))
 
-(defn last-released-version []
+(defn all-versions []
   (->> (str/split (git "tag") #"\n")
        (filter #(#{\v} (first %)))
        (map #(subs % 1))
-       (sort #(compare-versions %1 %2))
-       last))
+       (sort #(compare-versions %2 %1))))
+
+(defn last-released-version []
+  (first (all-versions)))
+
+(defn parse-log [log]
+  (for [commit (str/split log #"[\n^]commit ")
+        :let [lines (str/split commit #"\R")
+              [headers body] (split-with #(not= "" %) (next lines))]]
+    {:commit (str/replace (first lines) #"commit " "")
+     :headers (into {} (keep #(when-let [[_ k v] (re-find #"^(\w+): (.*)$" %)]
+                                [k (str/trim v)]))
+                    headers)
+     :body (str/join "\n" (map #(subs % 4) (next body)))}))
