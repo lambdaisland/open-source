@@ -1,0 +1,116 @@
+#!/bin/bash
+
+# Show a short summary of the git status of each repo.
+# Assumes all lambdaisland repos are checked out as siblings to the open-source repo.
+# Use --dirty to only show the non-clean repos
+
+LI_HOME="$(dirname "$(readlink -f "$0")")/../.."
+
+GIT_STATUS_PREFIX="["
+GIT_STATUS_SUFFIX="]"
+GIT_STATUS_COLOR="d"
+GIT_STATUS_UNTRACKED="?"
+GIT_STATUS_ADDED="+"
+GIT_STATUS_MODIFIED="!"
+GIT_STATUS_RENAMED="»"
+GIT_STATUS_DELETED="x"
+GIT_STATUS_STASHED="$"
+GIT_STATUS_UNMERGED="="
+GIT_STATUS_AHEAD="⇡"
+GIT_STATUS_BEHIND="⇣"
+GIT_STATUS_DIVERGED="⇕"
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+git_status() {
+  INDEX=$(command git status --porcelain -b 2> /dev/null)
+
+  # Check for untracked files
+  if $(echo "$INDEX" | command grep -E '^\?\? ' &> /dev/null); then
+    git_status="$GIT_STATUS_UNTRACKED$git_status"
+  fi
+
+  # Check for staged files
+  if $(echo "$INDEX" | command grep '^A[ MDAU] ' &> /dev/null); then
+    git_status="$GIT_STATUS_ADDED$git_status"
+  elif $(echo "$INDEX" | command grep '^M[ MD] ' &> /dev/null); then
+    git_status="$GIT_STATUS_ADDED$git_status"
+  elif $(echo "$INDEX" | command grep '^UA' &> /dev/null); then
+    git_status="$GIT_STATUS_ADDED$git_status"
+  fi
+
+  # Check for modified files
+  if $(echo "$INDEX" | command grep '^[ MARC]M ' &> /dev/null); then
+    git_status="$GIT_STATUS_MODIFIED$git_status"
+  fi
+
+  # Check for renamed files
+  if $(echo "$INDEX" | command grep '^R[ MD] ' &> /dev/null); then
+    git_status="$GIT_STATUS_RENAMED$git_status"
+  fi
+
+  # Check for deleted files
+  if $(echo "$INDEX" | command grep '^[MARCDU ]D ' &> /dev/null); then
+    git_status="$GIT_STATUS_DELETED$git_status"
+  elif $(echo "$INDEX" | command grep '^D[ UM] ' &> /dev/null); then
+    git_status="$GIT_STATUS_DELETED$git_status"
+  fi
+
+  # Check for stashes
+  if $(command git rev-parse --verify refs/stash >/dev/null 2>&1); then
+    git_status="$GIT_STATUS_STASHED$git_status"
+  fi
+
+  # Check for unmerged files
+  if $(echo "$INDEX" | command grep '^U[UDA] ' &> /dev/null); then
+    git_status="$GIT_STATUS_UNMERGED$git_status"
+  elif $(echo "$INDEX" | command grep '^AA ' &> /dev/null); then
+    git_status="$GIT_STATUS_UNMERGED$git_status"
+  elif $(echo "$INDEX" | command grep '^DD ' &> /dev/null); then
+    git_status="$GIT_STATUS_UNMERGED$git_status"
+  elif $(echo "$INDEX" | command grep '^[DA]U ' &> /dev/null); then
+    git_status="$GIT_STATUS_UNMERGED$git_status"
+  fi
+
+  # Check whether branch is ahead
+  local ahead=$(command git rev-list --count ${git_branch}@{upstream}..HEAD 2>/dev/null)
+  local behind=$(command git rev-list --count HEAD..${git_branch}@{upstream} 2>/dev/null)
+
+  # Check wheather branch has diverged
+  if (( $ahead )) && (( $behind )); then
+    git_status="$GIT_STATUS_DIVERGED$git_status"
+  elif (( $ahead )); then
+    git_status="$GIT_STATUS_AHEAD$git_status"
+  elif (( $behind )); then
+    git_status="$GIT_STATUS_BEHIND$git_status"
+  fi
+
+  if [[ -n $git_status ]]; then
+      printf "${RED}%s${NC}\r\033[7C" "[$git_status]"
+  else
+      printf "%-7s" ""
+  fi
+}
+
+for x in "$LI_HOME"/*; do
+    if [[ -d "$x/.git" ]]; then
+        repo=$(basename "$x")
+        pushd "$x" > /dev/null
+        status="$(git_status)"
+        popd > /dev/null
+        date="$(git -C "$x" show HEAD --pretty=format:"%ah" | head -1)"
+        title="$(git -C "$x" show HEAD --pretty=format:"%s" | head -1)"
+        branch=$(git -C "$x" branch --show-current)
+        branch_flag=""
+        if [[ ! "$branch" == "master" ]] && [[ ! "$branch" == "main" ]]; then
+          branch_flag=" (${branch})"
+        fi
+        tags=$(git -C "$x" describe --tags 2>/dev/null)
+        if [[ "$?" -eq 0 ]]; then
+          branch_flag="${branch_flag} (${tags})"
+        fi
+        if [[ ! "$1" == "--dirty" ]] || [[ ! -z "${status// }" ]]; then
+            printf "%-5s %-60s  %-20s %s\n" "$status" "$repo$branch_flag" "$date" "$title"
+        fi
+    fi
+done

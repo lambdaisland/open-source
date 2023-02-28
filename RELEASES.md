@@ -1,3 +1,175 @@
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.79.1270 (2023-02-28 / 47a7b61)
+
+-  Kaocha is now compatible with Babashka. Running under Babashka is most useful
+  for validating your Clojure code runs correctly on Babashka, but it may also
+  be faster for some test suites because of reduced start up time.
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.78.1249 (2023-02-22 / 85de28d)
+
+-  Fix issue with `--watch` and Neovim by bumping Beholder to `1.0.2`
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.77.1236 (2023-02-01 / 510f450)
+
+-  Fix bug causing namepaces to not be loaded if an alias was already created for them using `:as-alias`
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.76.1230 (2023-01-25 / 2b9d9df)
+
+-  `kaocha.repl/config` accepts a `:profile` key when specifying extra options.
+-  Configuration errors and circular dependencies are reported as warnings, 
+  rather than causing the entire watcher to crash. (thanks
+  [@frenchy64](https://github.com/frenchy64))
+-  Fix bug added in [#384](https://github.com/lambdaisland/kaocha/issues/384):
+  assertions in the tail position of an each fixture would return the result
+  of the assertion instead of the testable object with the merged report data.
+  (thanks [@NoahTheDuke](https://github.com/NoahTheDuke))
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.74.1181 (2023-01-20 / d823c74)
+
+-  Dependency version bumps
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.75.1190 (2023-01-20 / 29f98cc)
+
+-  `kaocha.plugin.capture-output/bypass` macro, for temporarily bypassing output
+  capturing
+-  Circular dependencies in watch mode no longer kills the process. (thanks
+  [@frenchy64](https://github.com/frenchy64))
+
+# [Launchpad](https://github.com/lambdaisland/launchpad) 0.15.79-alpha (2023-01-20 / 2b06d8e)
+
+-  Allow setting nrepl port/bind from CLI
+-  Provide a warning when connecting to emacs fails, rather than exiting
+-  Dependency version bumps
+
+# [Embedkit](https://github.com/lambdaisland/embedkit) 0.0.50 (2023-01-19 / 8e058ff)
+
+-  Let (setup/init-metabase! config) support first-name, last-name, site-name.
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.73.1175 (2023-01-16 / 664b83a)
+
+-  Ensure reloading errors are printed in watch mode when the first test suite is disabled.
+-  Using a try-catch (without rethrowing) in an `:each` fixture could swallow
+  thrown exceptions, resulting in a test being treated as passing when it should
+  have been reported as an error. Fixed by changing how `:each` fixtures wrap
+  the test function in execution. (thanks
+  [@NoahTheDuke](https://github.com/NoahTheDuke))
+-  Fix crash on Windows when using `--watch` with the default Beholder watcher.
+
+# [Deja-fu](https://github.com/lambdaisland/deja-fu) 1.4.58 (2023-01-16 / 1446eef)
+
+-  `distance-in-words` now renders approximate weeks; month ranges were adjusted
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.72.1136 (2023-01-09 / d9f0728)
+
+-  Documentation fixes and improvements
+
+# [Facai](https://github.com/lambdaisland/facai) 0.8.68-alpha (2022-12-16 / 1f31590)
+
+-  Fix two-arity version of build-all
+-  When unifying, don't recurse down the stored lvar value when reusing it
+-  Remove three-arity version of build-all
+
+# [Launchpad](https://github.com/lambdaisland/launchpad) 0.14.72-alpha (2022-12-12 / 06eed64)
+
+-  Add support for top-level shadow-cljs config/builds, not only sub-project builds
+-  Better handle `:paths` in `deps.local.edn`, ensure they are picked up at boot,
+  not only at first classpath reload
+
+# [Webbing](https://github.com/lambdaisland/webbing) 0.4.20-alpha (2022-12-04 / 656964e)
+
+-  Make sure cli-args are checked even if no setting lookups happened
+
+# [Ornament](https://github.com/lambdaisland/ornament) 0.7.77 (2022-11-25 / a1f8d65)
+
+
+# [Glogi](https://github.com/lambdaisland/glogi) 1.2.164 (2022-11-25 / 9a89583)
+
+-  Add support for logging multiple forms with `spy`.
+-  Release under `com.lambdaisland` as well as `lambdaisland`, see https://github.com/lambdaisland/open-source/issues/9
+-  Version bumps
+
+# [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.6.166 (2022-11-25 / 06fec7e)
+
+-  Babashka compatibility
+
+# [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.7.169 (2022-11-25 / 343811e)
+
+-  Fix printing of mismatch/deletion/insertion on Babashka
+
+# [Clj-diff](https://github.com/lambdaisland/clj-diff) 1.4.78 (2022-11-25 / 2c3cae0)
+
+-  Test runner
+-  CI configuration
+-  Babashka compatibility
+
+# [Launchpad](https://github.com/lambdaisland/launchpad) 0.13.67-alpha (2022-11-25 / 07ac499)
+
+-  Support setting :lauchpad/main-opts in .clojure/deps.edn
+
+# [Embedkit](https://github.com/lambdaisland/embedkit) 0.0.45 (2022-11-24 / f6273b8)
+
+-  Add fetch-users API
+-  [breaking] Support only metabase version >= `0.40.0`
+-  Support the pagination feature of `/api/user` [Ref](https://github.com/metabase/metabase/wiki/What%27s-new-in-0.40.0-for-Metabase-REST-API-clients)
+
+# [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.5.151 (2022-11-21 / 92232a1)
+
+-  [breaking] Fall back to the system printer when no deep-diff2 specific print handler is available for a given type. See the README for details.
+
+# [Fetch](https://github.com/lambdaisland/fetch) 1.2.69 (2022-11-14 / 6e9a82f)
+
+-  Support for a `:signal` key, to hook up an `AbortController`
+
+# [Embedkit](https://github.com/lambdaisland/embedkit) 0.0.24 (2022-11-13 / 23678d6)
+
+-  Add setup automation
+
+# [Kaocha-cljs2](https://github.com/lambdaisland/kaocha-cljs2) 0.1.58 (2022-11-11 / 98fdc42)
+
+-  Upgrade Chui, fixes a glogi dependency incompatibility with current version of Clojurescript
+-  Upgrade Kaocha to 1.70.1086
+
+# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 1.17.101 (2022-11-09 / 95067b2)
+
+-  * Fix Cljdoc build.
+
+# [Kaocha-cloverage](https://github.com/lambdaisland/kaocha-cloverage) 1.1.89 (2022-11-09 / c2b2dbf)
+
+-  Bumped Cloverage dependency to `1.2.4`.
+
+# [Launchpad](https://github.com/lambdaisland/launchpad) 0.12.64-alpha (2022-10-26 / a4fdb16)
+
+-  Write the current classpath to `.cpcache/launchpad.cp`, for integrating third
+  parties like clojure-lsp. (configure `cat .cpache/launchpad.cp` as your
+  `:classpath-cmd`)
+-  Call `(user/go)` in a `try/catch`
+-  Start the watcher on a separate thread, it can take a long time to boot, and
+  meanwhile we shouldn't block REPL startup.
+-  Pick up any `:deps` from `deps.local.edn` at startup, not at the first
+  classpath reload
+-  Disable directory-watcher file hashing, it gets prohibitively slow
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.71.1119 (2022-10-24 / 4317878)
+
+-  Configure a timeout for notifications with `--notification-timeout` or
+  `:kaocha.plugin.notifier/timeout`. Note that this feature doesn't work for
+  terminal-notifier on macOS, with Java's built-in TrayIcon, or with
+  notify-send on certain Linux desktop environments and distributions.
+-  Fix configuration parsing when using `--watch`. Previously, profiles would be
+  respected on the initial load, but not after watch reloaded the configuration.
+-  Notifier now reports errors in your notification command instead of silently
+  failing.
+-  Fixed `java.lang.IllegalArgumentException: No matching clause: []` exception
+  when `:kaocha.spec.test.check/syms` is a collection.
+
+# [Launchpad](https://github.com/lambdaisland/launchpad) 0.11.59-alpha (2022-10-21 / 8454771)
+
+-  Fixes cljdoc build. There should be no changes to launchpad users.
+
+# [Deja-fu](https://github.com/lambdaisland/deja-fu) 1.3.51 (2022-10-18 / 2d9d7f4)
+
+-  add `distance-in-words`, to render relative time strings like "3 months ago"
+-  add `leap-year?`
+
 # [Dotenv](https://github.com/lambdaisland/dotenv) 0.2.5 (2022-10-17 / 13be4ef)
 
 -  Fix whitespace handling for unquoted values (leading and trailing whitespace is trimmed)
@@ -90,6 +262,7 @@
 
 # [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 1.4.130 (2022-09-19 / 69599a1)
 
+-  Release under `com.lambdaisland` as well `lambdaisland`, see https://github.com/lambdaisland/open-source/issues/9
 
 # [Nrepl-proxy](https://github.com/lambdaisland/nrepl-proxy) 0.1.4-alpha (2022-09-16 / 5f5dd40)
 
@@ -122,6 +295,16 @@
 
 -  [watcher] Add a `:watch-paths` option, to watch additional files. Presumable
   in combination with a custom `:basis-fn`
+
+# [Harvest](https://github.com/lambdaisland/harvest) 0.7.59-alpha (2022-09-02 / 161a3b7)
+
+-  Introduced `with` and `with-opts` as a public API for creating deferreds. This
+  may not stick, we may decide to always return a deferred when calling a
+  factory directly instead.
+-  Add a new key `:facai.build/factory` to the context when calling
+  {before,after}-create-factory hooks, so that hooks don't have to deal with
+  unppwrapping deferreds
+-  Fix selector matching on a single segment wildcard selector: `[:*]`
 
 # [Facai](https://github.com/lambdaisland/facai) 0.7.59-alpha (2022-09-02 / 161a3b7)
 
@@ -166,6 +349,11 @@
 # [Plenish](https://github.com/lambdaisland/plenish) 0.1.23 (2022-07-25 / cf784ed)
 
 
+# [Harvest](https://github.com/lambdaisland/harvest) 0.6.52-alpha (2022-07-12 / 509ba20)
+
+-  Add XTDB support
+-  Rework persistence and hooks
+
 # [Facai](https://github.com/lambdaisland/facai) 0.6.52-alpha (2022-07-12 / 509ba20)
 
 -  Add XTDB support
@@ -208,6 +396,11 @@
 # [Witchcraft](https://github.com/lambdaisland/witchcraft) 0.33.307 (2022-06-05 / 4ae4713)
 
 -  Add `set-game-mode`
+
+# [Harvest](https://github.com/lambdaisland/harvest) 0.5.41-alpha (2022-06-04 / c95169c)
+
+-  Support for rules
+-  Support for unification
 
 # [Facai](https://github.com/lambdaisland/facai) 0.5.41-alpha (2022-06-04 / c95169c)
 
@@ -261,6 +454,17 @@
 # [Dom-types](https://github.com/lambdaisland/dom-types) 0.5.37 (2022-05-11 / 63d0f6c)
 
 -  Bump dependencies
+
+# [Harvest](https://github.com/lambdaisland/harvest) 0.3.27-alpha (2022-05-04 / 8ab563a)
+
+-  Make `lambdaisland.facai.helpers` ClojureScript compatible (convert to cljc) 
+-  Allow `helpers/numbered` to accept strings
+
+# [Harvest](https://github.com/lambdaisland/harvest) 0.4.32-alpha (2022-05-04 / 33d976f)
+
+-  Added `after-build` hooks on the factory and trait level
+-  Added `lambdaisland.factory/update-result` for use in hooks
+-  Breaking: traits now need an extra wrapping map, similar to the options map, with `:with` and optionally `:after-build`
 
 # [Facai](https://github.com/lambdaisland/facai) 0.3.27-alpha (2022-05-04 / 8ab563a)
 
@@ -338,6 +542,12 @@
 -  Fix a regression that caused a load error on servers that support BlockData (1.13+)
 -  Bump Clojure2D, XSeries
 
+# [Harvest](https://github.com/lambdaisland/harvest) 0.2.23-alpha (2022-04-12 / 97f1b62)
+
+-  Convert to cljc (clojure+clojurescript support)
+-  Drop "rules" support, will likely come back in some other form in the future
+-  Version bumps
+
 # [Facai](https://github.com/lambdaisland/facai) 0.2.23-alpha (2022-04-12 / 97f1b62)
 
 -  Convert to cljc (clojure+clojurescript support)
@@ -362,6 +572,9 @@
 
 -  Rename `launch!` to the more accurate `launch-cmd`
 
+# [Harvest](https://github.com/lambdaisland/harvest) 0.1.18 (2022-03-28 / d5b5461)
+
+-  Initial implementation
 # [Faker](https://github.com/lambdaisland/faker) 0.1.4 (2022-03-28 / 631867c)
 
 -  First release, implement main lookup logic, convert original YAMLs to Transit,
@@ -373,6 +586,7 @@
 # [Facai](https://github.com/lambdaisland/facai) 0.1.18 (2022-03-28 / d5b5461)
 
 -  Initial implementation
+
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.64.1010 (2022-03-17 / e203099)
 
 -  Ignore test suites that are already excluded through CLI arguments when
@@ -620,6 +834,7 @@ not take into account utf-16 encoding.
 # [Embedkit](https://github.com/lambdaisland/embedkit) 0.0.12 (2021-10-28 / 756d3d1)
 
 -  First release
+
 # [Ornament](https://github.com/lambdaisland/ornament) 0.1.12 (2021-10-25 / d0a739b)
 
 -  Bump Girouette to 0.0.5
@@ -1736,6 +1951,7 @@ not take into account utf-16 encoding.
 # [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 0.0-11 (2018-12-12 / 53fe73a)
 
 -  Initial implementation
+
 # [Kaocha-cloverage](https://github.com/lambdaisland/kaocha-cloverage) 0.0-22 (2018-12-10 / ee13a86)
 
 -  Don't rely on Cloverage to find namespaces, this fixes compatibility with Cucumber.
@@ -1905,6 +2121,7 @@ not take into account utf-16 encoding.
 # [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 0.0-4 (2018-10-30 / 3d82596)
 
 -  Extracted from Kaocha, and added a top-level namespace.
+
 # [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 0.0-8 (2018-10-30 / 6bd7918)
 
 -  `lambdaisland.deep-diff.printer/print-*` are now public, as they can be used

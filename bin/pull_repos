@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Do a `git pull` in all repos that are not dirty
+# Assumes all lambdaisland repos are checked out as siblings to the open-source repo
+
+LI_HOME="$(dirname "$(readlink -f "$0")")/../.."
+
+for x in "$LI_HOME"/*; do
+    if [[ -d "$x/.git" ]]; then
+        repo=$(basename "$x")
+        branch=$(git -C "$x" branch --show-current)
+        if [[ $(git -C "$x" diff --stat) != '' ]]; then
+            echo "$repo not clean, not pulling"
+        elif [[ ! "$branch" == "master" ]] && [[ ! "$branch" == "main" ]]; then
+            echo "$repo not on main/master (${branch}), not pulling"
+        else
+            echo "$repo: pulling"
+            git -C "$x" pull
+        fi
+    fi
+done
