@@ -1,11 +1,16 @@
 #!/bin/bash
 
 # Do a `git pull` in all repos that are not dirty
-# Assumes all lambdaisland repos are checked out as siblings to the open-source repo
+# Looks for repos that are checked out as siblings to the dev-repl repo
 
-LI_HOME="$(dirname "$(readlink -f "$0")")/../.."
+REPO_PARENT_PATH="$(dirname "$(readlink -f "$0")")/../.."
 
-for x in "$LI_HOME"/*; do
+while (( "$#" )); do
+  REPO_PARENT_PATH="$1"
+  shift
+done
+
+for x in "$REPO_PARENT_PATH"/*; do
     if [[ -d "$x/.git" ]]; then
         repo=$(basename "$x")
         branch=$(git -C "$x" branch --show-current)

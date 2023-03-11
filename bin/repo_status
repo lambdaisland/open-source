@@ -4,7 +4,18 @@
 # Assumes all lambdaisland repos are checked out as siblings to the open-source repo.
 # Use --dirty to only show the non-clean repos
 
-LI_HOME="$(dirname "$(readlink -f "$0")")/../.."
+REPO_PARENT_PATH="$(dirname "$(readlink -f "$0")")/../.."
+ONLY_DIRTY=0
+
+while (( "$#" )); do
+  if [[ "$1" == "--dirty" ]]; then
+    ONLY_DIRTY=1
+  else
+    REPO_PARENT_PATH="$1"
+  fi
+  shift
+done
+
 
 GIT_STATUS_PREFIX="["
 GIT_STATUS_SUFFIX="]"
@@ -92,7 +103,7 @@ git_status() {
   fi
 }
 
-for x in "$LI_HOME"/*; do
+for x in "$REPO_PARENT_PATH"/*; do
     if [[ -d "$x/.git" ]]; then
         repo=$(basename "$x")
         pushd "$x" > /dev/null
@@ -109,7 +120,7 @@ for x in "$LI_HOME"/*; do
         if [[ "$?" -eq 0 ]]; then
           branch_flag="${branch_flag} (${tags})"
         fi
-        if [[ ! "$1" == "--dirty" ]] || [[ ! -z "${status// }" ]]; then
+        if [[ "ONLY_DIRTY" -eq 0 ]] || [[ ! -z "${status// }" ]]; then
             printf "%-5s %-60s  %-20s %s\n" "$status" "$repo$branch_flag" "$date" "$title"
         fi
     fi
