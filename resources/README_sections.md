@@ -6,8 +6,8 @@ backer on OpenCollective](https://opencollective.com/lambda-island) so that we
 can continue to make {project} better.
 
 <a href="https://opencollective.com/lambda-island">
-<img src="https://opencollective.com/lambda-island/organizations.svg?avatarHeight=46&width=750&button=false">
-<img src="https://opencollective.com/lambda-island/individuals.svg?avatarHeight=46&width=750&button=false">
+<img src="https://opencollective.com/lambda-island/organizations.svg?avatarHeight=46&width=800&button=false">
+<img src="https://opencollective.com/lambda-island/individuals.svg?avatarHeight=46&width=800&button=false">
 </a>
 <img align="left" src="https://github.com/lambdaisland/open-source/raw/master/artwork/lighthouse_readme.png">
 
