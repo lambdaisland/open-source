@@ -1,3 +1,63 @@
+# [Funnel-client](https://github.com/lambdaisland/funnel-client) 0.0.28 (2023-03-27 / 334474f)
+
+-  Support a new system property "lambdaisland.funnel-client.ssl-context" to 
+  specify a function name which when being called will inject the ssl context
+  into the funnel-client.
+
+# [Chui](https://github.com/lambdaisland/chui) 1.2.205 (2023-03-27 / 42b0572)
+
+
+# [Fetch](https://github.com/lambdaisland/fetch) 1.3.74 (2023-03-27 / ce3b211)
+
+-  Add documentation for :query-params. (thanks [@opqdonut](https://github.com/opqdonut))
+-   Bump uri library to address security issue.
+
+# [Glogi](https://github.com/lambdaisland/glogi) 1.3.169 (2023-03-27 / 109b82e)
+
+-  Modified an internal function so that code emitted by logging macros can be
+  DCE'd when the user disables logging.
+
+# [Hiccup](https://github.com/lambdaisland/hiccup) 0.0.15 (2023-03-20 / c0a2d53)
+
+-  Correctly handle boolean attributes (false values are removed rather than being set to "false")
+
+# [Launchpad](https://github.com/lambdaisland/launchpad) 0.16.88-alpha (2023-03-08 / 67de06e)
+
+-  Bump dependencies
+
+# [Cljbox2d](https://github.com/lambdaisland/cljbox2d) 0.7.43 (2023-03-01 / 7c1ad72)
+
+-  Added two-arity version of `apply-impulse!`, defaults to `wake? false`
+-  Implement `joints` for body instances. This returns `nil`, since joints are
+  part of the world, but it allows code to recurse safely by calling `bodies`
+  and `joints` on various entities
+-  Make return type tags in protocols fully qualified, Clojure seems to like that
+  better
+-  Fix PrismaticJointDef creation, some vector fields are final, we can only
+  mutate the existing instance
+-  Wrap `destroy` in a mutex, to allow for rendering of a consistent world view
+-  Prevent exceptions in the Clojure2D renderer when the world is being changed
+  underneath it
+-  Fix 2-arity circle shape constructor
+-  When adding bodies/joints that have an `:id`, remove any bodies/joints with
+  the same `:id`. This is to ensure uniqueness, but also makes for a nicer REPL
+  experience
+-  When converting to edn (IValue), include :joints for world, and omit default
+  values for body
+
+# [Cljbox2d](https://github.com/lambdaisland/cljbox2d) 0.8.46 (2023-03-01 / ef4c8e8)
+
+-  Add a null-implementation for `joints` to `Contact`, so `find-by` works on
+  `Contact` instances
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.80.1274 (2023-03-01 / df82a2f)
+
+-  Fix regression in the notifier plugin
+
+# [Ornament](https://github.com/lambdaisland/ornament) 0.8.84 (2023-02-28 / 8d54daa)
+
+-  Implement inheritance for fn-tails
+
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.79.1270 (2023-02-28 / 47a7b61)
 
 -  Kaocha is now compatible with Babashka. Running under Babashka is most useful
