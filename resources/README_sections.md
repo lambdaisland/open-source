@@ -1,9 +1,9 @@
 <!-- opencollective -->
 ## Lambda Island Open Source
 
-Thank you! {project} is made possible thanks to our generous backers. [Become a
+Thank you! {{project}} is made possible thanks to our generous backers. [Become a
 backer on OpenCollective](https://opencollective.com/lambda-island) so that we
-can continue to make {project} better.
+can continue to make {{project}} better.
 
 <a href="https://opencollective.com/lambda-island">
 <img src="https://opencollective.com/lambda-island/organizations.svg?avatarHeight=46&width=800&button=false">
@@ -13,7 +13,7 @@ can continue to make {project} better.
 
 &nbsp;
 
-{project} is part of a growing collection of quality Clojure libraries created and maintained
+{{project}} is part of a growing collection of quality Clojure libraries created and maintained
 by the fine folks at [Gaiwan](https://gaiwan.co).
 
 Pay it forward by [becoming a backer on our OpenCollective](http://opencollective.com/lambda-island),
