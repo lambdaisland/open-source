@@ -1,3 +1,60 @@
+# [Plenish](https://github.com/lambdaisland/plenish) 0.4.50 (2023-04-24 / 1d5eca9)
+
+-  Convenience function `sync-to-latest`
+-  Fixed issue where multiple cardinality-many attributes would lead to clashing constraint names
+
+# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 1.5.154 (2023-04-17 / f969eae)
+
+-  Add documentation of common issue when trying to run tests that reference the DOM in a context without a DOM (e.g., Node.js).
+-  Add documentation for using Kaocha-cljs with Node.js dependencies.
+-  Fix integration test Windows error when setting POSIX file permissions
+
+# [Ornament](https://github.com/lambdaisland/ornament) 0.9.87 (2023-04-15 / dac82f4)
+
+-  Added a `:tw-version` flag for the preflight, similar to `set-tokens!`
+-  Document how to opt-in to Tailwind v3 
+
+# [Embedkit](https://github.com/lambdaisland/embedkit) 0.0.56 (2023-04-14 / fd0bc4a)
+
+-  [breaking] Support only metabase version >= `0.46.1`
+-  Change the API call parameters on `/api/dashboard/:id/cards` 
+
+# [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.1.84 (2023-04-14 / e6dfb3d)
+
+-  * Added documentation for working with step definitions in the REPL.
+-  * Added documentation about Gherkin tag support.
+
+# [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.2.90 (2023-04-14 / 5f3a70f)
+
+-  * Updated Kaocha dependency.
+
+# [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.10.94 (2023-04-14 / 7048235)
+
+
+# [Kaocha-doctest](https://github.com/lambdaisland/kaocha-doctest) 0.1.15 (2023-03-30 / d0e946b)
+
+
+# [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.8.190 (2023-03-30 / 34d5e17)
+
+-  Enable print tests in babashka
+-  Add a `lambdaisland.deep-diff2/minimize` function, which removes any items
+  that haven't changed from the diff.
+
+# [Uri](https://github.com/lambdaisland/uri) 1.15.125 (2023-03-30 / 5550226)
+
+-  Adds `:into` option to define custom `clojure.lang.IPersistentMap` target data structure for `lambdaisland.uri/query-string->map`
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.81.1290 (2023-03-30 / b548866)
+
+-  Smoke tests for babashka on CI
+-  The `-load` and `-run` multimethods now use Kaocha's own hierarchy, rather
+  than the global one. (Needed to support the new doctests type)
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.82.1306 (2023-03-30 / 40698c5)
+
+-  Expose `:print-config true` and `:print-test-plan true` to Clojure CLI -X
+  invocations.
+
 # [Funnel-client](https://github.com/lambdaisland/funnel-client) 0.0.28 (2023-03-27 / 334474f)
 
 -  Support a new system property "lambdaisland.funnel-client.ssl-context" to 
@@ -11,6 +68,11 @@
 
 -  Add documentation for :query-params. (thanks [@opqdonut](https://github.com/opqdonut))
 -   Bump uri library to address security issue.
+
+# [Uri](https://github.com/lambdaisland/uri) 1.14.120 (2023-03-27 / a1da1b7)
+
+-  Treat a backslash in the authority section as a delimiter which starts the
+  path section (CVE-2023-28628, with thanks to @luigigubello for the report)
 
 # [Glogi](https://github.com/lambdaisland/glogi) 1.3.169 (2023-03-27 / 109b82e)
 
@@ -83,6 +145,12 @@
   of the assertion instead of the testable object with the merged report data.
   (thanks [@NoahTheDuke](https://github.com/NoahTheDuke))
 
+# [Launchpad](https://github.com/lambdaisland/launchpad) 0.15.79-alpha (2023-01-20 / 2b06d8e)
+
+-  Allow setting nrepl port/bind from CLI
+-  Provide a warning when connecting to emacs fails, rather than exiting
+-  Dependency version bumps
+
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.74.1181 (2023-01-20 / d823c74)
 
 -  Dependency version bumps
@@ -93,12 +161,6 @@
   capturing
 -  Circular dependencies in watch mode no longer kills the process. (thanks
   [@frenchy64](https://github.com/frenchy64))
-
-# [Launchpad](https://github.com/lambdaisland/launchpad) 0.15.79-alpha (2023-01-20 / 2b06d8e)
-
--  Allow setting nrepl port/bind from CLI
--  Provide a warning when connecting to emacs fails, rather than exiting
--  Dependency version bumps
 
 # [Embedkit](https://github.com/lambdaisland/embedkit) 0.0.50 (2023-01-19 / 8e058ff)
 
@@ -114,13 +176,14 @@
   [@NoahTheDuke](https://github.com/NoahTheDuke))
 -  Fix crash on Windows when using `--watch` with the default Beholder watcher.
 
-# [Deja-fu](https://github.com/lambdaisland/deja-fu) 1.4.58 (2023-01-16 / 1446eef)
-
--  `distance-in-words` now renders approximate weeks; month ranges were adjusted
-
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.72.1136 (2023-01-09 / d9f0728)
 
 -  Documentation fixes and improvements
+
+# [Plenish](https://github.com/lambdaisland/plenish) 0.3.45 (2022-12-23 / b87cb3a)
+
+-  Added a `find-max-t` helper function, for picking up work where it was left off
+-  Throw when trying to reprocess an earlier transaction
 
 # [Facai](https://github.com/lambdaisland/facai) 0.8.68-alpha (2022-12-16 / 1f31590)
 
@@ -138,14 +201,14 @@
 
 -  Make sure cli-args are checked even if no setting lookups happened
 
+# [Launchpad](https://github.com/lambdaisland/launchpad) 0.13.67-alpha (2022-11-25 / 07ac499)
+
+-  Support setting :lauchpad/main-opts in .clojure/deps.edn
+
 # [Ornament](https://github.com/lambdaisland/ornament) 0.7.77 (2022-11-25 / a1f8d65)
 
-
-# [Glogi](https://github.com/lambdaisland/glogi) 1.2.164 (2022-11-25 / 9a89583)
-
--  Add support for logging multiple forms with `spy`.
--  Release under `com.lambdaisland` as well as `lambdaisland`, see https://github.com/lambdaisland/open-source/issues/9
--  Version bumps
+-  Add Clerk garden setup
+-  improved way to handle girouette v2 and v3 tokens
 
 # [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.6.166 (2022-11-25 / 06fec7e)
 
@@ -155,15 +218,11 @@
 
 -  Fix printing of mismatch/deletion/insertion on Babashka
 
-# [Clj-diff](https://github.com/lambdaisland/clj-diff) 1.4.78 (2022-11-25 / 2c3cae0)
+# [Glogi](https://github.com/lambdaisland/glogi) 1.2.164 (2022-11-25 / 9a89583)
 
--  Test runner
--  CI configuration
--  Babashka compatibility
-
-# [Launchpad](https://github.com/lambdaisland/launchpad) 0.13.67-alpha (2022-11-25 / 07ac499)
-
--  Support setting :lauchpad/main-opts in .clojure/deps.edn
+-  Add support for logging multiple forms with `spy`.
+-  Release under `com.lambdaisland` as well as `lambdaisland`, see https://github.com/lambdaisland/open-source/issues/9
+-  Version bumps
 
 # [Embedkit](https://github.com/lambdaisland/embedkit) 0.0.45 (2022-11-24 / f6273b8)
 
@@ -188,13 +247,13 @@
 -  Upgrade Chui, fixes a glogi dependency incompatibility with current version of Clojurescript
 -  Upgrade Kaocha to 1.70.1086
 
-# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 1.17.101 (2022-11-09 / 95067b2)
-
--  * Fix Cljdoc build.
-
 # [Kaocha-cloverage](https://github.com/lambdaisland/kaocha-cloverage) 1.1.89 (2022-11-09 / c2b2dbf)
 
 -  Bumped Cloverage dependency to `1.2.4`.
+
+# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 1.17.101 (2022-11-09 / 95067b2)
+
+-  * Fix Cljdoc build.
 
 # [Launchpad](https://github.com/lambdaisland/launchpad) 0.12.64-alpha (2022-10-26 / a4fdb16)
 
@@ -224,11 +283,6 @@
 # [Launchpad](https://github.com/lambdaisland/launchpad) 0.11.59-alpha (2022-10-21 / 8454771)
 
 -  Fixes cljdoc build. There should be no changes to launchpad users.
-
-# [Deja-fu](https://github.com/lambdaisland/deja-fu) 1.3.51 (2022-10-18 / 2d9d7f4)
-
--  add `distance-in-words`, to render relative time strings like "3 months ago"
--  add `leap-year?`
 
 # [Dotenv](https://github.com/lambdaisland/dotenv) 0.2.5 (2022-10-17 / 13be4ef)
 
@@ -275,19 +329,27 @@
 
 -  Fixed previous botched release
 
-# [Ornament](https://github.com/lambdaisland/ornament) 0.5.65 (2022-09-20 / 94cbebe)
-
--  Support attributes when using a top-level fragment in a rendering function
-
 # [Launchpad](https://github.com/lambdaisland/launchpad) 0.3.26-alpha (2022-09-20 / 79a8d9a)
 
 -  Watch .env / .env.local
 -  Improve shadow-cljs support
 
+# [Ornament](https://github.com/lambdaisland/ornament) 0.5.65 (2022-09-20 / 94cbebe)
+
+-  Support attributes when using a top-level fragment in a rendering function
+
 # [Fetch](https://github.com/lambdaisland/fetch) 1.1.60 (2022-09-19 / 8d42e83)
 
 -  Passed in query-params now get merged into query parameters on the URL, rather
   than replacing them.
+
+# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 1.3.127 (2022-09-19 / 3c9983e)
+
+-  Change to deep-diff2, since that's what Kaocha uses now
+
+# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 1.4.130 (2022-09-19 / 69599a1)
+
+-  Release under `com.lambdaisland` as well `lambdaisland`, see https://github.com/lambdaisland/open-source/issues/9
 
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.70.1086 (2022-09-19 / f8d8ad5)
 
@@ -315,14 +377,6 @@
     test for error codes between 240 and 249 to check for plugin errors
     regardless of cause.
 -  Upgraded `lambdaisland/deep-diff` to `lambdaisland/deep-diff2`
-
-# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 1.3.127 (2022-09-19 / 3c9983e)
-
--  Change to deep-diff2, since that's what Kaocha uses now
-
-# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 1.4.130 (2022-09-19 / 69599a1)
-
--  Release under `com.lambdaisland` as well `lambdaisland`, see https://github.com/lambdaisland/open-source/issues/9
 
 # [Nrepl-proxy](https://github.com/lambdaisland/nrepl-proxy) 0.1.4-alpha (2022-09-16 / 5f5dd40)
 
@@ -355,16 +409,6 @@
 
 -  [watcher] Add a `:watch-paths` option, to watch additional files. Presumable
   in combination with a custom `:basis-fn`
-
-# [Harvest](https://github.com/lambdaisland/harvest) 0.7.59-alpha (2022-09-02 / 161a3b7)
-
--  Introduced `with` and `with-opts` as a public API for creating deferreds. This
-  may not stick, we may decide to always return a deferred when calling a
-  factory directly instead.
--  Add a new key `:facai.build/factory` to the context when calling
-  {before,after}-create-factory hooks, so that hooks don't have to deal with
-  unppwrapping deferreds
--  Fix selector matching on a single segment wildcard selector: `[:*]`
 
 # [Facai](https://github.com/lambdaisland/facai) 0.7.59-alpha (2022-09-02 / 161a3b7)
 
@@ -409,11 +453,6 @@
 # [Plenish](https://github.com/lambdaisland/plenish) 0.1.23 (2022-07-25 / cf784ed)
 
 
-# [Harvest](https://github.com/lambdaisland/harvest) 0.6.52-alpha (2022-07-12 / 509ba20)
-
--  Add XTDB support
--  Rework persistence and hooks
-
 # [Facai](https://github.com/lambdaisland/facai) 0.6.52-alpha (2022-07-12 / 509ba20)
 
 -  Add XTDB support
@@ -457,11 +496,6 @@
 
 -  Add `set-game-mode`
 
-# [Harvest](https://github.com/lambdaisland/harvest) 0.5.41-alpha (2022-06-04 / c95169c)
-
--  Support for rules
--  Support for unification
-
 # [Facai](https://github.com/lambdaisland/facai) 0.5.41-alpha (2022-06-04 / c95169c)
 
 -  Support for rules
@@ -497,34 +531,15 @@
 
 -  Bump clj-diff, to bring back compatibility with earlier java versions
 
-# [Clj-diff](https://github.com/lambdaisland/clj-diff) 1.3.67 (2022-05-16 / 45c1565)
-
--  Bring back compatibility with Java 8 and up
-
 # [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.1.121 (2022-05-13 / bb0dd63)
 
 -  Bump clj-diff, which fixes an issue where the diffing would not terminate in
   specific cases
 -  Bump all dependencies to the latest version
 
-# [Clj-diff](https://github.com/lambdaisland/clj-diff) 1.2.62 (2022-05-13 / 89dae05)
-
--  Make sure the algorithm terminates when comparing `[{}]` and `[nil]`
-
 # [Dom-types](https://github.com/lambdaisland/dom-types) 0.5.37 (2022-05-11 / 63d0f6c)
 
 -  Bump dependencies
-
-# [Harvest](https://github.com/lambdaisland/harvest) 0.3.27-alpha (2022-05-04 / 8ab563a)
-
--  Make `lambdaisland.facai.helpers` ClojureScript compatible (convert to cljc) 
--  Allow `helpers/numbered` to accept strings
-
-# [Harvest](https://github.com/lambdaisland/harvest) 0.4.32-alpha (2022-05-04 / 33d976f)
-
--  Added `after-build` hooks on the factory and trait level
--  Added `lambdaisland.factory/update-result` for use in hooks
--  Breaking: traits now need an extra wrapping map, similar to the options map, with `:with` and optionally `:after-build`
 
 # [Facai](https://github.com/lambdaisland/facai) 0.3.27-alpha (2022-05-04 / 8ab563a)
 
@@ -559,12 +574,6 @@
 -  Fix `map->Location` for vectors that contain material/direction info
 -  Optimize `loc` for blocks
 -  Make `set-block` accept vectors for consistency
-
-# [Ansi](https://github.com/lambdaisland/ansi) 0.2.37 (2022-04-27 / 60e897a)
-
--  Add support for parsing a cursor location message (as sent from terminal to process), i.e. "\e[row;col;H"
--  Fix the `with-color-scheme` macro
--  Make it impossible to use background CSI code 48
 
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.66.1034 (2022-04-26 / 7a5824a)
 
@@ -602,12 +611,6 @@
 -  Fix a regression that caused a load error on servers that support BlockData (1.13+)
 -  Bump Clojure2D, XSeries
 
-# [Harvest](https://github.com/lambdaisland/harvest) 0.2.23-alpha (2022-04-12 / 97f1b62)
-
--  Convert to cljc (clojure+clojurescript support)
--  Drop "rules" support, will likely come back in some other form in the future
--  Version bumps
-
 # [Facai](https://github.com/lambdaisland/facai) 0.2.23-alpha (2022-04-12 / 97f1b62)
 
 -  Convert to cljc (clojure+clojurescript support)
@@ -632,9 +635,6 @@
 
 -  Rename `launch!` to the more accurate `launch-cmd`
 
-# [Harvest](https://github.com/lambdaisland/harvest) 0.1.18 (2022-03-28 / d5b5461)
-
--  Initial implementation
 # [Faker](https://github.com/lambdaisland/faker) 0.1.4 (2022-03-28 / 631867c)
 
 -  First release, implement main lookup logic, convert original YAMLs to Transit,
@@ -660,14 +660,10 @@
 -  Breaking! Return maps from `raycast-seq`, rather than fixtures, allow setting
   raycast-callback return value to set filtering behavior.
 
-# [Chui](https://github.com/lambdaisland/chui) 1.1.192 (2022-03-11 / f44d3c1)
-
--  Upgrade Glögi
--  Upgrade Reagent
-
 # [Cljbox2d](https://github.com/lambdaisland/cljbox2d) 0.1.9 (2022-03-11 / 9627741)
 
 -  First release, with jBox2D (clj) and Planck.js (cljs) support
+
 # [Cljbox2d](https://github.com/lambdaisland/cljbox2d) 0.4.19 (2022-03-11 / 48f72c2)
 
 -  Fix cljdoc build
@@ -677,6 +673,11 @@
 # [Cljbox2d](https://github.com/lambdaisland/cljbox2d) 0.5.23 (2022-03-11 / 7b55d21)
 
 -  Rewrite to a single :require form to appease cljdoc
+
+# [Chui](https://github.com/lambdaisland/chui) 1.1.192 (2022-03-11 / f44d3c1)
+
+-  Upgrade Glögi
+-  Upgrade Reagent
 
 # [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 1.2.123 (2022-02-28 / 019e6ef)
 
@@ -692,9 +693,6 @@
 -  Catch an exception in the notifier plugin which can occur in headless (CI)
   setups
 -  Version bumps of spec, expound, test.check
-
-# [Corgi](https://github.com/lambdaisland/corgi) 1.1.0 (2022-02-07)
-
 
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.62.993 (2022-02-04 / 083f69e)
 
@@ -880,11 +878,6 @@
 -  `lambdaisland.data-printers.cider-puget`, for dealing with CIDER's inlined
   Puget. Bit of a hack, use with caution.
 
-# [Uri](https://github.com/lambdaisland/uri) 1.11.86 (2021-10-28 / 22c27af)
-
--  Fixed an issue in `lambdaisland.uri.normalize/normalize-query` which did
-not take into account utf-16 encoding.
-
 # [Hiccup](https://github.com/lambdaisland/hiccup) 0.0.4 (2021-10-28 / 8c0198a)
 
 -  Initial implementation
@@ -894,14 +887,15 @@ not take into account utf-16 encoding.
 # [Embedkit](https://github.com/lambdaisland/embedkit) 0.0.12 (2021-10-28 / 756d3d1)
 
 -  First release
+# [Uri](https://github.com/lambdaisland/uri) 1.11.86 (2021-10-28 / 22c27af)
+
+-  Fixed an issue in `lambdaisland.uri.normalize/normalize-query` which did
+not take into account utf-16 encoding.
 
 # [Ornament](https://github.com/lambdaisland/ornament) 0.1.12 (2021-10-25 / d0a739b)
 
 -  Bump Girouette to 0.0.5
 
-# [Specmonstah-malli](https://github.com/lambdaisland/specmonstah-malli) 0.0.7 (2021-10-24 / def7621)
-
--  First release
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.60.945 (2021-10-24 / 7ed5dd8)
 
 -  Apply `:kaocha/bindings` higher in the stack, so they are visible to `main`
@@ -921,12 +915,6 @@ not take into account utf-16 encoding.
 
 -  Fix  Glowstone's optimized set-blocks implementation,  it used a way  to get a
   default world which has been superceded by `(wc/default-world)`
-
-# [Corgi](https://github.com/lambdaisland/corgi) 1.0.5 (2021-10-13)
-
-
-# [Corgi](https://github.com/lambdaisland/corgi) 1.0.6 (2021-10-13)
-
 
 # [Witchcraft](https://github.com/lambdaisland/witchcraft) 0.3.90 (2021-10-13 / aec52ea)
 
@@ -958,15 +946,15 @@ not take into account utf-16 encoding.
 
 -  Fix support for Glowstone 1.12, which doesn't yet have the GameRule class
 
-# [Uri](https://github.com/lambdaisland/uri) 1.10.79 (2021-10-12 / d90c6a8)
-
--  `lambdaisland.uri.normalize/normalize` now also normalizes the fragment.
-
 # [Regal](https://github.com/lambdaisland/regal) 0.0.143 (2021-10-12 / 2f33f10)
 
 -  Support for [Google RE2](https://github.com/google/re2j)
 -  Lazy qualifiers: `:*?`, `:+?`, `:??`, and `:lazy-repeat`
 -  Some strings were misidentified as single characters, causing wrong quantification
+
+# [Uri](https://github.com/lambdaisland/uri) 1.10.79 (2021-10-12 / d90c6a8)
+
+-  `lambdaisland.uri.normalize/normalize` now also normalizes the fragment.
 
 # [Classpath](https://github.com/lambdaisland/classpath) 0.0.27 (2021-10-06 / 719c1f5)
 
@@ -996,33 +984,6 @@ not take into account utf-16 encoding.
 -  Added support for code using `:as-alias`
 -  Fix only considering public vars when building up the test plan
 
-# [Corgi](https://github.com/lambdaisland/corgi) 1.0.4 (2021-09-30)
-
-
-# [Corgi](https://github.com/lambdaisland/corgi) 1.0.3 (2021-09-29)
-
-
-# [Deja-fu](https://github.com/lambdaisland/deja-fu) 0.3.33 (2021-09-29 / 2f982ae)
-
--  BREAKING: `assoc` with a keyword that isn't understood now throws an `ex-info`
-
-# [Deja-fu](https://github.com/lambdaisland/deja-fu) 0.0.29 (2021-09-28 / df06a41)
-
--  Support parsing dates with single digit month/day, like 2021-7-5 
--  Stop relying on a private goog.date function, reimplement it ourselves instead
-
-# [Corgi](https://github.com/lambdaisland/corgi) 1.0.0 (2021-09-27)
-
-
-# [Corgi](https://github.com/lambdaisland/corgi) 1.0.1 (2021-09-27)
-
-
-# [Deja-fu](https://github.com/lambdaisland/deja-fu) 0.0.26 (2021-09-27 / e2ad16f)
-
--  First public release of the API
--  `format` now better handles nanoseconds of `#time/time` types
--  Default format strings use the correct pattern for years (`yyyy` instead of `YYYY`)
--  `add-interval` now takes a map instead of positional arguments
 # [Dom-types](https://github.com/lambdaisland/dom-types) 0.0.26 (2021-09-14 / f0e4984)
 
 -  Fixed printing DOM elements without a tag name.
@@ -1068,9 +1029,6 @@ not take into account utf-16 encoding.
   to use the Orchestra plugin.
 -  Version bumps of Clojure, tools.cli, spec.alpha, expound
 
-# [Shellutils](https://github.com/lambdaisland/shellutils) 0.0.10 (2021-08-25 / 91ddd3b)
-
-
 # [Dom-types](https://github.com/lambdaisland/dom-types) 0.0.19 (2021-08-09 / 293e461)
 
 -  Fixed printing of `js/Text`
@@ -1103,14 +1061,14 @@ not take into account utf-16 encoding.
 
 -  Add `uri?` predicate.
 
+# [Dom-types](https://github.com/lambdaisland/dom-types) 0.0.11 (2021-05-21 / 72aceee)
+
+-  First release
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.0.861 (2021-05-21 / dbfd6e8)
 
 -  Formatting of failed test results using deep-diff can be disabled with `--diff-style :none` on the command line or `:diff-style :none` in `tests.edn`.
 -  Fix at least some cases of syntax errors being suppressed by the "no tests found" message.
 
-# [Dom-types](https://github.com/lambdaisland/dom-types) 0.0.11 (2021-05-21 / 72aceee)
-
--  First release
 # [Glogi](https://github.com/lambdaisland/glogi) 1.0.116 (2021-04-26 / e1dbcb3)
 
 -  Fixed an issue with advanced compilation when calling `level-value`, which is
@@ -1119,6 +1077,10 @@ not take into account utf-16 encoding.
 # [Daedalus](https://github.com/lambdaisland/daedalus) 0.0.35 (2021-04-24 / 3ee44c0)
 
 -  `next?` predicate
+
+# [Funnel-client](https://github.com/lambdaisland/funnel-client) 0.0.18 (2021-04-21 / 9afe32b)
+
+-  Bump lambdaisland/glogi to 1.0.106
 
 # [Glogi](https://github.com/lambdaisland/glogi) 1.0.112 (2021-04-21 / a104211)
 
@@ -1135,14 +1097,6 @@ not take into account utf-16 encoding.
 -  Release under com.lambdaisland/kaocha-cljs in line with Clojars policy
 -  Bump all dependencies
 
-# [Funnel-client](https://github.com/lambdaisland/funnel-client) 0.0.18 (2021-04-21 / 9afe32b)
-
--  Bump lambdaisland/glogi to 1.0.106
-
-# [Glogi](https://github.com/lambdaisland/glogi) 1.0.106 (2021-04-20 / 1128462)
-
--  Prevent single-arg `logger` from erasing the log level
-
 # [Regal](https://github.com/lambdaisland/regal) 0.0.94 (2021-04-20 / e087c28)
 
 -  Added support for `[:repeat form num]` (so fixed number of repeats, instead of
@@ -1152,6 +1106,10 @@ not take into account utf-16 encoding.
 
 -  Add `lambdaisland.regal.generator/generate` as a shorthand for generating a
   single value from a regal expression
+
+# [Glogi](https://github.com/lambdaisland/glogi) 1.0.106 (2021-04-20 / 1128462)
+
+-  Prevent single-arg `logger` from erasing the log level
 
 # [Chui](https://github.com/lambdaisland/chui) 1.0.179 (2021-04-19 / 7332d1e)
 
@@ -1258,6 +1216,7 @@ not take into account utf-16 encoding.
 # [Fetch](https://github.com/lambdaisland/fetch) 0.0.16 (2020-12-01 / d5f92bd)
 
 -  * Replaced `kitchen-async` dependency with `mhuebert/kitchen-async`, which is the same lib with a fixed version on Clojars
+
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.0.732 (2020-11-26 / b418350)
 
 -  Fixed an issue with the optional `clojure.test.check` dependency (follow-up)
@@ -1293,9 +1252,6 @@ not take into account utf-16 encoding.
 # [Garden-watcher](https://github.com/lambdaisland/garden-watcher) 1.0.27 (2020-10-30 / 634bccc)
 
 -  Make classpath detection more robust
-
-# [Corgi](https://github.com/lambdaisland/corgi) 0.2.0 (2020-10-12)
-
 
 # [Kaocha-cljs2](https://github.com/lambdaisland/kaocha-cljs2) 0.0.35 (2020-10-02 / 3a506bd)
 
@@ -1336,15 +1292,6 @@ not take into account utf-16 encoding.
   client has gotten stuck or gone away and we time out
 -  Upgrade Chui, this fixes handling of `:once` fixtures
 
-# [Chui](https://github.com/lambdaisland/chui) 0.0.156 (2020-08-26 / 460519c)
-
--  Fix :once fixtures when running via chui-remote
-
-# [Glogi](https://github.com/lambdaisland/glogi) 1.0.74 (2020-08-26 / acf8c48)
-
--  Export lambdaisland.glogi.set-levels so you can use it from the browser
-  console (pass in an array of two-element arrays of strings)
-
 # [Funnel](https://github.com/lambdaisland/funnel) 0.1.42 (2020-08-26 / 4c14cec)
 
 -  Added a `--daemonize` flag so Funnel can background itself (experimental)
@@ -1358,6 +1305,15 @@ not take into account utf-16 encoding.
 -  Changed the default `--keystore-password` from `"funnel"` to `"password"`
   (same as [bhauman/certifiable](https://github.com/bhauman/certifiable))
 
+# [Chui](https://github.com/lambdaisland/chui) 0.0.156 (2020-08-26 / 460519c)
+
+-  Fix :once fixtures when running via chui-remote
+
+# [Glogi](https://github.com/lambdaisland/glogi) 1.0.74 (2020-08-26 / acf8c48)
+
+-  Export lambdaisland.glogi.set-levels so you can use it from the browser
+  console (pass in an array of two-element arrays of strings)
+
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.0.672 (2020-08-26 / ff68cf5)
 
 -  Prevent loading of test suites that are excluded from the run
@@ -1365,6 +1321,10 @@ not take into account utf-16 encoding.
 # [Kaocha-cloverage](https://github.com/lambdaisland/kaocha-cloverage) 1.0.63 (2020-08-21 / 83f3706)
 
 -  Bump Cloverage to 1.2.0
+
+# [Funnel-client](https://github.com/lambdaisland/funnel-client) 0.0.13 (2020-08-19 / 0eb52ad)
+
+-  Bump lambdaisland/glogi to 1.0.70
 
 # [Chui](https://github.com/lambdaisland/chui) 0.0.141 (2020-08-19 / 7d1865b)
 
@@ -1382,25 +1342,14 @@ not take into account utf-16 encoding.
 -  Fail more gracefully when a test definition happens to be not available at
   runtime due to a load error
 
-# [Glogi](https://github.com/lambdaisland/glogi) 1.0.70 (2020-08-19 / df34f1a)
-
--  We no longer pull in a specific Clojure/ClojureScript version, assuming that
-  client consumers will already have specific versions declared for their project.
-
 # [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.0.108 (2020-08-19 / e006fc5)
 
 -  Switch to using lambdaisland/clj-diff, a fork of an upstream fork
 
-# [Clj-diff](https://github.com/lambdaisland/clj-diff) 1.1.55 (2020-08-19 / 77da754)
+# [Glogi](https://github.com/lambdaisland/glogi) 1.0.70 (2020-08-19 / df34f1a)
 
-
-# [Clj-diff](https://github.com/lambdaisland/clj-diff) 1.1.58 (2020-08-19 / 18f31ae)
-
--  Fix warning on ClojureScript
-
-# [Kaocha](https://github.com/lambdaisland/kaocha) 1.0.669 (2020-08-19 / 13abc37)
-
--  Added internal diagnostics
+-  We no longer pull in a specific Clojure/ClojureScript version, assuming that
+  client consumers will already have specific versions declared for their project.
 
 # [Kaocha-cljs2](https://github.com/lambdaisland/kaocha-cljs2) 0.0.15 (2020-08-19 / d6f3fd1)
 
@@ -1414,9 +1363,12 @@ not take into account utf-16 encoding.
 -  Remove debug call
 -  Version bumps
 
-# [Funnel-client](https://github.com/lambdaisland/funnel-client) 0.0.13 (2020-08-19 / 0eb52ad)
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.0.669 (2020-08-19 / 13abc37)
 
--  Bump lambdaisland/glogi to 1.0.70
+-  Added internal diagnostics
+
+# [Funnel-client](https://github.com/lambdaisland/funnel-client) 0.0.9 (2020-08-17 / 445658b)
+
 
 # [Chui](https://github.com/lambdaisland/chui) 0.0.133 (2020-08-17 / af3a0d3)
 
@@ -1451,9 +1403,6 @@ not take into account utf-16 encoding.
 # [Kaocha](https://github.com/lambdaisland/kaocha) 1.0.663 (2020-08-17 / 2a815a3)
 
 -  Fix `post-summary` when used from  hooks plugin
-
-# [Funnel-client](https://github.com/lambdaisland/funnel-client) 0.0.9 (2020-08-17 / 445658b)
-
 
 # [Kaocha-cloverage](https://github.com/lambdaisland/kaocha-cloverage) 1.0.56 (2020-08-13 / 304162e)
 
@@ -1757,13 +1706,6 @@ not take into account utf-16 encoding.
 -  Added support for matcher-combinators
 -  When using the nodejs repl type, automatically set the CLJS compile target to :nodejs
 
-# [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-541 (2019-09-11 / c97a2cb)
-
--  The `kaocha.report.progress/progress` progress bar reporter now allows the
-  appropriate exception to be reported when there is a syntax error in Clojure
-  source code. Was formerly throwing NullPointerException.
--  Consolidate `kaocha.hierarchy`, so it can be used for kaocha-cljs
-
 # [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 0.0-51 (2019-09-11 / 4b6a751)
 
 -  Added compatibility with Figwheel REPL
@@ -1771,6 +1713,13 @@ not take into account utf-16 encoding.
 -  Use the same compiler env for the load and run stages
 -  isomorphic-ws is no longer needed on Node (ws still is)
 -  rework the websocket connection to be more reliable
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-541 (2019-09-11 / c97a2cb)
+
+-  The `kaocha.report.progress/progress` progress bar reporter now allows the
+  appropriate exception to be reported when there is a syntax error in Clojure
+  source code. Was formerly throwing NullPointerException.
+-  Consolidate `kaocha.hierarchy`, so it can be used for kaocha-cljs
 
 # [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-529 (2019-07-04 / 975bbc6)
 
@@ -1851,12 +1800,6 @@ not take into account utf-16 encoding.
 -  Added support for `cljs.test/async`.
 -  Added initial support for `cljs.test/use-fixtures`. Currently both `:each` and `:once` fixtures are treated as `:each` fixtures, so they run before/after each test var.
 
-# [Hillchart](https://github.com/lambdaisland/hillchart) 1.0.0 (2019-04-05)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) 1.0.0 (2019-04-05)
-
-
 # [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 0.0-35 (2019-03-31 / 3b2ad04)
 
 -  Added type hints to prevent reflective calls
@@ -1896,14 +1839,14 @@ not take into account utf-16 encoding.
 -  lambdaisland/deep-diff {:mvn/version "0.0-25"} -> {:mvn/version "0.0-29"}
 -  orchestra {:mvn/version "2018.12.06-2"} -> {:mvn/version "2019.02.06-1"}
 
+# [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.0-46 (2019-02-28 / a6dccb4)
+
+-  Fixed compatiblity with latest cucumber-jvm
+
 # [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 0.0-21 (2019-02-28 / 1be9c73)
 
 -  Add ClojureScript implicit options during analysis, fixes issues with CLJSJS,
   among others.
-
-# [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.0-46 (2019-02-28 / a6dccb4)
-
--  Fixed compatiblity with latest cucumber-jvm
 
 # [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-57 (2019-02-15 / 3804cb7)
 
@@ -1963,14 +1906,14 @@ not take into account utf-16 encoding.
 # [Kaocha-boot](https://github.com/lambdaisland/kaocha-boot) 0.0-5 (2018-12-31 / 3962fb0)
 
 
+# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 0.0-16 (2018-12-31 / 214b14e)
+
+-  Capture exception type and message so it can be reported
+
 # [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-343 (2018-12-31 / c38d94f)
 
 -  [internal] Extracted `kaocha.runner/run`, to be used by alternative command
   line runners like boot.
-
-# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 0.0-16 (2018-12-31 / 214b14e)
-
--  Capture exception type and message so it can be reported
 
 # [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-50 (2018-12-28 / d44f155)
 
@@ -1999,6 +1942,10 @@ not take into account utf-16 encoding.
 -  The `print-invocations` plugin no longer prints out the `--config-file` flag
   when it hasn't changed from its default value (`tests.edn`)
 
+# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 0.0-11 (2018-12-12 / 53fe73a)
+
+-  Initial implementation
+
 # [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-319 (2018-12-12 / 012b4ef)
 
 -  [internal] Test types can signal that any remaining sibling tests should be
@@ -2008,24 +1955,9 @@ not take into account utf-16 encoding.
   suite.
 -  Removed debug prn calls
 
-# [Kaocha-cljs](https://github.com/lambdaisland/kaocha-cljs) 0.0-11 (2018-12-12 / 53fe73a)
-
--  Initial implementation
-
 # [Kaocha-cloverage](https://github.com/lambdaisland/kaocha-cloverage) 0.0-22 (2018-12-10 / ee13a86)
 
 -  Don't rely on Cloverage to find namespaces, this fixes compatibility with Cucumber.
-
-# [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-313 (2018-12-10 / b45ccd1)
-
--  A new work-in-progress information plugin, `:kaocha.plugin.alpha/info`,
-  currently only prints the list of all test ids.
--  In watch mode: Scan test-dirs/source-dirs, rather than letting tools.namespace
-  derive the list of paths from the classpath
--  When specifying test suites defaults are always provided, so it's no longer
-  necessary to provide `:src-paths`, `:test-paths`, etc. if they don't deviate
-  from the defaults. This also means all test suites get the default
-  `:kaocha.filter/skip-meta [:kaocha/skip]`.
 
 # [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.0-36 (2018-12-10 / ddb341a)
 
@@ -2041,6 +1973,17 @@ not take into account utf-16 encoding.
 -  No longer add the scenario as a `*testing-contexts*`, to prevent the docs
   formatter from printing it twice.
 -  Give tests nicer ids, based on the filename and scenario description
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-313 (2018-12-10 / b45ccd1)
+
+-  A new work-in-progress information plugin, `:kaocha.plugin.alpha/info`,
+  currently only prints the list of all test ids.
+-  In watch mode: Scan test-dirs/source-dirs, rather than letting tools.namespace
+  derive the list of paths from the classpath
+-  When specifying test suites defaults are always provided, so it's no longer
+  necessary to provide `:src-paths`, `:test-paths`, etc. if they don't deviate
+  from the defaults. This also means all test suites get the default
+  `:kaocha.filter/skip-meta [:kaocha/skip]`.
 
 # [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-47 (2018-12-07 / db418fa)
 
@@ -2064,15 +2007,6 @@ not take into account utf-16 encoding.
 
 -  Bumped dependencies of java.classpath and tools.reader
 
-# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-39 (2018-12-05 / 1507bab)
-
--  Automatically create parent directory of output file if it doesn't exist
--  Encode single quote as the more widely understood `&apos;` rather than `&#27;`
-
-# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-43 (2018-12-05 / 311587e)
-
--  Address cljdoc analysis error preventing the docs to build
-
 # [Kaocha-cloverage](https://github.com/lambdaisland/kaocha-cloverage) 0.0-18 (2018-12-05 / 9c8c629)
 
 -  Allow configuring ns-regex and ns-exclude-regex from tests.edn ([#2](https://github.com/lambdaisland/kaocha-cloverage/pull/2))
@@ -2085,14 +2019,14 @@ not take into account utf-16 encoding.
 
 -  Add Kaocha as a dependency, so that cljdoc can analyze kaocha-cucumber
 
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.4.0](https://github.com/broofa/node-mime/compare/v2.3.1...v2.4.0) (2018-11-26)
+# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-39 (2018-12-05 / 1507bab)
 
+-  Automatically create parent directory of output file if it doesn't exist
+-  Encode single quote as the more widely understood `&apos;` rather than `&#27;`
 
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.4.0](https://github.com/broofa/node-mime/compare/v2.3.1...v2.4.0) (2018-11-26)
+# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-43 (2018-12-05 / 311587e)
 
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.4.0](https://github.com/broofa/node-mime/compare/v2.3.1...v2.4.0) (2018-11-26)
-
+-  Address cljdoc analysis error preventing the docs to build
 
 # [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.0-20 (2018-11-23 / bf77871)
 
@@ -2121,7 +2055,6 @@ not take into account utf-16 encoding.
 # [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.0-15 (2018-11-14 / e6f43af)
 
 -  Initial implementation
-
 # [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 0.0-25 (2018-11-10 / 2fab8b1)
 
 -  Fix support for records with inserts [#4](https://github.com/lambdaisland/deep-diff/pull/4)
@@ -2157,15 +2090,15 @@ not take into account utf-16 encoding.
 
 -  De-dupe plugins, for cases where a plugin is added to `tests.edn` and on the CLI
 
-# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-7 (2018-10-31 / 163d219)
-
-
 # [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 0.0-15 (2018-10-31 / 63d30b5)
 
 -  Fix support for Clojure records. Currently they are considered in the same
   equality partition as maps. (by [@ikitommi](https://github.com/ikitommi), [#1](https://github.com/lambdaisland/deep-diff/pull/1))
 -  Pin explicitly to the latest version of Fipp and rrb-vector, to prevent issues
   on Java 11, see [CRRBV-18](https://dev.clojure.org/jira/browse/CRRBV-18)
+
+# [Kaocha-junit-xml](https://github.com/lambdaisland/kaocha-junit-xml) 0.0-7 (2018-10-31 / 163d219)
+
 
 # [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-239 (2018-10-31 / f1b9a61)
 
@@ -2186,12 +2119,6 @@ not take into account utf-16 encoding.
 
 -  `lambdaisland.deep-diff.printer/print-*` are now public, as they can be used
   in custom print handlers.
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [1.4.0](https://github.com/medikoo/cli-color/compare/v1.3.0...v1.4.0) (2018-10-23)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [1.4.0](https://github.com/medikoo/cli-color/compare/v1.3.0...v1.4.0) (2018-10-23)
-
 
 # [Kaocha](https://github.com/lambdaisland/kaocha) 0.0-217 (2018-10-22 / 642cff8)
 
@@ -2303,12 +2230,6 @@ not take into account utf-16 encoding.
 -  `:kaocha.suite/test-paths` have been renamed to just use the `:kaocha`
 namespace.
 
-# [Hillchart](https://github.com/lambdaisland/hillchart) [1.3.0](https://github.com/medikoo/cli-color/compare/v1.2.0...v1.3.0) (2018-08-20)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [1.3.0](https://github.com/medikoo/cli-color/compare/v1.2.0...v1.3.0) (2018-08-20)
-
-
 # [Kaocha](https://github.com/lambdaisland/kaocha) b0a70dc267a (2018-07-29)
 
 -  Capture output, this is enabled by default. Only output of failing tests is
@@ -2325,12 +2246,6 @@ namespace.
   same result.
 -  When specifying an invalid reporter var, error before trying to load tests.
 -  Correctly count matcher-combinator mismatch failures when exiting early (Ctrl-C).
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [3.3.0](https://github.com/kelektiv/node-uuid/compare/v3.2.1...v3.3.0) (2018-06-22)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [3.3.0](https://github.com/kelektiv/node-uuid/compare/v3.2.1...v3.3.0) (2018-06-22)
-
 
 # [Kaocha](https://github.com/lambdaisland/kaocha) 7b79fad92d (2018-06-16)
 
@@ -2369,66 +2284,6 @@ namespace.
   control then overwrite `tests.edn` with the output of `--print-config` and
   tweak.
 
-# [Corgi](https://github.com/lambdaisland/corgi) 0.1.0 (2018-05-27)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.3.0](https://github.com/broofa/node-mime/compare/v2.2.2...v2.3.0) (2018-04-11)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.3.0](https://github.com/broofa/node-mime/compare/v2.2.2...v2.3.0) (2018-04-11)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.3.0](https://github.com/broofa/node-mime/compare/v2.2.2...v2.3.0) (2018-04-11)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [6.0.0](https://github.com/moxystudio/node-cross-spawn/compare/5.1.0...6.0.0) (2018-01-23)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [6.0.0](https://github.com/moxystudio/node-cross-spawn/compare/5.1.0...6.0.0) (2018-01-23)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [3.2.0](https://github.com/kelektiv/node-uuid/compare/v3.1.0...v3.2.0) (2018-01-16)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [3.2.0](https://github.com/kelektiv/node-uuid/compare/v3.1.0...v3.2.0) (2018-01-16)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.2.0](https://github.com/broofa/node-mime/compare/v2.1.0...v2.2.0) (2018-01-04)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.2.0](https://github.com/broofa/node-mime/compare/v2.1.0...v2.2.0) (2018-01-04)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.2.0](https://github.com/broofa/node-mime/compare/v2.1.0...v2.2.0) (2018-01-04)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.1.0](https://github.com/broofa/node-mime/compare/v2.0.5...v2.1.0) (2017-12-22)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.1.0](https://github.com/broofa/node-mime/compare/v2.0.5...v2.1.0) (2017-12-22)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.1.0](https://github.com/broofa/node-mime/compare/v2.0.5...v2.1.0) (2017-12-22)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.2.0](https://github.com/knownasilya/cli-width/compare/v2.1.1...v2.2.0) (2017-08-22)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.2.0](https://github.com/knownasilya/cli-width/compare/v2.1.1...v2.2.0) (2017-08-22)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [3.1.0](https://github.com/kelektiv/node-uuid/compare/v3.1.0...v3.0.1) (2017-06-17)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [3.1.0](https://github.com/kelektiv/node-uuid/compare/v3.1.0...v3.0.1) (2017-06-17)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.0.0](https://github.com/nexdrew/ansi-align/compare/v1.1.0...v2.0.0) (2017-05-01)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [2.0.0](https://github.com/nexdrew/ansi-align/compare/v1.1.0...v2.0.0) (2017-05-01)
-
-
 # [Uri](https://github.com/lambdaisland/uri) 1.1.0 (2017-04-25)
 
 -  Predicate functions `absolute?` and `relative?`
@@ -2436,42 +2291,3 @@ namespace.
 # [Uri](https://github.com/lambdaisland/uri) 1.0.0 (2017-02-23)
 
 -  Initial release, public vars: `uri`, `join`, `coerce`, `parse`, `edn-readers`
-# [Hillchart](https://github.com/lambdaisland/hillchart) 3.0.1 (2016-11-28)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) 3.0.1 (2016-11-28)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) 3.0.0 (2016-11-17)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) 3.0.0 (2016-11-17)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [5.0.0](https://github.com/moxystudio/node-cross-spawn/compare/4.0.2...5.0.0) (2016-10-30)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [5.0.0](https://github.com/moxystudio/node-cross-spawn/compare/4.0.2...5.0.0) (2016-10-30)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [3.0.0](https://github.com/tapjs/signal-exit/compare/v2.1.2...v3.0.0) (2016-06-13)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [3.0.0](https://github.com/tapjs/signal-exit/compare/v2.1.2...v3.0.0) (2016-06-13)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [1.1.0](https://github.com/nexdrew/ansi-align/compare/v1.0.0...v1.1.0) (2016-06-06)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) [1.1.0](https://github.com/nexdrew/ansi-align/compare/v1.0.0...v1.1.0) (2016-06-06)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) 1.0.0 (2016-04-30)
-
-
-# [Hillchart](https://github.com/lambdaisland/hillchart) 1.0.0 (2016-04-30)
-
-
-# [Puck](https://github.com/lambdaisland/puck) 1.0.0 (2016-02-04)
-
-
