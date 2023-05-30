@@ -4,6 +4,7 @@
             [clojure.pprint :as pprint]
             [clojure.string :as str]
             [lambdaisland.launchpad :as launchpad]
+            [lioss.cljdoc :as cljdoc]
             [lioss.gh-actions :as gh-actions]
             [lioss.git :as git]
             [lioss.hiccup :as hiccup]
@@ -73,7 +74,11 @@
    "launchpad"
    {:description "Launch a REPL with Launchpad"
     :command (fn [_]
-               (launchpad/main {:steps (into [(partial launchpad/ensure-java-version 17)] launchpad/default-steps)}))}])
+               (launchpad/main {:steps (into [(partial launchpad/ensure-java-version 17)] launchpad/default-steps)}))}
+
+   "ingest-docs"
+   {:description "Start a docker container to "
+    :command cljdoc/ingest}])
 
 (def defaults
   {:name           (git/project-name)
