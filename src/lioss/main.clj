@@ -77,7 +77,7 @@
                (launchpad/main {:steps (into [(partial launchpad/ensure-java-version 17)] launchpad/default-steps)}))}
 
    "ingest-docs"
-   {:description "Start a docker container to "
+   {:description "Start a Cljdoc Docker container to analyze and ingest docs."
     :command cljdoc/ingest}])
 
 (def defaults
