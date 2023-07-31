@@ -1,3 +1,45 @@
+# [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.10.211 (2023-07-24 / 4d92566)
+
+
+# [Hiccup](https://github.com/lambdaisland/hiccup) 0.0.25 (2023-06-16 / 7c4925e)
+
+-  Convert multi-word attributes to match Reagent + React's behaviour.
+
+  data-, aria-, and hx- attributes remain kebab-case.
+  html and svg attributes that are kebab-case in those specs, are converted to kebab-case
+
+  BREAKING in some cases:
+
+    Previously:
+    :tab-index -> "tab-index"
+    "fontStyle" -> "fontStyle"
+    :fontStyle -> "fontStyle"
+
+    Now:
+    :tab-index -> "tabIndex"
+    "fontStyle" -> "font-style"
+    :fontStyle -> "font-style"
+
+# [Deep-diff2](https://github.com/lambdaisland/deep-diff2) 2.9.202 (2023-06-09 / 35494a0)
+
+-  Add documentation for using a custom color scheme using custom data printers.
+-  Simplified internals when diffing maps for improved performance on many datasets. (Thanks [@latacora-paul](https://github.com/latacora-paul)!)
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.84.1335 (2023-05-22 / 33735a1)
+
+-  Get rid of extra space in output when using the `:print-invocations` plugin
+-   Prevent `ClassCastException` when using Ctrl-C (SIGINT) after enabling
+    `--watch`
+-  Bump tools.cli to 1.0.219
+
+# [Kaocha-cucumber](https://github.com/lambdaisland/kaocha-cucumber) 0.11.100 (2023-05-08 / 5c7009a)
+
+-  Release again to both `lambdaisland` and `com.lambdaisland`
+
+# [Kaocha](https://github.com/lambdaisland/kaocha) 1.83.1314 (2023-05-05 / 1438ce7)
+
+-  The watcher now prints the output from plugins, eg. `bin/kaocha --watch --plugin kaocha.plugin/profiling` 
+
 # [Plenish](https://github.com/lambdaisland/plenish) 0.4.50 (2023-04-24 / 1d5eca9)
 
 -  Convenience function `sync-to-latest`
