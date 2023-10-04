@@ -100,7 +100,8 @@
                                    (:license-mpl sections)
                                    :epl
                                    (:license-epl sections))
-                        :badges (badges/template (:badges params)))]
+                        :badges (badges/template (:badges params))
+                        :gaiwan-ad "**This project is a part of the [Gaiwan Clojure family](https://gaiwan.co) of projects**.\n\n---")]
     (spit "README.md"
           (update-sections (slurp "README.md")
                            sections
