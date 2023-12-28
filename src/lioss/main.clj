@@ -84,7 +84,7 @@
   {:name           (git/project-name)
    :sha            (git/current-sha)
    :group-id       nil
-   :gh-project     (str "lambdaisland/" (git/project-name))
+   :gh-project     (str (git/org-name) "/" (git/project-name))
    :org-name       "Lambda Island"
    :org-url        "https://lambdaisland.com"
    :date           (str (java.time.LocalDate/now))
@@ -94,7 +94,7 @@
    :paths          ["src"]})
 
 (defn main [opts]
-  (assert (:group-id opts) ":group-id should be set explicitly to \"lambdaisland\" or \"com.lambdaisland\"")
+  (assert (:group-id opts) ":group-id should be set explicitly")
   (let [commands (concat (:commands opts) commands)
         opts     (merge defaults (util/read-deps) opts)
         opts     (-> opts

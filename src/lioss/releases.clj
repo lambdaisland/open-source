@@ -14,7 +14,7 @@
   (spit "RELEASES.md"
         (with-out-str
           (doseq [{:keys [project version-id sha date added fixed changed]}
-                  (->> (for [logfile (logfiles)
+                  (->> (for [logfile (sort (logfiles))
                              section (janus/parse (slurp logfile))
                              :when (:date section)
                              :when (not (#{"Unreleased" "Changelog"} (:version-id section)))]

@@ -35,6 +35,12 @@
 (defn clone! [url]
   (git! "clone" url))
 
+(defn org-name []
+  (if-let [repo (System/getenv "GITHUB_REPOSITORY")]
+    (first (str/split repo #"/"))
+    (let [url (git "remote" "get-url" "origin")]
+      (second (re-find #"/([\.a-z0-9-]+?)/([\.a-z0-9-]+?)(\.git)?$" url)))))
+
 (defn project-name []
   (if-let [repo (System/getenv "GITHUB_REPOSITORY")]
     (second (str/split repo #"/"))
