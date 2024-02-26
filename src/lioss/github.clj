@@ -16,11 +16,23 @@
     "funnel" "edn-lines" "fetch" "data-printers" "daedalus"
     "cljbox2d" "spec-monstah-malli" "trikl" "zipper-viz"})
 
-(defn hub-token []
+(defn hub-token
+  "Try to find your github oauth token. `hub` stores it in `~/.config/hub`,
+  `gh` (the newer CLI) stores it in the Gnome keyring, which we can access
+  through secret-tool, but that has to be installed first."
+  []
   (let [hub-config (str (System/getenv "HOME") "/.config/hub")]
-    (when (.exists (io/file hub-config))
+    (if (.exists (io/file hub-config))
       (second
-       (re-find #"oauth_token:\s*(.*)" (slurp hub-config))))))
+       (re-find #"oauth_token:\s*(.*)" (slurp hub-config)))
+      (try
+        (some
+         #(when (str/starts-with? % "secret =")
+            (str/trim (second (str/split % #"="))))
+         (-> (shell/sh "secret-tool" "search" "service" "gh:github.com")
+             :out
+             (str/split #"\R")))
+        (catch Exception e)))))
 
 (defn prompt-for-token []
   (println "GitHub token needed for this operation.")
@@ -140,23 +152,40 @@
         (recur next-url new-issues)
         new-issues))))
 
+(defn api-request [{:keys [path token body api-version method] :as request}]
+  (cond-> {:method (or method :get)
+           :url (str "https://api.github.com/" (if (vector? path) (str/join "/" path) path))
+           :headers {"Accept" "application/vnd.github.v3+json"
+                     "Authorization" (str "token " (or token (get-token)))
+                     "X-GitHub-Api-Version" (or api-version "2022-11-28")}}
+    body
+    (assoc :body (json/encode body))))
+
+(defn gh-post [{:keys [path token body api-version] :as request}]
+  (http/post (str "https://api.github.com/" (if (vector? path) (str/join "/" path) path))
+             {:headers {"Accept" "application/vnd.github.v3+json"
+                        "Authorization" (str "token " (or token (get-token)))
+                        "X-GitHub-Api-Version" (or api-version "2022-11-28")}
+              :body (json/encode body)}))
+
+(defn api-request!
+  ([opts]
+   (update @(http/request (api-request opts)) :body json/decode true))
+  ([opts cb]
+   (update @(http/request (api-request opts) cb) :body json/decode true)))
+
 (defn create-release [{:keys [gh-project release-tag changelog release-title]}]
-  @(http/post (str "https://api.github.com/repos/" gh-project "/releases")
-              {:headers {"Accept" "application/vnd.github.v3+json"
-                         "Authorization" (str "token " (get-token))}
-               :body (str "{\"tag_name\": \"" release-tag "\", "
-                          "\"body\": " (pr-str (str/join "\n" (next (str/split changelog #"\R")))) ", "
-                          "\"name\": " (pr-str (or release-title release-tag))
-                          "}")}))
+  @(api-request!
+    {:method :post
+     :path ["repos" gh-project "releases"]
+     :body {:tag_name release-tag
+            :body (str/join "\n" (next (str/split changelog #"\R")))
+            :name (or release-title release-tag)}}))
 
 (defn issue-comment [{:keys [gh-project issue-number body]}]
-  @(http/post (str "https://api.github.com/repos/" gh-project
-                   "/issues/" issue-number "/comments")
-              {:headers {"Accept" "application/vnd.github+json"
-                         "Authorization" (str "token " (get-token))
-                         "X-GitHub-Api-Version" "2022-11-28"}
-               :body (json/generate-string
-                      {:body body})}))
+  @(api-request! {:method :post
+                  :path ["repos" gh-project "issues" issue-number "comments"]
+                  :body body}))
 
 (defn prs-in-last-release []
   (keep
