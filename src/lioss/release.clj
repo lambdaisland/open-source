@@ -23,10 +23,11 @@
   (let [blob (slurp "CHANGELOG.md")
         lines (str/split blob #"\R")]
     (spit "CHANGELOG.md"
-          (str/join "\n"
-                    (cons
-                     (str "# " version " (" date " / " (subs sha 0 7) ")")
-                     (next lines))))
+          (str (str/join "\n"
+                         (cons
+                          (str "# " version " (" date " / " (subs sha 0 7) ")")
+                          (next lines)))
+               "\n"))
     opts))
 
 (defn changelog-stanza
