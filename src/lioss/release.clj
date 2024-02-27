@@ -9,14 +9,15 @@
   - add new stanza to the top of the CHANGELOG
   - create a new release on Github
   - trigger a cljdoc build"
-  (:require [clojure.java.io :as io]
-            [clojure.string :as str]
-            [lioss.git :as git]
-            [lioss.github :as github]
-            [lioss.pom :as pom]
-            [lioss.subshell :as subshell]
-            [lioss.util :as util]
-            [lioss.version :as version]))
+  (:require
+   [clojure.java.io :as io]
+   [clojure.string :as str]
+   [lioss.git :as git]
+   [lioss.github :as github]
+   [lioss.pom :as pom]
+   [lioss.subshell :as subshell]
+   [lioss.util :as util]
+   [lioss.version :as version]))
 
 (defn bump-changelog [{:keys [version date sha] :as opts}]
   (let [blob (slurp "CHANGELOG.md")
@@ -25,7 +26,8 @@
           (str/join "\n"
                     (cons
                      (str "# " version " (" date " / " (subs sha 0 7) ")")
-                     (next lines))))))
+                     (next lines))))
+    opts))
 
 (defn changelog-stanza
   ([]
