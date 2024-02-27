@@ -175,17 +175,17 @@
    (update @(http/request (api-request opts) cb) :body json/decode true)))
 
 (defn create-release [{:keys [gh-project release-tag changelog release-title]}]
-  @(api-request!
-    {:method :post
-     :path ["repos" gh-project "releases"]
-     :body {:tag_name release-tag
-            :body (str/join "\n" (next (str/split changelog #"\R")))
-            :name (or release-title release-tag)}}))
+  (api-request!
+   {:method :post
+    :path ["repos" gh-project "releases"]
+    :body {:tag_name release-tag
+           :body (str/join "\n" (next (str/split changelog #"\R")))
+           :name (or release-title release-tag)}}))
 
 (defn issue-comment [{:keys [gh-project issue-number body]}]
-  @(api-request! {:method :post
-                  :path ["repos" gh-project "issues" issue-number "comments"]
-                  :body body}))
+  (api-request! {:method :post
+                 :path ["repos" gh-project "issues" issue-number "comments"]
+                 :body body}))
 
 (defn prs-in-last-release []
   (keep
