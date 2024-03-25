@@ -185,7 +185,7 @@
 (defn issue-comment [{:keys [gh-project issue-number body]}]
   (api-request! {:method :post
                  :path ["repos" gh-project "issues" issue-number "comments"]
-                 :body body}))
+                 :body {:body body}}))
 
 (defn prs-in-last-release []
   (keep
