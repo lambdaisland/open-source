@@ -117,15 +117,16 @@
          [:archive
           [:manifestEntries
            [:git-revision (:sha opts)]]]]]
-       [:plugin
-        [:groupId "org.apache.maven.plugins"]
-        [:artifactId "maven-gpg-plugin"]
-        [:version "1.6"]
-        [:executions
-         [:execution
-          [:id "sign-artifacts"]
-          [:phase "verify"]
-          [:goals [:goal "sign"]]]]]]]
+       (when-not (:disable-signing opts)
+         [:plugin
+          [:groupId "org.apache.maven.plugins"]
+          [:artifactId "maven-gpg-plugin"]
+          [:version "1.6"]
+          [:executions
+           [:execution
+            [:id "sign-artifacts"]
+            [:phase "verify"]
+            [:goals [:goal "sign"]]]]])]]
      (into
       [:repositories
        [:repository
