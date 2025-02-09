@@ -191,11 +191,15 @@
 (defn spit-pom [h]
   (util/spit-cwd "pom.xml" (hiccup->xml h)))
 
-(defn spit-poms [opts]
+(defn spit-poms
+  "Generate pom files"
+  [opts]
   (spit-pom (regular-pom opts))
   (util/do-modules opts (comp spit-pom regular-pom)))
 
-(defn spit-relocation-poms [opts]
+(defn spit-relocation-poms
+  "Generate pom files to relocate artifacts to a new groupId"
+  [opts]
   (spit-pom (relocation-pom opts))
   (util/do-modules opts (comp spit-pom relocation-pom)))
 

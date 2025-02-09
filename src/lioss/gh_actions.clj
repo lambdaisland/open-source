@@ -19,5 +19,7 @@
            (str/join "\n"))
       multiline-escape))
 
-(defn set-changelog-output [opts]
+(defn set-changelog-output
+  "Print the last stanza of the changelog in a format that GH actions understands"
+  [opts]
   (println (str "::set-output name=changelog::" (changelog-stanza))))

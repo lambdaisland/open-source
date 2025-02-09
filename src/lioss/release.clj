@@ -56,13 +56,17 @@
    "-d" (str "project=" (str (:group-id opts) "/" (:name opts)))
    "-d" (str "version=" (:version opts))))
 
-(defn print-versions [opts]
+(defn print-versions
+  "Print deps.edn / lein coordinates"
+  [opts]
   (binding [*print-namespace-maps* false]
     (let [project (symbol (:group-id opts) (:name opts))]
       (prn `[~project ~(:version opts)])
       (prn `{~project {:mvn/version ~(:version opts)}}))))
 
-(defn do-release [opts]
+(defn do-release
+  "Release a new version to clojars"
+  [opts]
   (git/assert-branch #{"master" "main"})
   (git/assert-repo-clean)
   (when (and (.exists (io/file "tests.edn")) (not (System/getenv "SKIP_TESTS")))
@@ -129,7 +133,9 @@
       (when-let [hook (:post-release-hook opts)]
         (hook opts)))))
 
-(defn do-install [opts]
+(defn do-install
+  "Build and install jar(s) locally"
+  [opts]
   (let [opts (if-let [hook (:pre-release-hook opts)]
                (let [opts (hook opts)]
                  (when (nil? opts)

@@ -1,86 +1,46 @@
 (ns lioss.main
-  (:require [clojure.java.io :as io]
-            [clojure.java.shell :as sh]
-            [clojure.pprint :as pprint]
-            [clojure.string :as str]
-            [lambdaisland.launchpad :as launchpad]
-            [lioss.cljdoc :as cljdoc]
-            [lioss.gh-actions :as gh-actions]
-            [lioss.git :as git]
-            [lioss.hiccup :as hiccup]
-            [lioss.pom :as pom]
-            [lioss.readme :as readme]
-            [lioss.release :as release]
-            [lioss.util :as util]
-            [lioss.version :as version]))
+  (:require
+   [clojure.java.io :as io]
+   [clojure.java.shell :as sh]
+   [clojure.pprint :as pprint]
+   [clojure.string :as str]
+   [lambdaisland.cli :as cli]
+   [lambdaisland.launchpad :as launchpad]
+   [lioss.cljdoc :as cljdoc]
+   [lioss.gh-actions :as gh-actions]
+   [lioss.git :as git]
+   [lioss.hiccup :as hiccup]
+   [lioss.pom :as pom]
+   [lioss.readme :as readme]
+   [lioss.release :as release]
+   [lioss.util :as util]
+   [lioss.version :as version]))
 
-(defn print-help [prefix commands]
-  (println "Usage:" prefix "[COMMAND] [COMMAND_ARGS...]")
-  (println)
-  (doseq [[cmd {:keys [description]}] (partition 2 commands)]
-    (println (format "  %-35s%s" cmd description))))
+(defn inspect
+  "Show expanded opts and exit"
+  [opts]
+  (pprint/pprint opts))
 
-(declare commands)
-
-(defn do-help [opts]
-  (print-help "bin/proj"
-              (concat (:commands opts) commands)))
+(defn launchpad
+  "Launch a REPL with Launchpad"
+  [_]
+  (launchpad/main {:steps (into [(partial launchpad/ensure-java-version 17)] launchpad/default-steps)}) )
 
 (def commands
-  ["release"
-   {:description "Release a new version to clojars"
-    :command release/do-release}
+  ["release"                     #'release/do-release
+   "pom"                         #'pom/spit-poms
+   "relocation-pom"              #'pom/spit-relocation-poms
+   "install"                     #'release/do-install
+   "print-versions"              #'release/print-versions
+   "gh_actions_changelog_output" #'gh-actions/set-changelog-output
+   "inspect"                     #'inspect
+   "gen-readme"                  #'readme/do-gen
+   "update-readme"               #'readme/do-update
+   "bump-version"                #'version/bump-version!
+   "launchpad"                   #'launchpad
+   "ingest-docs"                 #'cljdoc/ingest])
 
-   "pom"
-   {:description "Generate pom files"
-    :command pom/spit-poms}
-
-   "relocation-pom"
-   {:description "Generate pom files to relocate artifacts to a new groupId"
-    :command pom/spit-relocation-poms}
-
-   "install"
-   {:description "Build and install jar(s) locally"
-    :command release/do-install}
-
-   "print-versions"
-   {:description "Print deps.edn / lein coordinates"
-    :command release/print-versions}
-
-   "gh_actions_changelog_output"
-   {:description "Print the last stanza of the changelog in a format that GH actions understands"
-    :command gh-actions/set-changelog-output}
-
-   "help"
-   {:description "Show this help information"
-    :command do-help}
-
-   "inspect"
-   {:description "Show expanded opts and exit"
-    :command clojure.pprint/pprint}
-
-   "gen-readme"
-   {:description "Generate README based on a template and fill in project variables"
-    :command readme/do-gen}
-
-   "update-readme"
-   {:description "Update sections in README.md"
-    :command readme/do-update}
-
-   "bump-version"
-   {:description "Bump minor version"
-    :command version/bump-version!}
-
-   "launchpad"
-   {:description "Launch a REPL with Launchpad"
-    :command (fn [_]
-               (launchpad/main {:steps (into [(partial launchpad/ensure-java-version 17)] launchpad/default-steps)}))}
-
-   "ingest-docs"
-   {:description "Start a Cljdoc Docker container to analyze and ingest docs."
-    :command cljdoc/ingest}])
-
-(def defaults
+(def init
   {:name           (git/project-name)
    :sha            (git/current-sha)
    :group-id       nil
@@ -95,8 +55,8 @@
 
 (defn main [opts]
   (assert (:group-id opts) ":group-id should be set explicitly")
-  (let [commands (concat (:commands opts) commands)
-        opts     (merge defaults (util/read-deps) opts)
+  (let [commands (into commands (:commands opts))
+        opts     (merge init (util/read-deps) opts)
         opts     (-> opts
                      (update :modules #(for [{:keys [name] :as mod-opts} %]
                                          (util/with-cwd (str "modules/" name)
@@ -105,7 +65,8 @@
                                                   mod-opts))))
                      (version/add-version-info))]
 
-    (if-let [{:keys [command]} (get (apply hash-map commands)
-                                    (first *command-line-args*))]
-      (command (assoc opts :argv (next *command-line-args*)))
-      (do-help opts))))
+    (cli/dispatch*
+     {:name "bin/proj"
+      :init opts
+      :commands commands}
+     *command-line-args*)))

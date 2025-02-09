@@ -91,7 +91,9 @@
                                :mit
                                "MIT")))))
 
-(defn do-update [params]
+(defn do-update
+  "Update sections in README.md"
+  [params]
   (let [params   (extra-params params)
         sections (section-map (slurp (io/resource "README_sections.md")))
         sections (assoc sections
@@ -106,7 +108,9 @@
                            sections
                            params))))
 
-(defn do-gen [params]
+(defn do-gen
+  "Generate README based on a template and fill in project variables"
+  [params]
   (when (.exists (io/file "README.md"))
     (println "README.md exists, overwrite? [y/n]")
     (when (not= "y" (doto (read-line) prn))

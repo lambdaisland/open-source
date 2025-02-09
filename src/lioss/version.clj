@@ -33,6 +33,8 @@
       deps
       versions))))
 
+;; TODO: gracefully migrate from .VERSION_PREFIX to .config/version.edn
+
 (defn read-version-string
   "Get the version string based on .VERSION_PREFIX and number of git commits"
   [{:keys [version-qualifier]}]
@@ -46,7 +48,9 @@
      (str "-" version-qualifier))))
 
 (defn bump-version!
-  "We bump the minor version on every release, the teeny version is the number of
+  "Bump minor version
+
+  We bump the minor version on every release, the teeny version is the number of
   git commits and is handled in [[read-version-string]]."
   []
   (let [version (if (.exists (io/file ".VERSION_PREFIX"))

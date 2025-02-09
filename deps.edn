@@ -1,9 +1,10 @@
 {:paths ["src" "resources"]
  :deps
- {com.lambdaisland/launchpad {:mvn/version "0.29.135-alpha"}
+ {com.lambdaisland/launchpad {:mvn/version "0.35.156-alpha"}
+  com.lambdaisland/cli       {:mvn/version "0.22.87"}
   lambdaisland/regal         {:mvn/version "0.1.175"}
   olical/depot               {:mvn/version "2.3.0"}
-  rewrite-clj/rewrite-clj    {:mvn/version "1.1.47"}}
+  rewrite-clj/rewrite-clj    {:mvn/version "1.1.49"}}
 
  :aliases
  {:build-releases
@@ -12,8 +13,8 @@
    :main-opts  ["-m" "lioss.releases"]}
 
   :cucumber
-  {:extra-deps {lambdaisland/kaocha-cucumber {:mvn/version "0.0-53"}}
-   :main-opts ["-m" "lioss.cucumber"]}
+  {:extra-deps {lambdaisland/kaocha-cucumber {:mvn/version "0.11.100"}}
+   :main-opts  ["-m" "lioss.cucumber"]}
 
   :ansi              {:extra-deps {lambdaisland/ansi {:local/root "../ansi"}}}
   :chui              {:extra-deps {lambdaisland/chui {:local/root "../chui"}}}
