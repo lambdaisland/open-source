@@ -120,7 +120,7 @@
       (git/git! "push" "--tags")
       (git/git! "push")
 
-      (github/create-release opts)
+      (github/create-release opts) ;; TODO upload the jar
       (github/notify-prs-of-release opts)
 
       ;; Disable this for now, something changed on the server causing curl to
