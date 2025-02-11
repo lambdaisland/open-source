@@ -1,6 +1,6 @@
 {:paths ["src" "resources"]
  :deps
- {com.lambdaisland/launchpad {:mvn/version "0.36.159-alpha"}
+ {com.lambdaisland/launchpad {:mvn/version "0.37.162-alpha"}
   com.lambdaisland/cli       {:mvn/version "0.22.87"}
   lambdaisland/regal         {:mvn/version "0.1.175"}
   olical/depot               {:mvn/version "2.3.0"}
