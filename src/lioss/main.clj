@@ -24,7 +24,7 @@
 (defn launchpad
   "Launch a REPL with Launchpad"
   [_]
-  (launchpad/main {:steps (into [(partial launchpad/ensure-java-version 17)] launchpad/default-steps)}) )
+  (launchpad/main {}))
 
 (def commands
   ["release"                     #'release/do-release
