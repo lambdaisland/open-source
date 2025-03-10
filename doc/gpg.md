@@ -20,6 +20,13 @@ echo 'pinentry-program /path/to/pinentry-mac' > ~/.gnupg/gpg-agent.conf
 ```
 Note: the `pinentry-mac` is probably installed at `/opt/homebrew/bin/pinentry-mac`
 
+Sometimes, we need to restart the pinentry-mac by doing:
+
+```
+gpgconf --kill gpg-agent
+gpgconf --launch gpg-agent
+```
+
 #### 4. Make public key available
 `gpg --send-keys ABCD1234`
 
