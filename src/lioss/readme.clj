@@ -90,7 +90,7 @@
                                "EPL 1.0"
                                :mit
                                "MIT"
-                               :mpl
+                               :apache
                                "Apache 2.0")))))
 
 (defn do-update
