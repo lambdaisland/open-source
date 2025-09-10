@@ -93,3 +93,11 @@ Copyright &copy; {{year-range}} Arne Brasseur and Contributors
 
 Licensed under the term of the Mozilla Public License 2.0, see LICENSE.
 <!-- /license-mpl -->
+
+<!-- license-apache -->
+## License
+
+Copyright &copy; {{year-range}} Arne Brasseur and Contributors
+
+Licensed under the term of the Apache Software License, Version 2.0, see LICENSE.
+<!-- /license-apache -->

@@ -80,7 +80,11 @@
           :mit
           [:license
            [:name "The MIT License (MIT)"]
-           [:url "https://opensource.org/licenses/MIT"]])])
+           [:url "https://opensource.org/licenses/MIT"]]
+          :apache
+          [:license
+           [:name "The Apache Software License, Version 2.0"]
+           [:license "http://www.apache.org/licenses/LICENSE-2.0.txt"]])])
      [:scm
       [:url url]
       [:connection (str "scm:git:git://github.com/" gh-project ".git")]

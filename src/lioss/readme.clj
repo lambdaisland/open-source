@@ -89,7 +89,9 @@
                                :epl
                                "EPL 1.0"
                                :mit
-                               "MIT")))))
+                               "MIT"
+                               :mpl
+                               "Apache 2.0")))))
 
 (defn do-update
   "Update sections in README.md"
@@ -101,7 +103,9 @@
                                    :mpl
                                    (:license-mpl sections)
                                    :epl
-                                   (:license-epl sections))
+                                   (:license-epl sections)
+                                   :apache
+                                   (:license-apache sections))
                         :badges (badges/template (:badges params)))]
     (spit "README.md"
           (update-sections (slurp "README.md")
