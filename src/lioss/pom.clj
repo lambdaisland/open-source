@@ -42,6 +42,27 @@
 (defn hiccup->xml [h]
   (str "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" (hiccup/h h)))
 
+(defn license-tag [opts]
+  (when (:license opts)
+    [:licenses
+     (case (:license opts)
+       :epl
+       [:license
+        [:name "Eclipse Public License 1.0"]
+        [:url "https://www.eclipse.org/legal/epl-v10.html"]]
+       :mpl
+       [:license
+        [:name "MPL-2.0"]
+        [:url "https://www.mozilla.org/media/MPL/2.0/index.txt"]]
+       :mit
+       [:license
+        [:name "The MIT License (MIT)"]
+        [:url "https://opensource.org/licenses/MIT"]]
+       :apache
+       [:license
+        [:name "The Apache Software License, Version 2.0"]
+        [:url "http://www.apache.org/licenses/LICENSE-2.0.txt"]])]))
+
 (defn regular-pom [opts]
   (assert (:name opts))
   (assert (:version opts))
@@ -66,25 +87,7 @@
       [:name (:org-name opts)]
       [:url (:org-url opts)]]
      [:properties [:project.build.sourceEncoding "UTF-8"]]
-     (when (:license opts)
-       [:licenses
-        (case (:license opts)
-          :epl
-          [:license
-           [:name "Eclipse Public License 1.0"]
-           [:url "https://www.eclipse.org/legal/epl-v10.html"]]
-          :mpl
-          [:license
-           [:name "MPL-2.0"]
-           [:url "https://www.mozilla.org/media/MPL/2.0/index.txt"]]
-          :mit
-          [:license
-           [:name "The MIT License (MIT)"]
-           [:url "https://opensource.org/licenses/MIT"]]
-          :apache
-          [:license
-           [:name "The Apache Software License, Version 2.0"]
-           [:url "http://www.apache.org/licenses/LICENSE-2.0.txt"]])])
+     (license-tag opts)
      [:scm
       [:url url]
       [:connection (str "scm:git:git://github.com/" gh-project ".git")]
@@ -161,6 +164,7 @@
      [:groupId (:old-group-id opts)]
      [:artifactId proj-name]
      [:version (:version opts)]
+     (license-tag opts) ;; clojars enforces having this
      [:distributionManagement
       [:relocation
        [:groupId (:group-id opts)]]
