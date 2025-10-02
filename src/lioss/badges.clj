@@ -14,6 +14,7 @@
 
 (def templates
   (array-map
+   :gh-actions "[![GitHub Actions](https://github.com/{{group-id}}/{{project}}/actions/workflows/main.yml/badge.svg)](https://github.com/{{group-id}}/{{project}}/actions/workflows/main.yml)"
    :circle-ci "[![CircleCI](https://circleci.com/gh/{{group-id}}/{{project}}.svg?style=svg)](https://circleci.com/gh/{{group-id}}/{{project}})"
    :cljdoc    "[![cljdoc badge](https://cljdoc.org/badge/{{group-id}}/{{project}})](https://cljdoc.org/d/{{group-id}}/{{project}})"
    :clojars   "[![Clojars Project](https://img.shields.io/clojars/v/{{group-id}}/{{project}}.svg)](https://clojars.org/{{group-id}}/{{project}})"))
@@ -23,7 +24,11 @@
                                 (file-seq (io/file "test"))))
                    (.exists (io/file ".circleci")))
    :cljdoc true
-   :clojars true})
+   :clojars true
+   :gh-actions (and (seq (filter #(re-find #"_test.clj(s|c)?" (str %))
+                                 (file-seq (io/file "test"))))
+                    (.exists (io/file ".github/workflows/main.yml")))})
+
 
 (defn template [flags]
   (str/join " " (keep (fn [[k v]] (when (get flags k) v)) templates)))
