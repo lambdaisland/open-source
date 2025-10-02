@@ -185,6 +185,7 @@
      [:groupId old-group-id]
      [:artifactId proj-name]
      [:version version]
+     (license-tag opts) ;; clojars enforces having this
      [:dependencies
       [:dependency
        [:groupId group-id]
