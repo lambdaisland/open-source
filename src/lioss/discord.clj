@@ -9,9 +9,9 @@
 
 (defn notify-release! [opts]
   (if-let [webhook-url (cfg/get :discord/releases-webhook)]
-    (http/post
-     webhook-url
-     {:headers {"content-type" "application/json"}
-      :body
-      (json/encode {:content (format-release opts)})})
+    @(http/post
+      webhook-url
+      {:headers {"content-type" "application/json"}
+       :body
+       (json/encode {:content (format-release opts)})})
     (println "[WARN] Configure :discord/releases-webhook in ~/.config/lioss.edn to get Discord notifications")))

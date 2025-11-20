@@ -7,6 +7,7 @@
    [lambdaisland.cli :as cli]
    [lambdaisland.launchpad :as launchpad]
    [lioss.cljdoc :as cljdoc]
+   [lioss.discord :as discord]
    [lioss.gh-actions :as gh-actions]
    [lioss.git :as git]
    [lioss.hiccup :as hiccup]
@@ -38,7 +39,8 @@
    "update-readme"               #'readme/do-update
    "bump-version"                #'version/bump-version!
    "launchpad"                   #'launchpad
-   "ingest-docs"                 #'cljdoc/ingest])
+   "ingest-docs"                 #'cljdoc/ingest
+   "notify-discord"              #'discord/notify-release!])
 
 (def init
   {:name           (git/project-name)
