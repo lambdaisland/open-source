@@ -12,6 +12,7 @@
   (:require
    [clojure.java.io :as io]
    [clojure.string :as str]
+   [lioss.discord :as discord]
    [lioss.git :as git]
    [lioss.github :as github]
    [lioss.pom :as pom]
@@ -131,7 +132,9 @@
       (print-versions opts)
 
       (when-let [hook (:post-release-hook opts)]
-        (hook opts)))))
+        (hook opts))
+
+      (discord/notify-release! opts))))
 
 (defn do-install
   "Build and install jar(s) locally"

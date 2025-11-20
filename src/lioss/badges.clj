@@ -17,18 +17,22 @@
    :gh-actions "[![GitHub Actions](https://github.com/{{gh-project}}/actions/workflows/main.yml/badge.svg)](https://github.com/{{gh-project}}/actions/workflows/main.yml)"
    :circle-ci "[![CircleCI](https://circleci.com/gh/{{group-id}}/{{project}}.svg?style=svg)](https://circleci.com/gh/{{group-id}}/{{project}})"
    :cljdoc    "[![cljdoc badge](https://cljdoc.org/badge/{{group-id}}/{{project}})](https://cljdoc.org/d/{{group-id}}/{{project}})"
-   :clojars   "[![Clojars Project](https://img.shields.io/clojars/v/{{group-id}}/{{project}}.svg)](https://clojars.org/{{group-id}}/{{project}})"))
+   :clojars   "[![Clojars Project](https://img.shields.io/clojars/v/{{group-id}}/{{project}}.svg)](https://clojars.org/{{group-id}}/{{project}})"
+   :downloads "![](https://img.shields.io/clojars/dt/{{group-id}}%2F{{project}}?style=flat-square)"))
 
 (def defaults
-  {:circle-ci (and (seq (filter #(re-find #"_test.clj(s|c)?" (str %))
+  {:cljdoc true
+   :clojars true
+   :downloads true
+   :circle-ci (and (seq (filter #(re-find #"_test.clj(s|c)?" (str %))
                                 (file-seq (io/file "test"))))
                    (.exists (io/file ".circleci")))
-   :cljdoc true
-   :clojars true
    :gh-actions (and (seq (filter #(re-find #"_test.clj(s|c)?" (str %))
                                  (file-seq (io/file "test"))))
                     (.exists (io/file ".github/workflows/main.yml")))})
 
 
 (defn template [flags]
-  (str/join " " (keep (fn [[k v]] (when (get flags k) v)) templates)))
+  (str "<p align=center>\n"
+       (str/join " " (keep (fn [[k v]] (when (get flags k) v)) templates))
+       "\n</p>"))

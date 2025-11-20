@@ -33,13 +33,13 @@ You can find an overview of all our different projects at [lambdaisland/open-sou
 
 To use the latest release, add the following to your `deps.edn` ([Clojure CLI](https://clojure.org/guides/deps_and_cli))
 
-```
+```clj
 {{group-id}}/{{project}} {:mvn/version "{{latest-version}}"}
 ```
 
 or add the following to your `project.clj` ([Leiningen](https://leiningen.org/))
 
-```
+```clj
 [{{group-id}}/{{project}} "{{latest-version}}"]
 ```
 <!-- /installation -->
