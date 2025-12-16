@@ -75,7 +75,7 @@
 
   (git/clean!)
 
-  (version/bump-version!)
+  (version/bump-version! opts)
 
   (let [opts (version/add-version-info opts)
         opts (assoc opts :release-title (when (seq (:argv opts))

@@ -37,27 +37,43 @@
 
 (defn read-version-string
   "Get the version string based on .VERSION_PREFIX and number of git commits"
-  [{:keys [version-qualifier]}]
-  (str
-   (if (.exists (io/file ".VERSION_PREFIX"))
-     (str/trim (slurp ".VERSION_PREFIX"))
-     "0.0")
-   "."
-   (git/commit-count)
-   (when version-qualifier
-     (str "-" version-qualifier))))
+  [{:keys [version-qualifier name]}]
+  (if (.exists (io/file (str "resources/" name "/version.edn")))
+    (let [{:keys [major minor teeny qualifier]
+           :or {major 0 minor 0}} (read-string (slurp (str "resources/" name "/version.edn")))]
+      (cond-> (str major "." minor "." (git/commit-count))
+        qualifier
+        (str "-" qualifier)))
+
+    (str
+     (if (.exists (io/file ".VERSION_PREFIX"))
+       (str/trim (slurp ".VERSION_PREFIX"))
+       "0.0")
+     "."
+     (git/commit-count)
+     (when version-qualifier
+       (str "-" version-qualifier)))))
 
 (defn bump-version!
   "Bump minor version
 
   We bump the minor version on every release, the teeny version is the number of
   git commits and is handled in [[read-version-string]]."
-  []
-  (let [version (if (.exists (io/file ".VERSION_PREFIX"))
-                  (str/trim (slurp ".VERSION_PREFIX"))
-                  "0.0")]
-    (when-let [[_ major minor] (re-find #"^(\d+)\.(\d+)$" version)]
-      (spit ".VERSION_PREFIX" (str major "." (inc (Long/parseLong minor)))))))
+  [{:keys [version-qualifier sha name]}]
+  (if (.exists (io/file (str "resources/" name "/version.edn")))
+    (let [versions (read-string (slurp (str "resources/" name "/version.edn")))]
+      (spit (str "resources/" name "/version.edn")
+            (pr-str
+             (cond-> (assoc (update versions :minor (fnil inc 0))
+                            :teeny (parse-long (git/commit-count))
+                            :sha sha)
+               version-qualifier
+               (assoc :qualifier version-qualifier)))))
+    (let [version (if (.exists (io/file ".VERSION_PREFIX"))
+                    (str/trim (slurp ".VERSION_PREFIX"))
+                    "0.0")]
+      (when-let [[_ major minor] (re-find #"^(\d+)\.(\d+)$" version)]
+        (spit ".VERSION_PREFIX" (str major "." (inc (Long/parseLong minor))))))))
 
 (defn add-version-info
   "Add version info to the opts map, needs to be called again if the version
