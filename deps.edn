@@ -1,11 +1,11 @@
 {:paths ["src" "resources"]
  :deps
- {com.lambdaisland/launchpad {:mvn/version "0.48.215-alpha"}
-  com.lambdaisland/cli       {:mvn/version "1.27.121"}
+ {com.lambdaisland/launchpad {:mvn/version "0.53.238-alpha"}
+  com.lambdaisland/cli       {:mvn/version "1.30.130"}
   lambdaisland/regal         {:mvn/version "0.1.175"}
   olical/depot               {:mvn/version "2.4.1"}
-  rewrite-clj/rewrite-clj    {:mvn/version "1.2.54"}
-  com.lambdaisland/config    {:mvn/version "0.10.37"}
+  rewrite-clj/rewrite-clj    {:mvn/version "1.2.55"}
+  com.lambdaisland/config    {:mvn/version "0.15.56"}
   }
 
  :aliases
