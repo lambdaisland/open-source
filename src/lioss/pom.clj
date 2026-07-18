@@ -46,10 +46,14 @@
   (when (:license opts)
     [:licenses
      (case (:license opts)
-       :epl
+       :epl1
        [:license
         [:name "Eclipse Public License 1.0"]
         [:url "https://www.eclipse.org/legal/epl-v10.html"]]
+       (:epl :epl2)
+       [:license
+        [:name "Eclipse Public License 2.0"]
+        [:url "https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt"]]
        :mpl
        [:license
         [:name "MPL-2.0"]
