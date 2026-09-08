@@ -21,6 +21,8 @@
    [lioss.version :as version]))
 
 (defn bump-changelog [{:keys [version date sha] :as opts}]
+  (when-not (.exists (io/file "CHANGELOG.md"))
+    (spit "CHANGELOG.md" "# Unreleased\n\n- first release\n"))
   (let [blob (slurp "CHANGELOG.md")
         lines (str/split blob #"\R")]
     (spit "CHANGELOG.md"
