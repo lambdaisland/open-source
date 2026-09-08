@@ -79,7 +79,7 @@ line with the project's goals.
 <!-- license-epl -->
 ## License
 
-Copyright &copy; {{year-range}} Arne Brasseur and contributors
+Copyright &copy; {{year-range}} {{authors-and-contributors}}
 
 Available under the terms of the Eclipse Public License 1.0, see LICENSE.txt
 <!-- /license-epl -->
@@ -89,7 +89,7 @@ Available under the terms of the Eclipse Public License 1.0, see LICENSE.txt
 <!-- license-mpl -->
 ## License
 
-Copyright &copy; {{year-range}} Arne Brasseur and Contributors
+Copyright &copy; {{year-range}} {{authors-and-contributors}}
 
 Licensed under the term of the Mozilla Public License 2.0, see LICENSE.
 <!-- /license-mpl -->
@@ -97,7 +97,15 @@ Licensed under the term of the Mozilla Public License 2.0, see LICENSE.
 <!-- license-apache -->
 ## License
 
-Copyright &copy; {{year-range}} Arne Brasseur and Contributors
+Copyright &copy; {{year-range}} {{authors-and-contributors}}
 
 Licensed under the term of the Apache Software License, Version 2.0, see LICENSE.
 <!-- /license-apache -->
+
+<!-- license-mit -->
+## License
+
+Copyright &copy; {{year-range}} {{authors-and-contributors}}
+
+Licensed under the term of the MIT License, see LICENSE.
+<!-- /license-mit -->

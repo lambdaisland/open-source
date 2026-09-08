@@ -105,7 +105,9 @@
                                    :epl
                                    (:license-epl sections)
                                    :apache
-                                   (:license-apache sections))
+                                   (:license-apache sections)
+                                   :mit
+                                   (:license-mit sections))
                         :badges (badges/template (:badges params)))]
     (spit "README.md"
           (update-sections (slurp "README.md")

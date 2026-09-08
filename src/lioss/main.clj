@@ -65,8 +65,11 @@
                                            (merge (dissoc opts :modules)
                                                   (util/read-deps)
                                                   mod-opts))))
-                     (version/add-version-info))]
-
+                     (version/add-version-info)
+                     (assoc :authors-and-contributors
+                            (if-let [authors (:authors opts)]
+                              (str/join ", " (concat authors ["and Contributors"]))
+                              "Authors and Contributors")))]
     (cli/dispatch*
      {:name "bin/proj"
       :init opts
